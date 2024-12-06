@@ -1,99 +1,85 @@
-teedoc website template
-=====
+# hardwareDocsHubWEB
 
-**[中文 README](./README_ZH.md) | English README**
+## 介绍
+搭建的个人硬件文档记录中心网站，主要方向为: 嵌入式，MCU、linux、markdown、git、python、C/C++。
 
+域名：www.Hdochub.com
 
+项目来源[teedoc](https://github.com/teedoc/teedoc):https://github.com/teedoc/teedoc
 
-This template supported by teedoc, visit: [teedoc.neucrack.com](https://teedoc.neucrack.com/) or [teedoc.github.io](https://teedoc.github.io) learn more
+网站搭建文档：https://teedoc.github.io/
 
+## 快速搭建wiki
 
-## build locally
+### 一、安装 python3
 
-* Install python3
+需要先安装Python3 （仅支持 Python3）
 
-On `Windows` or `macOS`, download from [python.org](https://www.python.org/downloads/)
+比如在Ubuntu上：
 
-On `Linux`, `Ubuntu` for example:
-
+```sh
+sudo apt install python3 python3-pip git
 ```
-sudo apt install python3 python3-pip
-```
+Windows 和 macOS请到[官网下载](https://www.python.org/downloads/)
 
-* Install teedoc
+### 二、安装 teedoc
 
-This command will **install teedoc program**
+打开终端(Windows按Ctrl+R输入cmd)，输入：
 
-```
+```sh
 pip3 install teedoc
 ```
 
-* Initialize document
+以后使用以下命令来更新软件：
 
+```sh
+pip3 install teedoc --upgrade
 ```
+如果你的网络使用 pypi.org 速度很慢，可以选择其它源，比如清华 tuna 源： `pip3 install teedoc -i https://pypi.tuna.tsinghua.edu.cn/simple`
+
+现在你可以在终端使用 `teedoc` 命令了
+
+如果不能，请检查是不是`Python`可执行目录没有加入到环境变量 `PATH`,
+比如可能在 `~/.local/bin`
+
+### 三、新建工程
+
+新建一个空目录用来放文档工程
+
+```sh
 mkdir my_site
 cd my_site
 teedoc init
 ```
+选择1，也就是minimal模板进行生成， 也可以直接`teedoc -d my_site --template=minimal init`进行生成
 
-or
+这会在 `my_site` 目录下自动生成一些基础文件
 
-```
-teedoc -d my_site init
-```
 
-* Install plugins
+### 四、安装插件
 
-This command will **install plugins** used by doc(set in `site_config.json`)
+这会根据`site_config.json`中的`plugins`的插件设置安装插件
 
-```
+```sh
 cd my_site
 teedoc install
 ```
+插件也是以 `python` 包的形式发布的， 所以这会从 `pypi.org` 下载对应的插件，同样，也可以使用其它源，比如清华 tuna 源： `teedoc -i https://pypi.tuna.tsinghua.edu.cn/simple install`
 
-* build or serve
 
-```
+### 五、构建 `HTML` 页面并起一个`HTTP`服务
+
+```sh
 teedoc serve
 ```
+这个命令会先构建所有`HTML`页面以及拷贝资源文件，然后起一个`HTTP`服务
+如果只需要生成页面，使用
 
-then visit [http://127.0.0.1:2333](http://127.0.0.1:2333) in browser
-
-If you only want to generate htmls:
-
-```
+```sh
 teedoc build
 ```
+在显示 `Starting server at 0.0.0.0:2333 ....` 后，就可以了
 
+打开浏览器访问: `http://127.0.0.1:2333`
 
-## Create your website on github pages in minutes
-
-
-### Create a repository based on a template
-
-* Visit [https://github.com/teedoc/template](https://github.com/teedoc/template) or [https://github.com/teedoc/teedoc.github.io](https://github.com/teedoc/teedoc.github.io), click `Use this template`
-
-![github use template](./assets/github_use_template.jpg)
-
-
-* Set the name of the new repository to `username or organization name.github.io`, select the public repository, and then confirm the submission
-![create repo](assets/create_repo.jpg)
-
-> Then use `git clone your repository address` to clone to the local
-
-### Set up pages service
-
-* Wait for the automatic build to generate a new branch `gh-pages`, you can click on the `Actions` column to view the progress of the automatic build, if a green tick appears, it means it is OK, if a red cross appears, the build fails Yes, where is the problem, you can click in to view the log according to the screenshot method below (you must submit a screenshot of the log) and submit [issue](https://github.com/teedoc/teedoc.github.io/issues/ new) feedback
-
-![action status](./assets/action_status.jpg)
-
-If there is an error, you can click to view the error log according to the following figure:
-![error0](./assets/action_error.jpg)
-![error](.//assets/action_error_log.jpg)
-
-* Set the `pages` service of the repository and select the `gh-pages` branch. If there is no such branch, the previous step has not been completed or an error occurred. You can view the issue submission [issue](https://github.com/ teedoc/teedoc.github.io/issues/new) feedback
-![pages](./assets/pages_settings.jpg)
-
-* Then visit `username or organization name.github.io`, you will find a webpage, the content is exactly the same as `teedoc.github.io`!
-
-
+同时可以看到目录下多了一个`out`目录，里面就是生成的静态网站内容，直接拷贝到服务器使用`nginx`或者`apache`进行部署即可

@@ -1,0 +1,30 @@
+items:
+-   label: 项目集合
+    file: README.md
+-   label: 像素时钟⏰
+    file: picxel-clock/basic.md
+    collapsed: true
+    items:
+    -   label: ✨项目信息
+        file: picxel-clock/basic.md
+    -   label: ⬇️资料下载
+        file: picxel-clock/download.md
+    -   label: 0. 硬件设计
+        file: picxel-clock/hardware.md
+    -   label: 1. 软件环境搭建
+        file: picxel-clock/install.md        
+    -   label: 2. RTC时钟驱动
+        file: picxel-clock/ds1302.md    
+    -   label: 3. 温湿度采集
+        file: picxel-clock/dht11.md    
+    -   label: 4. 彩灯驱动
+        file: picxel-clock/ledmatrix.md 
+    -   label: 5. 获取网络时间
+        file: picxel-clock/ntptime.md
+    -   label: 6. 获取天气情况
+        file: picxel-clock/weather.md
+    -   label: 7. 实现FFT音律灯
+        file: picxel-clock/led-oscillating.md
+    -   label: 8. 语音识别与播报
+        file: picxel-clock/voice.md
+        
