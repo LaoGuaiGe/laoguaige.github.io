@@ -1,0 +1,2 @@
+User-agent: *
+Sitemap: https://https://laoguaige.github.io//sitemap.xml

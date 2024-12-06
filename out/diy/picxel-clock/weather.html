@@ -1,0 +1,684 @@
+<!DOCTYPE html>
+
+<html lang="en"  class="">
+
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <meta name="keywords" content="keyword1, keyword2">
+    
+    
+    <meta name="description" content="description for this article">
+    
+    <meta name="generator" content="teedoc">
+    <meta name="theme" content="teedoc-plugin-theme-default">
+    
+        
+        <meta name="markdown-generator" content="teedoc-plugin-markdown-parser">
+        
+        <script>
+MathJax = {"loader": {"load": ["output/svg"]}, "tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]]}, "svg": {"fontCache": "global"}};
+</script>
+        
+        <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+        
+        <meta name="html-generator" content="teedoc-plugin-jupyter-notebook-parser">
+        
+        <script src="/static/js/theme_default/pre_main.js"></script>
+        
+        <link rel="stylesheet" href="/static/css/theme_default/prism.min.css" type="text/css"/>
+        
+        <link rel="stylesheet" href="/static/css/theme_default/viewer.min.css" type="text/css"/>
+        
+        <link rel="stylesheet" href="/static/css/theme_default/dark.css" type="text/css"/>
+        
+        <link rel="stylesheet" href="/static/css/theme_default/light.css" type="text/css"/>
+        
+        <script src="/static/js/theme_default/jquery.min.js"></script>
+        
+        <script src="/static/js/theme_default/split.js"></script>
+        
+        <link rel="stylesheet" href="/static/css/search/style.css" type="text/css"/>
+        
+        <script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?4d52982572d5512e9762879ebf063c86";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+        
+        <link rel="stylesheet" href="/static/css/gitalk/gitalk.css" type="text/css"/>
+        
+        <link rel="stylesheet" href="/static/css/gitalk/custom_gitalk.css" type="text/css"/>
+        
+        <link rel="stylesheet" href="/static/css/custom.css" type="text/css"/>
+        
+    
+    
+    <title>获取天气情况 - Hdochub</title>
+    
+    <script type="text/javascript">js_vars = {"teedoc-plugin-ad-hint": {"type": "hint", "label": "☆", "content": "这里是老怪鸽的个人技术文档记录中心</br>喜欢项目请<a target=\"_blank\" href=\"https://github.com/LaoGuaiGe/laoguaige.github.io\">点下 ☆ star </a>哦~🦀🦀", "show_times": 2, "show_after_s": 432000, "date": "2021-11-16 14:40", "color": "#a0421d", "link_color": "#e53935", "link_bg_color": "#e6ae5c", "bg_color": "#ffcf89", "color_hover": "white", "bg_color_hover": "#f57c00", "close_color": "#eab971"}}</script>
+    <script type="text/javascript">metadata = {"tags": [], "date": "2024-12-05", "update": [{"date": "2024-12-05", "author": "老怪鸽", "version": "1.0.1", "content": "更新了基本文档"}], "ts": 1733328000, "author": "", "brief": "", "cover": "", "show_source": false}</script>
+</head>
+
+
+<body class="type_doc">
+    
+    <div id="navbar">
+        <div id="navbar_menu">
+            <a class="site_title" href="/">
+                
+                    <img class="site_logo" src="/static/images/logo.png" alt="老怪鸽的文档中心 logo">
+                
+                
+                    <h2>老怪鸽的文档中心</h2>
+                
+        </a>
+            <a id="navbar_menu_btn"></a>
+        </div>
+        <div id="navbar_items">
+            <div>
+                <ul id="nav_left">
+<li class=""><a  href="/c-basics/">C语言</a></li>
+<li class=""><a  href="/mpy-basics/">MicroPython</a></li>
+<li class=""><a  href="/linux/">Linux</a></li>
+<li class=""><a  href="/markdown/">MarkDown</a></li>
+<li class=""><a  href="/git/">Git</a></li>
+<li class=""><a  href="/mcu/">单片机</a></li>
+<li class="active"><a  href="/diy/">DIY项目</a></li>
+</ul>
+
+            </div>
+            <div>
+                <ul id="nav_right">
+<li class=""><a target="_blank" href="https://github.com/LaoGuaiGe/laoguaige.github.io">github</a></li>
+</ul>
+
+                <ul class="nav_plugins"><li><a id="themes" class="light"></a></li></ul><ul class="nav_plugins"><li><a id="search"><span class="icon"></span><span class="placeholder">Search</span>
+                            <div id="search_hints">
+                                <span id="search_input_hint">Keywords separated by space</span>
+                                <span id="search_loading_hint">Loading, wait please ...</span>
+                                <span id="search_download_err_hint">Download error, please check network and refresh again</span>
+                                <span id="search_other_docs_result_hint">Result from other docs</span>
+                                <span id="search_curr_doc_result_hint">Result from current doc</span>
+                            </div></a></li></ul>
+            </div>
+        </div>
+    </div>
+    
+    <div id="wrapper">
+        <div id="sidebar_wrapper">
+            <div id="sidebar">
+                <div id="sidebar_title">
+                    
+                </div>
+                <ul class="show">
+<li class="not_active with_link"><a href="/diy/index.html"><span class="label">项目集合</span><span class=""></span></a></li>
+<li class="active_parent with_link"><a href="/diy/picxel-clock/basic.html"><span class="label">像素时钟⏰</span><span class="sub_indicator"></span></a><ul class="show">
+<li class="not_active with_link"><a href="/diy/picxel-clock/basic.html"><span class="label">✨项目信息</span><span class=""></span></a></li>
+<li class="not_active with_link"><a href="/diy/picxel-clock/download.html"><span class="label">⬇️资料下载</span><span class=""></span></a></li>
+<li class="not_active with_link"><a href="/diy/picxel-clock/hardware.html"><span class="label">0. 硬件设计</span><span class=""></span></a></li>
+<li class="not_active with_link"><a href="/diy/picxel-clock/install.html"><span class="label">1. 软件环境搭建</span><span class=""></span></a></li>
+<li class="not_active with_link"><a href="/diy/picxel-clock/ds1302.html"><span class="label">2. RTC时钟驱动</span><span class=""></span></a></li>
+<li class="not_active with_link"><a href="/diy/picxel-clock/dht11.html"><span class="label">3. 温湿度采集</span><span class=""></span></a></li>
+<li class="not_active with_link"><a href="/diy/picxel-clock/ledmatrix.html"><span class="label">4. 彩灯驱动</span><span class=""></span></a></li>
+<li class="not_active with_link"><a href="/diy/picxel-clock/ntptime.html"><span class="label">5. 获取网络时间</span><span class=""></span></a></li>
+<li class="active with_link"><a href="/diy/picxel-clock/weather.html"><span class="label">6. 获取天气情况</span><span class=""></span></a></li>
+<li class="not_active with_link"><a href="/diy/picxel-clock/led-oscillating.html"><span class="label">7. 实现FFT音律灯</span><span class=""></span></a></li>
+<li class="not_active with_link"><a href="/diy/picxel-clock/voice.html"><span class="label">8. 语音识别与播报</span><span class=""></span></a></li>
+</ul>
+</li>
+</ul>
+
+            </div>
+        </div>
+        <div id="article">
+            <div id="menu_wrapper">
+                <div id="menu">
+                </div>
+            </div>
+            <div id="content_wrapper">
+                <div id="content_body">
+                    <div id="article_head">
+                        <div id="article_title">
+                            
+                            <h1>获取天气情况</h1>
+                            
+                        </div>
+                        <div id="article_tags">
+                            <ul>
+                            
+                            </ul>
+                        </div>
+                        <div id="article_info">
+                        <div id="article_info_left">
+                            <span class="article_author">
+                                
+                            </span>
+                            
+                                <span class="article_date" title="Last modify date: 2024-12-05">
+                                    2024-12-05
+                                </span>
+                            
+                        </div>
+                        <div id="article_info_right">
+                            
+                        </div>
+                        </div>
+                    </div>
+                    <div id="article_tools">
+                        <span></span>
+                        <span id="toc_btn"></span>
+                    </div>
+                    <div id="update_history">
+                        
+                        
+                        <details open>
+                        
+                            <summary>Update history</summary>
+                            <div>
+                                <table>
+                                        <thead>
+                                            <tr>
+                                                <th>Date</th>
+                                                <th>Version</th>
+                                                <th>Author</th>
+                                                <th>Update content</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            
+                                                <tr>
+                                                    <td>2024-12-05</td>
+                                                    <td>1.0.1</td>
+                                                    <td>老怪鸽</td>
+                                                    <td>
+                                                    
+                                                        更新了基本文档
+                                                    
+                                                    </td>
+                                                </tr>
+                                            
+                                        </tbody>
+                                </table>
+                            </div>
+                        </details>
+                        
+                    </div>
+                    <div id="article_content">
+                        
+                            <h2 id="%E7%A1%AC%E4%BB%B6%E5%87%86%E5%A4%87">硬件准备</h2>
+<hr />
+<p>你只需要有一个ESP32S3开发板。我目前使用的是：立创开发板的立创·ESP32S3R8N8开发板。</p>
+<blockquote>
+<p><strong>购买地址：</strong><a href="https://item.szlcsc.com/22034693.html?fromZone=s_s__%2522%25E7%25AB%258B%25E5%2588%259B%25E5%25BC%2580%25E5%258F%2591%25E6%259D%25BF%2522"  target="_blank">立创·ESP32S3R8N8 开发板</a></p>
+</blockquote>
+<h2 id="%E5%92%8C%E9%A3%8E%E5%A4%A9%E6%B0%94API">和风天气API</h2>
+<hr />
+<h3 id="%E5%92%8C%E9%A3%8E%E5%A4%A9%E6%B0%94%E4%BB%8B%E7%BB%8D">和风天气介绍</h3>
+<blockquote>
+<p><a href="https://www.qweather.com/"  target="_blank">和⻛天气</a>是中国领先的气象科技服务商、国家高新技术 企业，致力于运用先进气象模型结合大数据、人工智能 技术发展智慧型气象服务。</p>
+</blockquote>
+<p>他们的业务包括气象数据分发、地理信息、气象可视 化、个人气象服务等，在全球10个国家建有数据中心， 为300余家中国及全球企业、50万开发者提供优质的数 据服务。</p>
+<p><strong>另外的话</strong></p>
+<blockquote>
+<p>和风天气支持用户免费使用订阅，只是一个用户只能创建一个项目API，但是对我们来说已经足够了，感谢和风天气！</p>
+</blockquote>
+<h3 id="%E5%88%9B%E5%BB%BA%E8%87%AA%E5%B7%B1%E7%9A%84%E5%A4%A9%E6%B0%94API">创建自己的天气API</h3>
+<p>请前往 <a href="https://dev.qweather.com/"  target="_blank">和风天气API</a> 官网，注册账号并进入控制台。</p>
+<p><img src="../../static/images/docs/diy/picxel-clock/weather/weather-2024-12-05-23-51-48.png" alt="图 0" /></p>
+<p>关于和风天气的API介绍和开发文档，参考控制台处的介绍：</p>
+<p><img src="../../static/images/docs/diy/picxel-clock/weather/weather-2024-12-05-23-52-04.png" alt="图 2" /></p>
+<p>开始创建属于我们的API !</p>
+<p><img src="../../static/images/docs/diy/picxel-clock/weather/weather-2024-12-05-23-51-58.png" alt="图 1" /></p>
+<p>和风天气项目创建参数填写：</p>
+<p><img src="../../static/images/docs/diy/picxel-clock/weather/weather-2024-12-05-23-52-18.png" alt="图 3" /></p>
+<p>完成创建！</p>
+<p><img src="../../static/images/docs/diy/picxel-clock/weather/weather-2024-12-05-23-52-23.png" alt="图 4" /></p>
+<h3 id="API%E4%BB%8B%E7%BB%8D">API介绍</h3>
+<p>和风天气的 <a href="https://dev.qweather.com/docs/api/"  target="_blank">API介绍网页</a> 如下：</p>
+<p><img src="../../static/images/docs/diy/picxel-clock/weather/weather-2024-12-05-23-52-33.png" alt="图 5" /></p>
+<p>本文将用的API是<code>城市天气 -&gt; 每日天气预报 -&gt; 3天预报API</code> 。<a href="https://dev.qweather.com/docs/api/weather/weather-daily-forecast/"  target="_blank">【API的详细介绍页点我】</a></p>
+<p><img src="../../static/images/docs/diy/picxel-clock/weather/weather-2024-12-05-23-52-38.png" alt="图 6" /></p>
+<blockquote>
+<p><strong>需要注意的是，如果是免费订阅，要将API Host更改为 <code>devapi.qweather.com</code>。</strong></p>
+</blockquote>
+<p>这里以获取深圳<code>3天的天气预报为例</code>，关键的API参数说明如下：</p>
+
+<pre class="language-html"><code class="language-html">https://devapi.qweather.com/v7/weather/3d?location=101280601&amp;key=YOUR_KEY
+</code></pre>
+<blockquote>
+<p>请求参数包括必选和可选参数，参数之间使用&amp;进行分隔。这里只给大家介绍必填项。</p>
+</blockquote>
+<p><strong>1. key(必选)</strong> ： 用户认证key，请参考<a href="https://dev.qweather.com/docs/configuration/project-and-key/"  target="_blank">如何获取你的KEY</a>。<br />
+<strong>2. location(必选)</strong> ： 需要查询地区的<a href="https://dev.qweather.com/docs/resource/glossary/#locationid"  target="_blank">LocationID</a>或以英文逗号分隔的经度,纬度坐标（十进制，最多支持小数点后两位），LocationID可通过GeoAPI获取。例如 location=101010100 或 location=116.41,39.92</p>
+<p>关于这个LocationID需要各位自行根据和风天气官方的github地址查询，这里我找到深圳的LocationID为：<code>101280601</code></p>
+<p><img src="../../static/images/docs/diy/picxel-clock/weather/weather-2024-12-05-23-52-56.png" alt="图 7" /></p>
+<h3 id="%E6%89%8B%E5%8A%A8%E9%AA%8C%E8%AF%81API%E6%98%AF%E5%90%A6%E6%AD%A3%E7%A1%AE">手动验证API是否正确</h3>
+<p>首先回到你的和风天气管理台。你会看到你新建的项目。</p>
+<p><img src="../../static/images/docs/diy/picxel-clock/weather/weather-2024-12-05-23-53-03.png" alt="图 8" /></p>
+<p>复制你的密钥<code>KEY</code>。</p>
+<p><img src="../../static/images/docs/diy/picxel-clock/weather/weather-2024-12-05-23-53-09.png" alt="图 9" /></p>
+<p>然后将你的<code>KEY</code>填充到下方API的<code>YOUR_KEY</code>中</p>
+<blockquote>
+<p>下方这个是获取深圳3天的天气预报API，只剩KEY没有填写</p>
+</blockquote>
+
+<pre class="language-html"><code class="language-html">https://devapi.qweather.com/v7/weather/3d?location=101280601&amp;key=YOUR_KEY
+</code></pre>
+<p>例如我的KEY是 <code>ABCasdsdgsdfgdsgdfgdf</code>，则我的API是</p>
+
+<pre class="language-heml"><code class="language-heml">https://devapi.qweather.com/v7/weather/3d?location=101280601&amp;key=ABCasdsdgsdfgdsgdfgdf
+</code></pre>
+<p>填写你的<code>KEY</code>后，直接复制该<code>API</code>，将它作为网址跳转到对应页面，你就会看的返回的天气数据。</p>
+<p><img src="../../static/images/docs/diy/picxel-clock/weather/weather-2024-12-05-23-53-50.png" alt="图 10" /></p>
+<p>关于API返回的数据具体的意思是什么，参考该<a href="https://dev.qweather.com/docs/api/weather/weather-daily-forecast/"  target="_blank">API的介绍页</a>。</p>
+<p><img src="../../static/images/docs/diy/picxel-clock/weather/weather-2024-12-05-23-53-57.png" alt="图 11" /></p>
+<p><strong>根据返回的参数说明，这里我关注的是4个数据：</strong></p>
+<p><img src="../../static/images/docs/diy/picxel-clock/weather/weather-2024-12-05-23-54-03.png" alt="图 12" /></p>
+<p>图标代码的说明：返回的数据中关于天气的说明只有空落落的数字，这些数字在API说明中代表着各个天气情况。<a href="https://dev.qweather.com/docs/resource/icons/"  target="_blank">数字对应的天气情况链接。</a></p>
+<p><img src="../../static/images/docs/diy/picxel-clock/weather/weather-2024-12-05-23-54-11.png" alt="图 13" /></p>
+<p>到这里我们就已经是准备好了，接下来可以上工程代码了。请准备好你的<code>完整API</code>和<code>KEY</code>。</p>
+<h2 id="%E5%B7%A5%E7%A8%8B%E5%88%9B%E5%BB%BA">工程创建</h2>
+<hr />
+<p>在VSCode中打开PlatformIO扩展创建名为<code>weather</code>的 <code>Espressif ESP32-S3-DevKitM-1</code> 工程。</p>
+<p>关于详细图文创建工程的过程请参考👉<a href="ds1302.html"  >RTC时钟驱动</a>章节的工程创建小节。</p>
+<h2 id="%E5%AE%89%E8%A3%85%E9%A9%B1%E5%8A%A8%E5%BA%93">安装驱动库</h2>
+<hr />
+<p>在驱动库下载界面，搜索<code>ArduinoJson</code>，安装来自<code>Benoit Blanchon</code> 的 <code>ArduinoJson</code>库。将该库安装到我们的工程之中。</p>
+<blockquote>
+<p>关于详细图文安装驱动库的过程请参考👉<a href="ds1302.html"  >RTC时钟驱动</a>章节的安装驱动库小节。</p>
+</blockquote>
+<p>安装完成之后，打开<code>platformio.ini</code>文件，应该可以看到已经安装上了驱动库。</p>
+<p><img src="../../static/images/docs/diy/picxel-clock/weather/weather-2024-12-05-23-55-51.png" alt="图 14" /></p>
+<p>这里还有一个问题，和风天气API返回的JSON格式是带了<a href="https://dev.qweather.com/docs/best-practices/gzip/"  target="_blank">Gzip压缩</a>的。</p>
+<p>为了能够在ESP32S3中进行Gzip的解压操作，引用了github上的一个开源项目，来自<code>pfalcon</code>的<a href="https://github.com/pfalcon/uzlib"  target="_blank">uzlib</a>。<strong>感谢伟大的开源贡献者！</strong></p>
+<p><img src="../../static/images/docs/diy/picxel-clock/weather/weather-2024-12-05-23-56-12.png" alt="图 15" /></p>
+<p>在我们的工程中，去<code>lib</code>文件夹下新建一个文件夹<code>uzlib</code>，将仓库中的 <code>src</code> 文件夹下的文件全部拉下来保存在我们在工程中新建的<code>uzlib</code>文件夹下。</p>
+<p><img src="../../static/images/docs/diy/picxel-clock/weather/weather-2024-12-05-23-56-21.png" alt="图 16" /></p>
+<h2 id="%E7%BC%96%E8%BE%91%E4%BB%A3%E7%A0%81">编辑代码</h2>
+<hr />
+<p>在工程中的<code>src</code>文件夹下的新建 <code>weather.cpp</code> 文件。</p>
+<p>往 <code>weather.cpp</code> 中写入如下代码：</p>
+
+<pre class="language-c"><code class="language-c">#include &quot;weather.h&quot;
+
+Weather::Weather(String apiKey, String location)
+{
+    this-&gt;apiKey = apiKey;
+    this-&gt;location = location;
+}
+
+bool Weather::update()
+{
+    HTTPClient http;   //用于访问网络
+    WiFiClient *stream;
+    int size;
+
+    http.begin(&quot;https://devapi.qweather.com/v7/weather/3d?location=&quot;+ this-&gt;location + &quot;&amp;key=&quot; + this-&gt;apiKey); //获取近三天天气信息
+    int httpcode = http.GET();   //发送GET请求
+    if(httpcode &gt; 0)
+    {
+        if(httpcode == HTTP_CODE_OK)
+        {
+            stream = http.getStreamPtr();   //读取服务器返回的数据
+            size = http.getSize();
+        }
+    }
+    else
+    {
+        Serial.printf(&quot;[HTTP] GET... failed, error: %s\n&quot;, http.errorToString(httpcode).c_str());
+    }
+    http.end();   //结束当前连接
+
+    uint8_t inbuff[size];
+    stream-&gt;readBytes(inbuff, size);
+    uint8_t *outbuf = NULL;
+    uint32_t out_size = 0;
+    int result = ArduinoUZlib::decompress(inbuff,size, outbuf, out_size);
+    deserializeJson(doc, outbuf);
+    today = doc[&quot;daily&quot;][0].as&lt;JsonObject&gt;();
+    tomorrow = doc[&quot;daily&quot;][1].as&lt;JsonObject&gt;();
+    return true;
+}
+
+//获取天气数据中的当天最高气温数据
+int Weather::getTempMax(bool is_today)
+{
+    if(is_today)
+    {
+        return today[&quot;tempMax&quot;].as&lt;int&gt;();
+    }
+    else
+    {
+        return tomorrow[&quot;tempMax&quot;].as&lt;int&gt;();
+    }
+}
+
+//获取天气数据中的当天最低气温数据
+int Weather::getTempMin(bool is_today)
+{
+    if(is_today)
+    {
+        return today[&quot;tempMin&quot;].as&lt;int&gt;();
+    }
+    else
+    {
+        return tomorrow[&quot;tempMin&quot;].as&lt;int&gt;();
+    }
+}
+
+//获取天气数据中的天气标识代码
+int Weather::getWeather(bool is_today, bool is_day)
+{
+    if(is_today)
+    {
+        if(is_day)
+            return today[&quot;iconDay&quot;].as&lt;int&gt;();
+        else
+            return today[&quot;iconNight&quot;].as&lt;int&gt;();
+    }
+    else
+    {
+        if(is_day)
+            return tomorrow[&quot;iconDay&quot;].as&lt;int&gt;();
+        else
+            return tomorrow[&quot;iconNight&quot;].as&lt;int&gt;();
+    }
+}
+</code></pre>
+<p>在工程中的<code>include</code>文件夹下的新建 <code>weather.h</code> 文件。</p>
+<p>往 <code>weather.h</code> 中写入如下代码：</p>
+
+<pre class="language-c"><code class="language-c">#ifndef _WEATHER_H
+#define _WEATHER_H
+
+#include &quot;Arduino.h&quot;
+#include &quot;ArduinoJson.h&quot;
+#include &quot;ArduinoUZlib.h&quot;
+#include &quot;HTTPClient.h&quot;
+
+//定义天气类
+class Weather
+{
+    public:
+        Weather(String apiKey, String location);
+        bool update();  //发送一次请求信息，获取天气数据
+
+        //只需要今明日的天气与温度，故仅设置了以下若干函数
+        int getTempMax(bool is_today);
+        int getTempMin(bool is_today);
+        int getWeather(bool is_today, bool is_day);
+    private:
+        String apiKey;                  //天气API密钥
+        String location;                //地点
+        StaticJsonDocument&lt;2048&gt; doc;   //Json容器
+        JsonObject today, tomorrow;     //可根据返回的json信息自行定义其他天气数据
+};
+
+#endif
+</code></pre>
+<p>打开工程下的<code>src</code>文件夹下的<code>main.cpp</code>，并且写入如下代码：</p>
+
+<pre class="language-c"><code class="language-c">#include &lt;Arduino.h&gt;
+#include &lt;WiFi.h&gt;
+#include &quot;weather.h&quot;  //定义Weather类，用于解析Json数据并返回天气数据
+
+//WIFI
+#define WIFI_SSID &quot;lckfb&quot;         //要连接的WIFI名称
+#define WIFI_PASSWORD &quot;12345678&quot;  //要连接的WIFI密码
+#define WIFI_RETRY_COUNT  20      //WIFI连接重试数
+
+//和风天气预报
+#define USER_KEY      &quot;d89d4706adcc4fb89d6f166cb420ee39&quot; //密钥
+#define LOCATION_ID   &quot;101280601&quot;  //地点标识：深圳
+
+int weatherid;      //根据和风天气API返回的天气ID显示对应天气
+bool is_day = 1;    //白天为1，夜晚为0
+bool is_today = 1;  //今天为1，明天为0
+
+//创建天气对象
+Weather weather(USER_KEY, LOCATION_ID);
+
+//根据和风天气API返回天气标识
+void WeatherIcon(int weatherid)
+{
+    switch(weatherid)
+    {
+        case 100://白天晴
+            Serial.println(&quot;白天晴\r\n&quot;);
+            break;
+        case 101://多云
+        case 102://少云
+        case 151://夜间多云
+        case 152://夜间少云
+        case 103://晴间多云
+            Serial.println(&quot;多云\r\n&quot;);
+            break;
+        case 104://阴天
+            Serial.println(&quot;阴天\r\n&quot;);
+            break;
+        case 150://夜间晴朗
+            Serial.println(&quot;夜间晴朗\r\n&quot;);
+            break;
+        case 153://夜间晴间多云
+            Serial.println(&quot;夜间多云\r\n&quot;);
+            break;
+        case 305://小雨
+        case 309://毛毛雨/细雨
+            Serial.println(&quot;小雨\r\n&quot;);
+            break;
+        case 300://阵雨
+        case 350://夜间阵雨
+        case 306://中雨
+        case 399://雨
+        case 313://冻雨
+        case 314://小到中雨
+            Serial.println(&quot;阵雨\r\n&quot;);
+            break;
+        case 301://强阵雨
+        case 351://夜间强阵雨
+        case 307://大雨
+        case 308://极端降雨
+        case 310://暴雨
+        case 311://大暴雨
+        case 312://特大暴雨
+        case 315://中到大雨
+        case 316://大到暴雨
+        case 317://暴雨到大暴雨
+        case 318://大暴雨到特大暴雨
+            Serial.println(&quot;大雨\r\n&quot;);
+            break;
+        case 302://雷阵雨
+            Serial.println(&quot;雷阵雨\r\n&quot;);
+            break;
+        case 303://强雷阵雨
+            Serial.println(&quot;强雷阵雨\r\n&quot;);
+            break;
+
+        //雪天
+        case 400://小雪
+        case 401://中雪
+        case 402://大雪
+        case 403://暴雪
+        case 404://雨夹雪
+        case 405://雨雪天气
+        case 406://阵雨夹雪
+        case 407://阵雨夹雪
+        case 408://小到中雪
+        case 409://中到大雪
+        case 410://雪
+        case 456://阵雨夹雪
+        case 457://阵雪
+        case 499://雪
+            Serial.println(&quot;雪天\r\n&quot;);
+            break;
+
+        //雾霾
+        case 500://薄雾
+        case 501://雾
+        case 509://浓雾
+        case 510://强浓雾
+        case 514://大雾
+        case 515://特强浓雾
+            Serial.println(&quot;雾天\r\n&quot;);
+            break;
+        case 502://霾
+        case 511://中度霾
+        case 512://重度霾
+        case 513://严重霾
+            Serial.println(&quot;雾霾\r\n&quot;);
+            break;
+    }
+}
+
+void setup() 
+{
+  int count = 0;
+  char disp_buf[50]={0};
+
+  //串口初始化
+  Serial.begin(9600);
+
+  //尝试连接WIFI网络
+  WiFi.begin(WIFI_SSID, WIFI_PASSWORD); 
+  //尝试连接直至超时
+  while (WiFi.status() != WL_CONNECTED) 
+  {
+    count++;
+    if (count &gt; WIFI_RETRY_COUNT)
+    {
+      Serial.println(&quot;\r\nconnection failed.\r\n&quot;);
+      break;
+    }
+    delay(500);
+    Serial.print(&quot;.&quot;);
+  }
+
+  //获取天气数据
+  weather.update();
+
+  //WIFI断开连接
+  WiFi.disconnect();
+
+  //显示最低与最高温度
+  sprintf(disp_buf, &quot;TempMin = %d&quot;, weather.getTempMin(is_today));
+  Serial.println(disp_buf);
+  sprintf(disp_buf, &quot;TempMax = %d&quot;, weather.getTempMax(is_today));
+  Serial.println(disp_buf);
+
+  //显示天气标识代码
+  sprintf(disp_buf, &quot;WeatherCode = %d&quot;, weather.getWeather(is_today, is_day));
+  Serial.println(disp_buf);
+
+  //根据天气标识代码确定天气
+  WeatherIcon(weather.getWeather(is_today, is_day));
+}
+
+void loop() 
+{
+  delay(1000);
+}
+
+</code></pre>
+<h2 id="%E4%BB%A3%E7%A0%81%E9%AA%8C%E8%AF%81">代码验证</h2>
+<hr />
+<p>代码编写完成之后，将ESP32S3开发板接入电脑下载代码，然后打开串口监视器查看现象。</p>
+<blockquote>
+<p>下载步骤请参考👉<a href="ds1302.html"  >RTC时钟驱动</a>章节的代码验证小节。</p>
+</blockquote>
+<p>实际获取天气数据的效果如下：</p>
+<p>最低温度26，最高温度31，天气代码为307，对应的就是大雨。</p>
+<p><img src="../../static/images/docs/diy/picxel-clock/weather/weather-2024-12-05-23-57-17.png" alt="图 17" /></p>
+<p>查看和风天气的API中<a href="https://dev.qweather.com/docs/resource/icons/"  target="_blank">天气代码说明</a>，确认数据是正确的。</p>
+<p><img src="../../static/images/docs/diy/picxel-clock/weather/weather-2024-12-05-23-57-22.png" alt="图 18" /></p>
+<blockquote class="spoiler warning">
+<p> 说明：如果你根据代码操作运行不起来，可以下载👉<a href="https://gitee.com/laoguaige/esp32-s3-r8-n8-pixel-clock/tree/master/example/weather"  target="_blank">例程</a>看看</p>
+</blockquote>
+
+                        
+                    </div>
+                </div>
+                <div id="previous_next">
+                    <div id="previous">
+                        
+                        <a href="/diy/picxel-clock/ntptime.html">
+                            <span class="icon"></span>
+                            <span class="label">5. 获取网络时间</span>
+                        </a>
+                        
+                    </div>
+                    <div id="next">
+                        
+                        <a href="/diy/picxel-clock/led-oscillating.html">
+                            <span class="label">7. 实现FFT音律灯</span>
+                            <span class="icon"></span>
+                        </a>
+                        
+                    </div>
+                </div>
+                <div id="comments-container"></div>
+            </div>
+            <div id="toc_wrapper">
+                <div id="toc">
+                    <div id="toc_content">
+                            
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <a id="to_top" href="#"></a>
+    <div id="doc_footer">
+        <div id="footer">
+            <div id="footer_top">
+                <ul>
+<li><a></a><ul><li><a target="_blank" href="/#"></a></li>
+</ul>
+</li>
+</ul>
+
+            </div>
+            <div id="footer_bottom">
+                <ul>
+<li><a target="_blank" href="https://github.com/teedoc/teedoc">Generated by teedoc</a></li>
+</ul>
+
+            </div>
+        </div>
+    </div>
+    
+        <script src="/teedoc-plugin-markdown-parser/mermaid.min.js"></script>
+    
+        <script>mermaid.initialize({startOnLoad:true});</script>
+    
+        <script src="/static/js/theme_default/tocbot.min.js"></script>
+    
+        <script src="/static/js/theme_default/main.js"></script>
+    
+        <script src="/static/js/theme_default/viewer.min.js"></script>
+    
+        <script src="/static/css/theme_default/prism.min.js"></script>
+    
+        <script src="/static/js/search/search_main.js"></script>
+    
+        <link rel="stylesheet" href="/static/js/add_hint/style.css" type="text/css"/>
+    
+        <script src="/static/js/add_hint/main.js"></script>
+    
+        <script src="/static/js/gitalk/gitalk.min.js"></script>
+    
+        <script src="/static/js/gitalk/main.js"></script>
+    
+        <script src="/static/js/custom.js"></script>
+    
+        <script type="text/javascript" src="/static/js/live.js"></script>
+    
+</body>
+
+</html>

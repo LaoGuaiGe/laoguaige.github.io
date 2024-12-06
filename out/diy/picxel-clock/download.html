@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+
+<html lang="en"  class="">
+
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <meta name="keywords" content="keyword1, keyword2">
+    
+    
+    <meta name="description" content="description for this article">
+    
+    <meta name="generator" content="teedoc">
+    <meta name="theme" content="teedoc-plugin-theme-default">
+    
+        
+        <meta name="markdown-generator" content="teedoc-plugin-markdown-parser">
+        
+        <script>
+MathJax = {"loader": {"load": ["output/svg"]}, "tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]]}, "svg": {"fontCache": "global"}};
+</script>
+        
+        <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+        
+        <meta name="html-generator" content="teedoc-plugin-jupyter-notebook-parser">
+        
+        <script src="/static/js/theme_default/pre_main.js"></script>
+        
+        <link rel="stylesheet" href="/static/css/theme_default/prism.min.css" type="text/css"/>
+        
+        <link rel="stylesheet" href="/static/css/theme_default/viewer.min.css" type="text/css"/>
+        
+        <link rel="stylesheet" href="/static/css/theme_default/dark.css" type="text/css"/>
+        
+        <link rel="stylesheet" href="/static/css/theme_default/light.css" type="text/css"/>
+        
+        <script src="/static/js/theme_default/jquery.min.js"></script>
+        
+        <script src="/static/js/theme_default/split.js"></script>
+        
+        <link rel="stylesheet" href="/static/css/search/style.css" type="text/css"/>
+        
+        <script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?4d52982572d5512e9762879ebf063c86";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+        
+        <link rel="stylesheet" href="/static/css/gitalk/gitalk.css" type="text/css"/>
+        
+        <link rel="stylesheet" href="/static/css/gitalk/custom_gitalk.css" type="text/css"/>
+        
+        <link rel="stylesheet" href="/static/css/custom.css" type="text/css"/>
+        
+    
+    
+    <title>像素时钟资料下载 - Hdochub</title>
+    
+    <script type="text/javascript">js_vars = {"teedoc-plugin-ad-hint": {"type": "hint", "label": "☆", "content": "这里是老怪鸽的个人技术文档记录中心</br>喜欢项目请<a target=\"_blank\" href=\"https://github.com/LaoGuaiGe/laoguaige.github.io\">点下 ☆ star </a>哦~🦀🦀", "show_times": 2, "show_after_s": 432000, "date": "2021-11-16 14:40", "color": "#a0421d", "link_color": "#e53935", "link_bg_color": "#e6ae5c", "bg_color": "#ffcf89", "color_hover": "white", "bg_color_hover": "#f57c00", "close_color": "#eab971"}}</script>
+    <script type="text/javascript">metadata = {"tags": [], "date": "2024-12-05", "update": [{"date": "2024-12-05", "author": "老怪鸽", "version": "1.0.1", "content": "更新了基本文档"}], "ts": 1733328000, "author": "", "brief": "", "cover": "", "show_source": false}</script>
+</head>
+
+
+<body class="type_doc">
+    
+    <div id="navbar">
+        <div id="navbar_menu">
+            <a class="site_title" href="/">
+                
+                    <img class="site_logo" src="/static/images/logo.png" alt="老怪鸽的文档中心 logo">
+                
+                
+                    <h2>老怪鸽的文档中心</h2>
+                
+        </a>
+            <a id="navbar_menu_btn"></a>
+        </div>
+        <div id="navbar_items">
+            <div>
+                <ul id="nav_left">
+<li class=""><a  href="/c-basics/">C语言</a></li>
+<li class=""><a  href="/mpy-basics/">MicroPython</a></li>
+<li class=""><a  href="/linux/">Linux</a></li>
+<li class=""><a  href="/markdown/">MarkDown</a></li>
+<li class=""><a  href="/git/">Git</a></li>
+<li class=""><a  href="/mcu/">单片机</a></li>
+<li class="active"><a  href="/diy/">DIY项目</a></li>
+</ul>
+
+            </div>
+            <div>
+                <ul id="nav_right">
+<li class=""><a target="_blank" href="https://github.com/LaoGuaiGe/laoguaige.github.io">github</a></li>
+</ul>
+
+                <ul class="nav_plugins"><li><a id="themes" class="light"></a></li></ul><ul class="nav_plugins"><li><a id="search"><span class="icon"></span><span class="placeholder">Search</span>
+                            <div id="search_hints">
+                                <span id="search_input_hint">Keywords separated by space</span>
+                                <span id="search_loading_hint">Loading, wait please ...</span>
+                                <span id="search_download_err_hint">Download error, please check network and refresh again</span>
+                                <span id="search_other_docs_result_hint">Result from other docs</span>
+                                <span id="search_curr_doc_result_hint">Result from current doc</span>
+                            </div></a></li></ul>
+            </div>
+        </div>
+    </div>
+    
+    <div id="wrapper">
+        <div id="sidebar_wrapper">
+            <div id="sidebar">
+                <div id="sidebar_title">
+                    
+                </div>
+                <ul class="show">
+<li class="not_active with_link"><a href="/diy/index.html"><span class="label">项目集合</span><span class=""></span></a></li>
+<li class="active_parent with_link"><a href="/diy/picxel-clock/basic.html"><span class="label">像素时钟⏰</span><span class="sub_indicator"></span></a><ul class="show">
+<li class="not_active with_link"><a href="/diy/picxel-clock/basic.html"><span class="label">✨项目信息</span><span class=""></span></a></li>
+<li class="active with_link"><a href="/diy/picxel-clock/download.html"><span class="label">⬇️资料下载</span><span class=""></span></a></li>
+<li class="not_active with_link"><a href="/diy/picxel-clock/hardware.html"><span class="label">0. 硬件设计</span><span class=""></span></a></li>
+<li class="not_active with_link"><a href="/diy/picxel-clock/install.html"><span class="label">1. 软件环境搭建</span><span class=""></span></a></li>
+<li class="not_active with_link"><a href="/diy/picxel-clock/ds1302.html"><span class="label">2. RTC时钟驱动</span><span class=""></span></a></li>
+<li class="not_active with_link"><a href="/diy/picxel-clock/dht11.html"><span class="label">3. 温湿度采集</span><span class=""></span></a></li>
+<li class="not_active with_link"><a href="/diy/picxel-clock/ledmatrix.html"><span class="label">4. 彩灯驱动</span><span class=""></span></a></li>
+<li class="not_active with_link"><a href="/diy/picxel-clock/ntptime.html"><span class="label">5. 获取网络时间</span><span class=""></span></a></li>
+<li class="not_active with_link"><a href="/diy/picxel-clock/weather.html"><span class="label">6. 获取天气情况</span><span class=""></span></a></li>
+<li class="not_active with_link"><a href="/diy/picxel-clock/led-oscillating.html"><span class="label">7. 实现FFT音律灯</span><span class=""></span></a></li>
+<li class="not_active with_link"><a href="/diy/picxel-clock/voice.html"><span class="label">8. 语音识别与播报</span><span class=""></span></a></li>
+</ul>
+</li>
+</ul>
+
+            </div>
+        </div>
+        <div id="article">
+            <div id="menu_wrapper">
+                <div id="menu">
+                </div>
+            </div>
+            <div id="content_wrapper">
+                <div id="content_body">
+                    <div id="article_head">
+                        <div id="article_title">
+                            
+                            <h1>像素时钟资料下载</h1>
+                            
+                        </div>
+                        <div id="article_tags">
+                            <ul>
+                            
+                            </ul>
+                        </div>
+                        <div id="article_info">
+                        <div id="article_info_left">
+                            <span class="article_author">
+                                
+                            </span>
+                            
+                                <span class="article_date" title="Last modify date: 2024-12-05">
+                                    2024-12-05
+                                </span>
+                            
+                        </div>
+                        <div id="article_info_right">
+                            
+                        </div>
+                        </div>
+                    </div>
+                    <div id="article_tools">
+                        <span></span>
+                        <span id="toc_btn"></span>
+                    </div>
+                    <div id="update_history">
+                        
+                        
+                        <details open>
+                        
+                            <summary>Update history</summary>
+                            <div>
+                                <table>
+                                        <thead>
+                                            <tr>
+                                                <th>Date</th>
+                                                <th>Version</th>
+                                                <th>Author</th>
+                                                <th>Update content</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            
+                                                <tr>
+                                                    <td>2024-12-05</td>
+                                                    <td>1.0.1</td>
+                                                    <td>老怪鸽</td>
+                                                    <td>
+                                                    
+                                                        更新了基本文档
+                                                    
+                                                    </td>
+                                                </tr>
+                                            
+                                        </tbody>
+                                </table>
+                            </div>
+                        </details>
+                        
+                    </div>
+                    <div id="article_content">
+                        
+                            <h2 id="%E9%A1%B9%E7%9B%AE%E5%BC%80%E6%BA%90%E5%9C%B0%E5%9D%80">项目开源地址</h2>
+<blockquote class="spoiler warning">
+<p> 开源地址：<a href="https://gitee.com/laoguaige/esp32-s3-r8-n8-pixel-clock"  target="_blank">https://gitee.com/laoguaige/esp32-s3-r8-n8-pixel-clock</a></p>
+</blockquote>
+<p>如果你喜欢这个项目，鼓励鼓励，给开源项目点个⭐Star吧~</p>
+<h2 id="%E5%9B%BA%E4%BB%B6%E4%B8%8B%E8%BD%BD">固件下载</h2>
+<blockquote class="spoiler warning">
+<p> 下载地址：<a href="https://gitee.com/laoguaige/esp32-s3-r8-n8-pixel-clock/tree/master/firmware"  target="_blank">https://gitee.com/laoguaige/esp32-s3-r8-n8-pixel-clock/tree/master/firmware</a></p>
+</blockquote>
+<h3 id="%E5%BD%93%E5%89%8D%E5%9B%BA%E4%BB%B6">当前固件</h3>
+<hr />
+<table>
+<thead>
+<tr>
+  <th>序号</th>
+  <th>固件名称</th>
+  <th>更新时间</th>
+  <th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td>1</td>
+  <td>ESP32S3R8N8_PixelClock_0.0.1.bin</td>
+  <td>2024-07-28</td>
+  <td>包含 时钟 / 天气 / 温湿度 / 数字雨 / 音律拾音灯</td>
+</tr>
+<tr>
+  <td>2</td>
+  <td>ESP32S3R8N8_PixelClock_0.0.2.bin</td>
+  <td>2024-07-28</td>
+  <td>包含 时钟 / 天气 / 温湿度 / 数字雨 / 音律拾音灯 / WIFI配网</td>
+</tr>
+</tbody>
+</table>
+<h3 id="%E5%9B%BA%E4%BB%B6%E7%83%A7%E5%BD%95%E6%AD%A5%E9%AA%A4">固件烧录步骤</h3>
+<hr />
+<p>使用乐鑫的<a href="https://www.espressif.com.cn/zh-hans/support/download/other-tools"  target="_blank">FLASH下载器</a>。</p>
+<p><img src="../../static/images/docs/diy/picxel-clock/download/download-2024-12-05-22-37-52.png" alt="图 3" /></p>
+<p>下载后运行。固件烧录操作如下：</p>
+<p><img src="../../static/images/docs/diy/picxel-clock/download/download-2024-12-05-22-37-55.png" alt="图 4" /></p>
+<p>烧录完成之后断电重启即可。</p>
+<h3 id="%E5%9C%A8PlatformIO%E4%B8%AD%E7%94%9F%E6%88%90%E5%9B%BA%E4%BB%B6">在PlatformIO中生成固件</h3>
+<p>参考：<a href="https://blog.csdn.net/Argon_Ghost/article/details/139307638?ops_request_misc=&amp;request_id=&amp;biz_id=102&amp;utm_term=PlatformIO%E7%94%9F%E6%88%90%E5%9B%BA%E4%BB%B6&amp;utm_medium=distribute.pc_search_result.none-task-blog-2~all~sobaiduweb~default-1-139307638.142%5Ev100%5Epc_search_result_base4&amp;spm=1018.2226.3001.4187"  target="_blank">https://blog.csdn.net/Argon_Ghost/article/details/139307638?ops_request_misc=&amp;request_id=&amp;biz_id=102&amp;utm_term=PlatformIO%E7%94%9F%E6%88%90%E5%9B%BA%E4%BB%B6&amp;utm_medium=distribute.pc_search_result.none-task-blog-2~all~sobaiduweb~default-1-139307638.142%5Ev100%5Epc_search_result_base4&amp;spm=1018.2226.3001.4187</a></p>
+<h2 id="3D%E5%A4%96%E5%A3%B3%E6%96%87%E4%BB%B6%E4%B8%8B%E8%BD%BD">3D外壳文件下载</h2>
+<blockquote class="spoiler warning">
+<p> 下载地址：<a href="https://gitee.com/laoguaige/esp32-s3-r8-n8-pixel-clock/tree/master/3Dfile"  target="_blank">https://gitee.com/laoguaige/esp32-s3-r8-n8-pixel-clock/tree/master/3Dfile</a></p>
+</blockquote>
+<h3 id="3D%E6%96%87%E4%BB%B6%E8%AF%B4%E6%98%8E">3D文件说明</h3>
+<p><strong>因为实物很大，打印的外壳需要分开，分左右两边。</strong></p>
+<p>LEDGrid2x.stl 为光栏，需要一个部件打两个，拼到一起；</p>
+<blockquote>
+<p>说明：光栏一定要黑色的材质，不管是3D打印时选择黑色的材料还是后面收到喷黑漆，一定记得使用黑色的光栏！不然观感就差很多</p>
+</blockquote>
+<p><img src="../../static/images/docs/diy/picxel-clock/download/download-2024-12-05-22-32-35.png" alt="图 0" /></p>
+<p>frontFrame2x.stl 为外壳边框，需要一个部件打两个，拼到一起；</p>
+<p><img src="../../static/images/docs/diy/picxel-clock/download/download-2024-12-05-22-32-50.png" alt="图 1" /></p>
+<p>Housing.stl 和 Housing_noV.stl 为同一个部件，选择一个进行打印即可，都是成本较高，酌情打印；</p>
+<p><img src="../../static/images/docs/diy/picxel-clock/download/download-2024-12-05-22-32-57.png" alt="图 2" /></p>
+<p>如要组建完整的外壳，还需要购买黑色的亚克力透明面板！</p>
+<p><code>生产的规格参数：黑茶色 透明亚克力 95×330×2mm</code></p>
+
+                        
+                    </div>
+                </div>
+                <div id="previous_next">
+                    <div id="previous">
+                        
+                        <a href="/diy/picxel-clock/basic.html">
+                            <span class="icon"></span>
+                            <span class="label">✨项目信息</span>
+                        </a>
+                        
+                    </div>
+                    <div id="next">
+                        
+                        <a href="/diy/picxel-clock/hardware.html">
+                            <span class="label">0. 硬件设计</span>
+                            <span class="icon"></span>
+                        </a>
+                        
+                    </div>
+                </div>
+                <div id="comments-container"></div>
+            </div>
+            <div id="toc_wrapper">
+                <div id="toc">
+                    <div id="toc_content">
+                            
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <a id="to_top" href="#"></a>
+    <div id="doc_footer">
+        <div id="footer">
+            <div id="footer_top">
+                <ul>
+<li><a></a><ul><li><a target="_blank" href="/#"></a></li>
+</ul>
+</li>
+</ul>
+
+            </div>
+            <div id="footer_bottom">
+                <ul>
+<li><a target="_blank" href="https://github.com/teedoc/teedoc">Generated by teedoc</a></li>
+</ul>
+
+            </div>
+        </div>
+    </div>
+    
+        <script src="/teedoc-plugin-markdown-parser/mermaid.min.js"></script>
+    
+        <script>mermaid.initialize({startOnLoad:true});</script>
+    
+        <script src="/static/js/theme_default/tocbot.min.js"></script>
+    
+        <script src="/static/js/theme_default/main.js"></script>
+    
+        <script src="/static/js/theme_default/viewer.min.js"></script>
+    
+        <script src="/static/css/theme_default/prism.min.js"></script>
+    
+        <script src="/static/js/search/search_main.js"></script>
+    
+        <link rel="stylesheet" href="/static/js/add_hint/style.css" type="text/css"/>
+    
+        <script src="/static/js/add_hint/main.js"></script>
+    
+        <script src="/static/js/gitalk/gitalk.min.js"></script>
+    
+        <script src="/static/js/gitalk/main.js"></script>
+    
+        <script src="/static/js/custom.js"></script>
+    
+        <script type="text/javascript" src="/static/js/live.js"></script>
+    
+</body>
+
+</html>

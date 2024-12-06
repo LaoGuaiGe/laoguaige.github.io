@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+
+<html lang="en"  class="">
+
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <meta name="keywords" content="keyword1, keyword2">
+    
+    
+    <meta name="description" content="description for this article">
+    
+    <meta name="generator" content="teedoc">
+    <meta name="theme" content="teedoc-plugin-theme-default">
+    
+        
+        <meta name="markdown-generator" content="teedoc-plugin-markdown-parser">
+        
+        <script>
+MathJax = {"loader": {"load": ["output/svg"]}, "tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]]}, "svg": {"fontCache": "global"}};
+</script>
+        
+        <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+        
+        <meta name="html-generator" content="teedoc-plugin-jupyter-notebook-parser">
+        
+        <script src="/static/js/theme_default/pre_main.js"></script>
+        
+        <link rel="stylesheet" href="/static/css/theme_default/prism.min.css" type="text/css"/>
+        
+        <link rel="stylesheet" href="/static/css/theme_default/viewer.min.css" type="text/css"/>
+        
+        <link rel="stylesheet" href="/static/css/theme_default/dark.css" type="text/css"/>
+        
+        <link rel="stylesheet" href="/static/css/theme_default/light.css" type="text/css"/>
+        
+        <script src="/static/js/theme_default/jquery.min.js"></script>
+        
+        <script src="/static/js/theme_default/split.js"></script>
+        
+        <link rel="stylesheet" href="/static/css/search/style.css" type="text/css"/>
+        
+        <script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?4d52982572d5512e9762879ebf063c86";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+        
+        <link rel="stylesheet" href="/static/css/gitalk/gitalk.css" type="text/css"/>
+        
+        <link rel="stylesheet" href="/static/css/gitalk/custom_gitalk.css" type="text/css"/>
+        
+        <link rel="stylesheet" href="/static/css/custom.css" type="text/css"/>
+        
+    
+    
+    <title>硬件设计 - Hdochub</title>
+    
+    <script type="text/javascript">js_vars = {"teedoc-plugin-ad-hint": {"type": "hint", "label": "☆", "content": "这里是老怪鸽的个人技术文档记录中心</br>喜欢项目请<a target=\"_blank\" href=\"https://github.com/LaoGuaiGe/laoguaige.github.io\">点下 ☆ star </a>哦~🦀🦀", "show_times": 2, "show_after_s": 432000, "date": "2021-11-16 14:40", "color": "#a0421d", "link_color": "#e53935", "link_bg_color": "#e6ae5c", "bg_color": "#ffcf89", "color_hover": "white", "bg_color_hover": "#f57c00", "close_color": "#eab971"}}</script>
+    <script type="text/javascript">metadata = {"tags": [], "date": "2024-12-05", "update": [{"date": "2024-12-05", "author": "老怪鸽", "version": "1.0.1", "content": "更新了基本文档"}], "ts": 1733328000, "author": "", "brief": "", "cover": "", "show_source": false}</script>
+</head>
+
+
+<body class="type_doc">
+    
+    <div id="navbar">
+        <div id="navbar_menu">
+            <a class="site_title" href="/">
+                
+                    <img class="site_logo" src="/static/images/logo.png" alt="老怪鸽的文档中心 logo">
+                
+                
+                    <h2>老怪鸽的文档中心</h2>
+                
+        </a>
+            <a id="navbar_menu_btn"></a>
+        </div>
+        <div id="navbar_items">
+            <div>
+                <ul id="nav_left">
+<li class=""><a  href="/c-basics/">C语言</a></li>
+<li class=""><a  href="/mpy-basics/">MicroPython</a></li>
+<li class=""><a  href="/linux/">Linux</a></li>
+<li class=""><a  href="/markdown/">MarkDown</a></li>
+<li class=""><a  href="/git/">Git</a></li>
+<li class=""><a  href="/mcu/">单片机</a></li>
+<li class="active"><a  href="/diy/">DIY项目</a></li>
+</ul>
+
+            </div>
+            <div>
+                <ul id="nav_right">
+<li class=""><a target="_blank" href="https://github.com/LaoGuaiGe/laoguaige.github.io">github</a></li>
+</ul>
+
+                <ul class="nav_plugins"><li><a id="themes" class="light"></a></li></ul><ul class="nav_plugins"><li><a id="search"><span class="icon"></span><span class="placeholder">Search</span>
+                            <div id="search_hints">
+                                <span id="search_input_hint">Keywords separated by space</span>
+                                <span id="search_loading_hint">Loading, wait please ...</span>
+                                <span id="search_download_err_hint">Download error, please check network and refresh again</span>
+                                <span id="search_other_docs_result_hint">Result from other docs</span>
+                                <span id="search_curr_doc_result_hint">Result from current doc</span>
+                            </div></a></li></ul>
+            </div>
+        </div>
+    </div>
+    
+    <div id="wrapper">
+        <div id="sidebar_wrapper">
+            <div id="sidebar">
+                <div id="sidebar_title">
+                    
+                </div>
+                <ul class="show">
+<li class="not_active with_link"><a href="/diy/index.html"><span class="label">项目集合</span><span class=""></span></a></li>
+<li class="active_parent with_link"><a href="/diy/picxel-clock/basic.html"><span class="label">像素时钟⏰</span><span class="sub_indicator"></span></a><ul class="show">
+<li class="not_active with_link"><a href="/diy/picxel-clock/basic.html"><span class="label">✨项目信息</span><span class=""></span></a></li>
+<li class="not_active with_link"><a href="/diy/picxel-clock/download.html"><span class="label">⬇️资料下载</span><span class=""></span></a></li>
+<li class="active with_link"><a href="/diy/picxel-clock/hardware.html"><span class="label">0. 硬件设计</span><span class=""></span></a></li>
+<li class="not_active with_link"><a href="/diy/picxel-clock/install.html"><span class="label">1. 软件环境搭建</span><span class=""></span></a></li>
+<li class="not_active with_link"><a href="/diy/picxel-clock/ds1302.html"><span class="label">2. RTC时钟驱动</span><span class=""></span></a></li>
+<li class="not_active with_link"><a href="/diy/picxel-clock/dht11.html"><span class="label">3. 温湿度采集</span><span class=""></span></a></li>
+<li class="not_active with_link"><a href="/diy/picxel-clock/ledmatrix.html"><span class="label">4. 彩灯驱动</span><span class=""></span></a></li>
+<li class="not_active with_link"><a href="/diy/picxel-clock/ntptime.html"><span class="label">5. 获取网络时间</span><span class=""></span></a></li>
+<li class="not_active with_link"><a href="/diy/picxel-clock/weather.html"><span class="label">6. 获取天气情况</span><span class=""></span></a></li>
+<li class="not_active with_link"><a href="/diy/picxel-clock/led-oscillating.html"><span class="label">7. 实现FFT音律灯</span><span class=""></span></a></li>
+<li class="not_active with_link"><a href="/diy/picxel-clock/voice.html"><span class="label">8. 语音识别与播报</span><span class=""></span></a></li>
+</ul>
+</li>
+</ul>
+
+            </div>
+        </div>
+        <div id="article">
+            <div id="menu_wrapper">
+                <div id="menu">
+                </div>
+            </div>
+            <div id="content_wrapper">
+                <div id="content_body">
+                    <div id="article_head">
+                        <div id="article_title">
+                            
+                            <h1>硬件设计</h1>
+                            
+                        </div>
+                        <div id="article_tags">
+                            <ul>
+                            
+                            </ul>
+                        </div>
+                        <div id="article_info">
+                        <div id="article_info_left">
+                            <span class="article_author">
+                                
+                            </span>
+                            
+                                <span class="article_date" title="Last modify date: 2024-12-05">
+                                    2024-12-05
+                                </span>
+                            
+                        </div>
+                        <div id="article_info_right">
+                            
+                        </div>
+                        </div>
+                    </div>
+                    <div id="article_tools">
+                        <span></span>
+                        <span id="toc_btn"></span>
+                    </div>
+                    <div id="update_history">
+                        
+                        
+                        <details open>
+                        
+                            <summary>Update history</summary>
+                            <div>
+                                <table>
+                                        <thead>
+                                            <tr>
+                                                <th>Date</th>
+                                                <th>Version</th>
+                                                <th>Author</th>
+                                                <th>Update content</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            
+                                                <tr>
+                                                    <td>2024-12-05</td>
+                                                    <td>1.0.1</td>
+                                                    <td>老怪鸽</td>
+                                                    <td>
+                                                    
+                                                        更新了基本文档
+                                                    
+                                                    </td>
+                                                </tr>
+                                            
+                                        </tbody>
+                                </table>
+                            </div>
+                        </details>
+                        
+                    </div>
+                    <div id="article_content">
+                        
+                            <h2 id="%E6%95%B4%E4%BD%93%E5%8E%9F%E7%90%86%E5%9B%BE">整体原理图</h2>
+<p><img src="../../static/images/docs/diy/picxel-clock/hardware/hardware-2024-12-06-00-32-53.png" alt="图 0" /></p>
+<h2 id="%E7%A1%AC%E4%BB%B6%E8%AE%BE%E8%AE%A1">硬件设计</h2>
+<hr />
+<h3 id="%E7%94%B5%E6%BA%90%E9%83%A8%E5%88%86">电源部分</h3>
+<p>第一版时，使用 FM5324G 作为控制。它是一个集成了锂电池充电管理，电池5V升压输出，电池电量判断和 LED 电量指示的集成电源管理 IC。</p>
+<p><img src="../../static/images/docs/diy/picxel-clock/hardware/hardware-2024-12-06-00-33-12.png" alt="图 1" /></p>
+<p><strong>但是发现使用一个800mAh的电池，开个10分钟就没电了，直接舍弃电源管理部分，直接通过TYPE-C接口进行供电。</strong></p>
+<p>当前版：</p>
+<p><img src="../../static/images/docs/diy/picxel-clock/hardware/hardware-2024-12-06-00-33-27.png" alt="图 3" /></p>
+<p>首先，因为语音模块需要有一个下载设备，这里直接将TYPE-C接口的数据接口接到了一个CH340N（图中的U9，编号C2977777）的器件上。接下来对各个器件进行说明。</p>
+<ol>
+<li>R56和R57是USB协议上要求的，必须是5.1K，涉及到PD诱骗电压输出，具体原因自行百度。</li>
+<li>D8和D7是ESD保护器件，防止静电的，防止静电损坏后级设备，也可以不用这些器件。</li>
+<li>VBUS通过一个短接符号连接到了5V，说明这个TYPE-C输入的是5V，是我的个人习惯，通常可以直接在USB处标记5V。</li>
+<li>U9就是之前说的CH340N，看<a href="https://atta.szlcsc.com/upload/public/pdf/source/20230530/6E401E9554E9F5311886CC8B3F89B62E.pdf"  target="_blank">数据手册</a>，是一个将USB 转串口的芯片，而我们的语音识别模块就是通过串口下载。</li>
+<li>C26和C27，首先是C26，在CH340N的数据手册中指出：当CH340N的电压输入为5V时，必须在V3引脚处外接一个100nf的电容；VCC处尽量加一个100NF的电容。</li>
+<li>R27和D1，根据CH340N的厂家说明，为了防止与CH340N通信的设备，通过RXD和TXD引脚将电压反充给CH340，建议在RXD引脚上接入一个限流电阻，TXD上接一个反向二极管，防止电流电压倒灌。</li>
+<li>D2也是一个ESD器件，防止类似雷击，静电等导致的瞬间高压损坏设备，加入ESD器件后，可以有效防止瞬间的高压将设备烧毁。</li>
+</ol>
+<p><strong>总结：就是一个通过USB供电的同时，还可以通过USB给语音模块下载语音识别的固件</strong></p>
+<h3 id="%E4%B8%BB%E6%8E%A7%E9%83%A8%E5%88%86">主控部分</h3>
+<p>使用立创开发板的<a href="https://lckfb.com/project/detail/lckfb-esp32s3r8n8?param=baseInfo"  target="_blank">立创·ESP32S3R8N8开发板</a>。</p>
+<p><img src="../../static/images/docs/diy/picxel-clock/hardware/hardware-2024-12-06-00-33-56.png" alt="图 4" /></p>
+<p>没啥好说的，就是给开发板供电5V就好，开发板上有LDO，输入5V后开发板会输出3V3。这里需要注意，我就是BOT引脚用来接了按键，方便在调试出现故障时，也可以通过进入升级模式，擦除内存。</p>
+<h3 id="RTC%E6%97%B6%E9%92%9F%E9%83%A8%E5%88%86">RTC时钟部分</h3>
+<p>使用常见的一个RTC时钟模块DS1302。特点如下：</p>
+<p><img src="../../static/images/docs/diy/picxel-clock/hardware/hardware-2024-12-06-00-34-02.png" alt="图 5" /></p>
+<p>原理图设计</p>
+<p><img src="../../static/images/docs/diy/picxel-clock/hardware/hardware-2024-12-06-00-34-07.png" alt="图 6" /></p>
+<p>DS1302需要外部接一个32.768KHz的晶振作为时钟，就是图中的X1器件。而晶振为了更加的稳定精确，需要在晶振的输入输出加上负载电容，根据那个晶振的手册说明，加了12pf的负载电容，就是图中的C8C9。VCC1是备用电池的电源输入口，如果想要在设备断电的情况下，DS1302还能够跑时，那么必须接入这个B1电池座，这个电池座是接的纽扣电池。C7单纯是滤波用。DS1302的其他引脚就是控制引脚了，将其接到开发板引脚上，方便开发板控制。</p>
+<h3 id="%E6%B8%A9%E6%B9%BF%E5%BA%A6%E9%87%87%E9%9B%86%E9%83%A8%E5%88%86">温湿度采集部分</h3>
+<p>又是使用常见的一个温湿度传感器DHT11。特点如下：</p>
+<p><img src="../../static/images/docs/diy/picxel-clock/hardware/hardware-2024-12-06-00-34-13.png" alt="图 7" /></p>
+<p>原理图设计</p>
+<p><img src="../../static/images/docs/diy/picxel-clock/hardware/hardware-2024-12-06-00-34-18.png" alt="图 8" /></p>
+<p>DHT11在数据引脚DATA上，必须加一个上拉电阻，让DHT11在空闲时保持高电平。根据它的数据手册，这个上拉电阻就选择了4.7K的R12。然后DHT11是支持3.3V~5V的电压输入的，这里因为开发板是3V3的GPIO电压，所以为了通信稳定，给DHT11的数据引脚DATA的也保持3.3V，给DHT11的输入电压为3.3V。</p>
+<h3 id="WS2812%E5%BD%A9%E7%81%AF%E7%9F%A9%E9%98%B5%E9%83%A8%E5%88%86">WS2812彩灯矩阵部分</h3>
+<p>这里购买的是淘宝上卖<code>36元</code>的 32 * 8 像素的彩灯矩阵：<a href="https://item.taobao.com/item.htm?_u=n2t4uge597e5&amp;id=737696448369&amp;skuId=5263566850408&amp;spm=a1z09.2.0.0.17c22e8d4Z2Du3"  target="_blank">WS2812B全彩软像素屏8X8 8X32 16X16幻彩5V显示可编程像素软屏</a></p>
+<p><img src="../../static/images/docs/diy/picxel-clock/hardware/hardware-2024-12-06-00-34-25.png" alt="图 9" /></p>
+<p>原理图设计：</p>
+<p><img src="../../static/images/docs/diy/picxel-clock/hardware/hardware-2024-12-06-00-34-32.png" alt="图 10" /></p>
+<p>WS2812是一个单总线的设备，每一个灯珠里面都带了驱动电路，可以同时控制很多个灯，但是为了以防万一，在这个WS2812彩灯矩阵的电源输入口VCC处，加了一个1000UF的电容，防止彩灯矩阵亮的瞬间电压电流不足，加了电容之后，如果出现电压电流不足的情况下，就可以从这个大电容取电。</p>
+<h3 id="%E9%9F%B3%E9%A2%91%E9%87%87%E9%9B%86%E9%83%A8%E5%88%86">音频采集部分</h3>
+<p>关于模拟信号类我不太了解，这里是参考的一个音频采集模块的电路：<code>MAX4466音频采集模块</code>，感兴趣的朋友直接上淘宝搜索就好。</p>
+<p><img src="../../static/images/docs/diy/picxel-clock/hardware/hardware-2024-12-06-00-34-41.png" alt="图 11" /></p>
+<p>原理图设计：</p>
+<p><img src="../../static/images/docs/diy/picxel-clock/hardware/hardware-2024-12-06-00-34-45.png" alt="图 12" /></p>
+<h3 id="%E6%8C%89%E9%94%AE%E9%83%A8%E5%88%86">按键部分</h3>
+<p>在软件部分当中使用一个按键去控制UI界面的切换。但是当前我虽然用上了按键，结果我的外壳部分没有做好，导致我现在切换界面的拆开外壳去按按键... 大家等我完善或者复刻的时候自行完善就好。</p>
+<p>原理图设计：</p>
+<p><img src="../../static/images/docs/diy/picxel-clock/hardware/hardware-2024-12-06-00-34-51.png" alt="图 13" /></p>
+<h2 id="%E5%A4%96%E5%A3%B3%E9%83%A8%E5%88%86">外壳部分</h2>
+<hr />
+<blockquote class="spoiler warning">
+<p> 下载地址：<a href="https://gitee.com/laoguaige/esp32-s3-r8-n8-pixel-clock/tree/master/3Dfile"  target="_blank">https://gitee.com/laoguaige/esp32-s3-r8-n8-pixel-clock/tree/master/3Dfile</a></p>
+</blockquote>
+<h3 id="3D%E6%96%87%E4%BB%B6%E8%AF%B4%E6%98%8E">3D文件说明</h3>
+<p><strong>因为实物很大，打印的外壳需要分开，分左右两边。</strong></p>
+<p>LEDGrid2x.stl 为光栏，需要一个部件打两个，拼到一起；</p>
+<blockquote>
+<p>说明：光栏一定要<strong>黑色的材质，不管是3D打印时选择黑色的材料还是后面收到喷黑漆，一定记得使用黑色的光栏！不然观感就差很多</strong></p>
+</blockquote>
+<p><img src="../../static/images/docs/diy/picxel-clock/download/download-2024-12-05-22-32-35.png" alt="图 0" /></p>
+<p>frontFrame2x.stl 为外壳边框，需要一个部件打两个，拼到一起；</p>
+<p><img src="../../static/images/docs/diy/picxel-clock/download/download-2024-12-05-22-32-50.png" alt="图 1" /></p>
+<p>Housing.stl 和 Housing_noV.stl 为同一个部件，选择一个进行打印即可，都是成本较高，酌情打印；</p>
+<p><img src="../../static/images/docs/diy/picxel-clock/download/download-2024-12-05-22-32-57.png" alt="图 2" /></p>
+<p>如要组建完整的外壳，还需要购买黑色的亚克力透明面板！</p>
+<p><code>生产的规格参数：黑茶色 透明亚克力 95×330×2mm</code></p>
+<h2 id="%E9%A1%B9%E7%9B%AE%E5%B1%95%E7%A4%BA">项目展示</h2>
+<hr />
+<h3 id="%E9%9D%99%E6%80%81%E5%9B%BE">静态图</h3>
+<p><img src="../../static/images/docs/diy/picxel-clock/hardware/hardware-2024-12-06-00-36-12.png" alt="图 14" /></p>
+<h3 id="%E5%8A%A8%E6%80%81%E5%9B%BE">动态图</h3>
+<p><img src="../../static/images/docs/diy/picxel-clock/hardware/hardware-2024-12-06-00-36-36.gif" alt="图 15" /><br />
+<img src="../../static/images/docs/diy/picxel-clock/hardware/hardware-2024-12-06-00-36-45.gif" alt="图 16" /><br />
+<img src="../../static/images/docs/diy/picxel-clock/hardware/hardware-2024-12-06-00-36-54.gif" alt="图 17" /><br />
+<img src="../../static/images/docs/diy/picxel-clock/hardware/hardware-2024-12-06-00-37-07.gif" alt="图 18" /><br />
+<img src="../../static/images/docs/diy/picxel-clock/hardware/hardware-2024-12-06-00-37-16.gif" alt="图 19" /></p>
+
+                        
+                    </div>
+                </div>
+                <div id="previous_next">
+                    <div id="previous">
+                        
+                        <a href="/diy/picxel-clock/download.html">
+                            <span class="icon"></span>
+                            <span class="label">⬇️资料下载</span>
+                        </a>
+                        
+                    </div>
+                    <div id="next">
+                        
+                        <a href="/diy/picxel-clock/install.html">
+                            <span class="label">1. 软件环境搭建</span>
+                            <span class="icon"></span>
+                        </a>
+                        
+                    </div>
+                </div>
+                <div id="comments-container"></div>
+            </div>
+            <div id="toc_wrapper">
+                <div id="toc">
+                    <div id="toc_content">
+                            
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <a id="to_top" href="#"></a>
+    <div id="doc_footer">
+        <div id="footer">
+            <div id="footer_top">
+                <ul>
+<li><a></a><ul><li><a target="_blank" href="/#"></a></li>
+</ul>
+</li>
+</ul>
+
+            </div>
+            <div id="footer_bottom">
+                <ul>
+<li><a target="_blank" href="https://github.com/teedoc/teedoc">Generated by teedoc</a></li>
+</ul>
+
+            </div>
+        </div>
+    </div>
+    
+        <script src="/teedoc-plugin-markdown-parser/mermaid.min.js"></script>
+    
+        <script>mermaid.initialize({startOnLoad:true});</script>
+    
+        <script src="/static/js/theme_default/tocbot.min.js"></script>
+    
+        <script src="/static/js/theme_default/main.js"></script>
+    
+        <script src="/static/js/theme_default/viewer.min.js"></script>
+    
+        <script src="/static/css/theme_default/prism.min.js"></script>
+    
+        <script src="/static/js/search/search_main.js"></script>
+    
+        <link rel="stylesheet" href="/static/js/add_hint/style.css" type="text/css"/>
+    
+        <script src="/static/js/add_hint/main.js"></script>
+    
+        <script src="/static/js/gitalk/gitalk.min.js"></script>
+    
+        <script src="/static/js/gitalk/main.js"></script>
+    
+        <script src="/static/js/custom.js"></script>
+    
+        <script type="text/javascript" src="/static/js/live.js"></script>
+    
+</body>
+
+</html>
