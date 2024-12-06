@@ -1,2 +1,2 @@
 User-agent: *
-Sitemap: https://my_name.github.io/sitemap.xml
+Sitemap: https://https://laoguaige.github.io//sitemap.xml
