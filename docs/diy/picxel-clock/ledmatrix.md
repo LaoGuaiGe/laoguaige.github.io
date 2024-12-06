@@ -82,7 +82,7 @@ const uint8_t PicopixelBitmaps[] PROGMEM = {
     0x90, 0xE8, 0x71, 0xE0, 0xBA, 0x40, 0xB5, 0x80, 0xB5, 0x00, 0x8D, 0x54,
     0xAA, 0x80, 0xAC, 0xE0, 0xE5, 0x70, 0x6A, 0x26, 0xFC, 0xC8, 0xAC, 0x5A};
 
-const GFXglyph PicopixelGlyphs[] PROGMEM = {{0, 0, 0, 2, 0, 1},     // 0x20 ' '
+const GFXglyph PicopixelGlyphs[] PROGMEM = { {0, 0, 0, 2, 0, 1},     // 0x20 ' '
                                             {0, 1, 5, 2, 0, -4},    // 0x21 '!'
                                             {1, 3, 2, 4, 0, -4},    // 0x22 '"'
                                             {2, 5, 5, 6, 0, -4},    // 0x23 '#'
@@ -176,7 +176,7 @@ const GFXglyph PicopixelGlyphs[] PROGMEM = {{0, 0, 0, 2, 0, 1},     // 0x20 ' '
                                             {174, 3, 5, 4, 0, -4},  // 0x7B '{'
                                             {176, 1, 6, 2, 0, -4},  // 0x7C '|'
                                             {177, 3, 5, 4, 0, -4},  // 0x7D '}'
-                                            {179, 4, 2, 5, 0, -3}}; // 0x7E '~'
+                                            {179, 4, 2, 5, 0, -3} }; // 0x7E '~'
 
 const GFXfont Picopixel PROGMEM = {(uint8_t *)PicopixelBitmaps,
                                    (GFXglyph *)PicopixelGlyphs, 0x20, 0x7E, 7};
