@@ -63,7 +63,7 @@ var _hmt = _hmt || [];
     <title>彩灯驱动 - Hdochub</title>
     
     <script type="text/javascript">js_vars = {"teedoc-plugin-ad-hint": {"type": "hint", "label": "☆", "content": "这里是老怪鸽的个人技术文档记录中心</br>喜欢项目请<a target=\"_blank\" href=\"https://github.com/LaoGuaiGe/laoguaige.github.io\">点下 ☆ star </a>哦~🦀🦀", "show_times": 2, "show_after_s": 432000, "date": "2021-11-16 14:40", "color": "#a0421d", "link_color": "#e53935", "link_bg_color": "#e6ae5c", "bg_color": "#ffcf89", "color_hover": "white", "bg_color_hover": "#f57c00", "close_color": "#eab971"}}</script>
-    <script type="text/javascript">metadata = {"tags": [], "date": "2024-12-05", "update": [{"date": "2024-12-05", "author": "老怪鸽", "version": "1.0.1", "content": "更新了基本文档"}], "ts": 1733356800, "author": "", "brief": "", "cover": "", "show_source": false}</script>
+    <script type="text/javascript">metadata = {"tags": [], "date": "2024-12-05", "update": [{"date": "2024-12-05", "author": "老怪鸽", "version": "1.0.1", "content": "更新了基本文档"}], "ts": 1733356800, "author": "", "brief": "", "cover": "", "show_source": false, "excerpt_separator": ""}</script>
 </head>
 
 
@@ -247,14 +247,13 @@ var _hmt = _hmt || [];
 <p>直接复制以下代码到你的文件下</p>
 </blockquote>
 
-<pre class="language-c"><code class="language-c">#include &quot;Arduino.h&quot;
+<pre class="language-c"><code class="language-c">
+#include &quot;Arduino.h&quot;
 #include &quot;Adafruit_GFX.h&quot;
 
 const uint8_t PicopixelBitmaps[] PROGMEM = {
     0xE8, 0xB4, 0x57, 0xD5, 0xF5, 0x00, 0x4E, 0x3E, 0x80, 0xA5, 0x4A, 0x4A,
     0x5A, 0x50, 0x80, 0x6A, 0x40, 0x95, 0x80, 0xAA, 0x80, 0x5D, 0x00, 0x60,
- //   0xE0, 0x80, 0x25, 0x48, 0x56, 0xD4, 0x75, 0x40, 0xC5, 0x4E, 0xC5, 0x1C,
-//    0x97, 0x92, 0xF3, 0x1C, 0x53, 0x54, 0xE5, 0x48, 0x55, 0x54, 0x55, 0x94,
     0xE0, 0x80, 0x25, 0x48, 0xF6, 0xDE, 0x59, 0x2E, 0xE7, 0xCE, 0xE7, 0x9E,
     0xB7, 0x92, 0xF3, 0x9E, 0xF3, 0xDE, 0xE4, 0x92, 0xF7, 0xDE, 0xF7, 0x9E,
     0xA0, 0x46, 0x64, 0xE3, 0x80, 0x98, 0xC5, 0x04, 0x56, 0xC6, 0x57, 0xDA,
@@ -367,6 +366,7 @@ const GFXglyph PicopixelGlyphs[] PROGMEM = {{0, 0, 0, 2, 0, 1},     // 0x20 ' '
 
 const GFXfont Picopixel PROGMEM = {(uint8_t *)PicopixelBitmaps,
                                    (GFXglyph *)PicopixelGlyphs, 0x20, 0x7E, 7};
+
 </code></pre>
 <p>字模准备完毕，我们可以点亮彩灯矩阵，并且显示ascii的字符了！</p>
 <p>打开工程下的src文件夹下的main.cpp。</p>
