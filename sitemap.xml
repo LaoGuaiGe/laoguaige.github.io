@@ -8,61 +8,43 @@
         </url>
         <url>
             <loc>https://https://laoguaige.github.io//c-basics/index.html</loc>
-            <lastmod>2024-12-06</lastmod>
+            <lastmod>2024-12-07</lastmod>
             <changefreq>weekly</changefreq>
             <priority>1.0</priority>
         </url>
         <url>
             <loc>https://https://laoguaige.github.io//mpy-basics/index.html</loc>
-            <lastmod>2024-12-06</lastmod>
+            <lastmod>2024-12-07</lastmod>
             <changefreq>weekly</changefreq>
             <priority>1.0</priority>
         </url>
         <url>
             <loc>https://https://laoguaige.github.io//linux/index.html</loc>
-            <lastmod>2024-12-06</lastmod>
+            <lastmod>2024-12-07</lastmod>
             <changefreq>weekly</changefreq>
             <priority>1.0</priority>
         </url>
         <url>
             <loc>https://https://laoguaige.github.io//markdown/index.html</loc>
-            <lastmod>2024-12-06</lastmod>
+            <lastmod>2024-12-07</lastmod>
             <changefreq>weekly</changefreq>
             <priority>1.0</priority>
         </url>
         <url>
             <loc>https://https://laoguaige.github.io//git/index.html</loc>
-            <lastmod>2024-12-06</lastmod>
+            <lastmod>2024-12-07</lastmod>
             <changefreq>weekly</changefreq>
             <priority>1.0</priority>
         </url>
         <url>
             <loc>https://https://laoguaige.github.io//mcu/index.html</loc>
-            <lastmod>2024-12-06</lastmod>
+            <lastmod>2024-12-07</lastmod>
             <changefreq>weekly</changefreq>
             <priority>1.0</priority>
         </url>
         <url>
             <loc>https://https://laoguaige.github.io//diy/index.html</loc>
             <lastmod>2022-09-01</lastmod>
-            <changefreq>weekly</changefreq>
-            <priority>1.0</priority>
-        </url>
-        <url>
-            <loc>https://https://laoguaige.github.io//diy/picxel-clock/weather.html</loc>
-            <lastmod>2024-12-05</lastmod>
-            <changefreq>weekly</changefreq>
-            <priority>1.0</priority>
-        </url>
-        <url>
-            <loc>https://https://laoguaige.github.io//diy/picxel-clock/install.html</loc>
-            <lastmod>2024-12-05</lastmod>
-            <changefreq>weekly</changefreq>
-            <priority>1.0</priority>
-        </url>
-        <url>
-            <loc>https://https://laoguaige.github.io//diy/picxel-clock/ds1302.html</loc>
-            <lastmod>2024-12-05</lastmod>
             <changefreq>weekly</changefreq>
             <priority>1.0</priority>
         </url>
@@ -86,6 +68,24 @@
         </url>
         <url>
             <loc>https://https://laoguaige.github.io//diy/picxel-clock/dht11.html</loc>
+            <lastmod>2024-12-05</lastmod>
+            <changefreq>weekly</changefreq>
+            <priority>1.0</priority>
+        </url>
+        <url>
+            <loc>https://https://laoguaige.github.io//diy/picxel-clock/weather.html</loc>
+            <lastmod>2024-12-05</lastmod>
+            <changefreq>weekly</changefreq>
+            <priority>1.0</priority>
+        </url>
+        <url>
+            <loc>https://https://laoguaige.github.io//diy/picxel-clock/install.html</loc>
+            <lastmod>2024-12-05</lastmod>
+            <changefreq>weekly</changefreq>
+            <priority>1.0</priority>
+        </url>
+        <url>
+            <loc>https://https://laoguaige.github.io//diy/picxel-clock/ds1302.html</loc>
             <lastmod>2024-12-05</lastmod>
             <changefreq>weekly</changefreq>
             <priority>1.0</priority>
