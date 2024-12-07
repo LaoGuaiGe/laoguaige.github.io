@@ -1,5 +1,5 @@
 {
     "import": "config",
-    "class": "md_page",
+    "class": "heading_no_counter",
     "name": "Pages"
 }

@@ -10,13 +10,25 @@
         "docs": {
             "/doc1/": "docs/doc1/",
             "/c-basics/": "docs/c-basics/",
-            "/mpy-basics/": "docs/mpy-basics/",
+            "/c-basics/download": "docs/c-basics/download.html",
+            "/c-basics/install": "docs/c-basics/install.html",
+            "/c-basics/basic": "docs/c-basics/basic.html",
+            "/c-basics/sequence": "docs/c-basics/sequence.html",
+            "/c-basics/select": "docs/c-basics/select.html",
+            "/c-basics/loop": "docs/c-basics/loop.html",
+            "/c-basics/array": "docs/c-basics/array.html",
+            "/c-basics/function": "docs/c-basics/function.html",
+            "/c-basics/pointer": "docs/c-basics/pointer.html",
+            "/c-basics/structure": "docs/c-basics/structure.html",
+            "/c-basics/handle": "docs/c-basics/handle.html",
+
+            "/python/": "docs/python/",
             "/linux/": "docs/linux/",
             "/markdown/": "docs/markdown/",
             "/git/": "docs/git/",
             "/mcu/": "docs/mcu/",
+            "/module/": "docs/module/",
             "/diy/": "docs/diy/",
-
             "/diy/picxel-clock/basic": "docs/diy/picxel-clock/basic.html",
             "/diy/picxel-clock/download": "docs/diy/picxel-clock/download.html",
             "/diy/picxel-clock/install": "docs/diy/picxel-clock/install.html",
@@ -27,7 +39,9 @@
             "/diy/picxel-clock/weather": "docs/diy/picxel-clock/weather.html",
             "/diy/picxel-clock/led-oscillating": "docs/diy/picxel-clock/led-oscillating.html",
             "/diy/picxel-clock/voice": "docs/diy/picxel-clock/voice.html",
-            "/diy/picxel-clock/hardware": "docs/diy/picxel-clock/hardware.html"
+            "/diy/picxel-clock/hardware": "docs/diy/picxel-clock/hardware.html",
+
+            "/diy/wiki-web/basic": "docs/diy/wiki-web/basic.html"
 
         },
         "pages": {
@@ -56,7 +70,6 @@
             "config": {
             }
         },
-        
         "teedoc-plugin-theme-default":{
             "from": "pypi",
             "config": {
@@ -66,19 +79,6 @@
                 }
             }
         },
-        "teedoc-plugin-search":{
-            "from": "pypi",
-            "config": {
-                "search_hint": "Search"
-            }
-        },
-        "teedoc-plugin-baidu-tongji": {
-            "from": "pypi",
-            "config": {
-                "code": "4d52982572d5512e9762879ebf063c86"
-            }
-        },
-
         "teedoc-plugin-ad-hint": {
             "from": "pypi",
             "config": {
@@ -93,11 +93,11 @@
             "from": "pypi",
             "config": {
                 "env": {
-                    "clientID": "9d215c8c4d2357fab5ba",
-                    "clientSecret": "1d641e9f45f74a620a262091409b1d719b626755",
-                    "repo": "teedoc.github.io",
-                    "owner": "teedoc",
-                    "admin": ["Neutree"],
+                    "clientID": "Ov23li0efZsLQDAChESx",
+                    "clientSecret": "b7894003cb3fb90d29ccacecc89fcd78252bf777",
+                    "repo": "laoguaige.github.io",
+                    "owner": "LaoGuaiGe",
+                    "admin": ["LaoGuaiGe"],
                     "main_color": "#4caf7d",
                     "second_color": "#0a7d43",
                     "adminAutoCreate": false
@@ -116,6 +116,17 @@
                 "env":{
                     "main_color": "#4caf7d",
                     "second_color": "#0a7d43"
+                }
+            }
+        },
+        "teedoc-plugin-search":{
+            "from": "pypi",
+            "config": {
+                "search_hint": "Search",
+                "env": {
+                    "main_color": "#4caf7d",
+                    "main_color_dark": "#1b4c33",
+                    "hint_shadow_color": "rgba(76, 175, 125, 0.38)"
                 }
             }
         }

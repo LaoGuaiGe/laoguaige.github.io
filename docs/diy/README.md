@@ -1,8 +1,8 @@
 ---
-title: Article title
+title: DIY项目合集
 keywords: keyword1, keyword2
 desc: description for this article
-date: 2022-09-01
+date: 2024-12-07
 ---
 
 ## 物联网像素时钟

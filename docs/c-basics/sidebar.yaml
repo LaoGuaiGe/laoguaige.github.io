@@ -1,3 +1,31 @@
 items:
--   label: Brief
+-   label: 基本介绍
     file: README.md
+-   label: 资料下载
+    file: download.md
+-   label: 环境搭建
+    file: install.md
+-   label: 基本语法
+    file: basic.md
+-   label: 顺序结构程序设计
+    file: sequence.md
+-   label: 选择结构程序设计
+    file: select.md
+-   label: 循环结构程序设计
+    file: loop.md
+-   label: 数组
+    file: array.md
+-   label: 函数
+    file: function.md
+-   label: 指针
+    file: pointer.md
+-   label: 结构体与联合体
+    file: structure.md
+-   label: 预处理命令
+    file: handle.md
+
+
+
+
+
+

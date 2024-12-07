@@ -1,21 +1,213 @@
 
 ---
 title: 老怪鸽文档中心
-keywords: teedoc, markdown, jupyter notebook, html, 文档生成, 替代gitbook, 网站生成, 静态网站, 文档网站生成, 多文档, 静态博客
+keywords: hdochub, markdown, 文档生成,  网站生成, 静态网站, 多文档, 静态博客
 desc: teedoc，开源静态文档网站生成工具，将 markdown 或者 jupyter notbook 转换成 html 静态网页， 用于个人或企业建站，建博客，建资料库，wiki等
 id: home_page
 ---
 
 <div>
-    <!-- <script src="/static/js/scrolloverflow.min.js"></script> -->
     <script src="/static/js/jquery.fullpage.min.js"></script>
     <link rel="stylesheet" href="/static/css/jquery.fullpage.min.css" type="text/css"/>
 </div>
 
+<div id="home_page">
+    <div>
+        <h1><span>硬件文档中心</span></h1>
+        <h2>学广而闻多，则不求于人</h3>
+    </div>
+    <link rel="stylesheet" href="static/css/just-the-docs.css">
+    <link rel="stylesheet" href="static/css/izmir.css">
+    <link rel="stylesheet" href="static/css/docs.css">
+    <link rel="stylesheet" href="static/css/fontawesome.min.css">
+    <link rel="stylesheet" href="static/css/fa-solid.min.css"> 
+    <script type="text/javascript" src="static/js/just-the-docs.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <div id="main-content" class="home-content home-wrapper" role="main">
+        <!-- 第一行-->
+        <div class="col-4">
+            <!-- C语言自学参考手册 -->
+            <div class="col-item">
+                <figure class="c4-izmir c4-border-corners-1 c4-image-zoom-out c4-gradient-bottom" tabindex="0"
+                    style="--primary-color: #E0EAFC; --secondary-color: #CFDEF3; --text-color: #1f467b; --border-color: #1f467b; --image-opacity: .1;">
+                    <img src="static/images/C.png" alt="Sample Image" />
+                    <a href="/c-basics/index.html" class="article-a">
+                        <figcaption class="c4-layout-top-left">
+                            <div class="c4-reveal-down">
+                                <div>
+                                    <h2 style="margin-bottom: 5px;"></h2>
+                                    <p>C语言基础入门参考手册，旨在帮助新手快速学习C语言基础</p>
+                                </div>
+                            </div>
+                        </figcaption>
+                </figure>
+                <a href="/c-basics/index.html" class="article-a">
+                    <p class="article-p-h">C语言参考手册</p>
+                </a>
+                <p class="article-p-t">最新：2023-09-01</font>
+                </p>
+            </div>
+			<!-- python自学参考手册 -->
+            <div class="col-item">
+                <figure class="c4-izmir c4-border-corners-1 c4-image-zoom-out c4-gradient-bottom" tabindex="0"
+                    style="--primary-color: #E0EAFC; --secondary-color: #CFDEF3; --text-color: #1f467b; --border-color: #1f467b; --image-opacity: .1;">
+                    <img src="static/images/python-img.png" alt="Sample Image" />
+                    <a href="/python/index.html" class="article-a">
+                        <figcaption class="c4-layout-top-left">
+                            <div class="c4-reveal-down">
+                                <div>
+                                    <h2 style="margin-bottom: 5px;"></h2>
+                                    <p>Python自学指南，一站式助你丐版入门的学习手册。</p>
+                                </div>
+                            </div>
+                        </figcaption>
+                </figure>
+                <a href="/python/index.html" class="article-a">
+                    <p class="article-p-h">python自学参考手册</p>
+                </a>
+                <p class="article-p-t">最新：2023-09-01</font>
+                </p>
+            </div>
+            <!-- 个人Linux笔记 -->
+            <div class="col-item">
+                <figure class="c4-izmir c4-border-corners-1 c4-image-zoom-out c4-gradient-bottom" tabindex="0"
+                    style="--primary-color: #E0EAFC; --secondary-color: #CFDEF3; --text-color: #1f467b; --border-color: #1f467b; --image-opacity: .1;">
+                    <img src="static/images/linux.png" alt="Sample Image" />
+                    <a href="/linux/index.html" class="article-a">
+                        <figcaption class="c4-layout-top-left">
+                            <div class="c4-reveal-down">
+                                <div>
+                                    <h2 style="margin-bottom: 5px;"></h2>
+                                    <p>我在开发Linux过程中，遇到的问题和解决方法。带一点个人学习笔记</p>
+                                </div>
+                            </div>
+                        </figcaption>
+                </figure>
+                <a href="/linux/index.html" class="article-a">
+                    <p class="article-p-h">个人Linux笔记</p>
+                </a>
+                <p class="article-p-t">最新：2023-09-01</font>
+                </p>
+            </div>
+			<!-- MarkDown语法手册-->
+			<div class="col-item">
+				<figure class="c4-izmir c4-border-corners-1 c4-image-zoom-out c4-gradient-bottom" tabindex="0"
+					style="--primary-color: #E0EAFC; --secondary-color: #CFDEF3; --text-color: #1f467b; --border-color: #1f467b; --image-opacity: .1;">
+					<img src="static/images/md.jpg" alt="Sample Image" />
+					<a href="/markdown/index.html" class="article-a">
+						<figcaption class="c4-layout-top-left">
+							<div class="c4-reveal-down">
+								<div>
+									<h2 style="margin-bottom: 5px;"></h2>
+									<p>基于teedoc静态网站框架的markdown语法总结，收录优美排版的语法记录</p>
+								</div>
+							</div>
+						</figcaption>
+				</figure>
+				<a href="/markdown/index.html" class="article-a">
+					<p class="article-p-h">MarkDown语法手册</p>
+				</a>
+				<p class="article-p-t">最新：2023-09-01</font>
+				</p>
+			</div>
+		</div>
+        <!-- 第二行 -->
+        <div class="col-4">
+            <!-- git使用心得 -->
+			<div class="col-item">
+				<figure class="c4-izmir c4-border-corners-1 c4-image-zoom-out c4-gradient-bottom" tabindex="0"
+					style="--primary-color: #E0EAFC; --secondary-color: #CFDEF3; --text-color: #1f467b; --border-color: #1f467b; --image-opacity: .1;">
+					<img src="static/images/git.png" alt="Sample Image" />
+					<a href="/git/index.html" class="article-a">
+						<figcaption class="c4-layout-top-left">
+							<div class="c4-reveal-down">
+								<div>
+									<h2 style="margin-bottom: 5px;"></h2>
+									<p>基于teedoc静态网站框架的markdown语法总结，收录优美排版的语法记录</p>
+								</div>
+							</div>
+						</figcaption>
+				</figure>
+				<a href="/git/index.html" class="article-a">
+					<p class="article-p-h">git使用心得</p>
+				</a>
+				<p class="article-p-t">最新：2023-09-01</font>
+				</p>
+			</div>
+            <!-- 单片机入门手册 -->
+            <div class="col-item">
+				<figure class="c4-izmir c4-border-corners-1 c4-image-zoom-out c4-gradient-bottom" tabindex="0"
+					style="--primary-color: #E0EAFC; --secondary-color: #CFDEF3; --text-color: #1f467b; --border-color: #1f467b; --image-opacity: .1;">
+					<img src="static/images/mcu.jpg" alt="Sample Image" />
+					<a href="/mcu/index.html" class="article-a">
+						<figcaption class="c4-layout-top-left">
+							<div class="c4-reveal-down">
+								<div>
+									<h2 style="margin-bottom: 5px;"></h2>
+									<p>记录使用过的单片机，总结大部分外设的使用例程，编写而来的入门手册</p>
+								</div>
+							</div>
+						</figcaption>
+				</figure>
+				<a href="/mcu/index.html" class="article-a">
+					<p class="article-p-h">单片机入门手册</p>
+				</a>
+				<p class="article-p-t">最新：2023-09-01</font>
+				</p>
+			</div>
+            <!-- 电子模块驱动合集 -->
+            <div class="col-item">
+				<figure class="c4-izmir c4-border-corners-1 c4-image-zoom-out c4-gradient-bottom" tabindex="0"
+					style="--primary-color: #E0EAFC; --secondary-color: #CFDEF3; --text-color: #1f467b; --border-color: #1f467b; --image-opacity: .1;">
+					<img src="static/images/module.png" alt="Sample Image" />
+					<a href="/module/index.html" class="article-a">
+						<figcaption class="c4-layout-top-left">
+							<div class="c4-reveal-down">
+								<div>
+									<h2 style="margin-bottom: 5px;"></h2>
+									<p>记录在单片机中使用过的电子模块，来源参考自立创开发板的模块移植手册</p>
+								</div>
+							</div>
+						</figcaption>
+				</figure>
+				<a href="/module/index.html" class="article-a">
+					<p class="article-p-h">电子模块驱动合集</p>
+				</a>
+				<p class="article-p-t">最新：2023-09-01</font>
+				</p>
+			</div>
+            <!-- DIY项目合集 -->
+            <div class="col-item">
+				<figure class="c4-izmir c4-border-corners-1 c4-image-zoom-out c4-gradient-bottom" tabindex="0"
+					style="--primary-color: #E0EAFC; --secondary-color: #CFDEF3; --text-color: #1f467b; --border-color: #1f467b; --image-opacity: .1;">
+					<img src="static/images/diy.png" alt="Sample Image" />
+					<a href="/diy/index.html" class="article-a">
+						<figcaption class="c4-layout-top-left">
+							<div class="c4-reveal-down">
+								<div>
+									<h2 style="margin-bottom: 5px;"></h2>
+									<p>个人DIY项目合集，从软件到硬件，从系统到裸机，想啥玩啥</p>
+								</div>
+							</div>
+						</figcaption>
+				</figure>
+				<a href="/diy/index.html" class="article-a">
+					<p class="article-p-h">DIY项目合集</p>
+				</a>
+				<p class="article-p-t">最新：2023-09-01</font>
+				</p>
+			</div>
+        </div>	
+	</div>		
+</div>
+
+
+
+<!-- 
 <div id="fullpage">
     <div class="section" style="height: 100vh;">
         <div>
-            <h1><span>好记性不如烂笔头</span></h1>
+            <h1><span>硬件文档中心</span></h1>
             <h3>学广而闻多，则不求于人</h3>
         </div>
         <div class="big_btn_wrapper">
@@ -27,91 +219,10 @@ id: home_page
             </div>
         </div>
     </div>
-    <!-- <div class="section dsc_wrapper_left">
-        <div>
-            <div class="dsc_left">
-                <h2>简单书写</h2>
-                <h2>自动生成</h2>
-            </div>
-            <div class="dsc_right">
-                使用 <img class="logo" src="/static/image/markdown.svg"> Markdown 或者 <img class="logo" src="/static/image/jupyter.svg">jupyter notebook 书写，</br>
-                自动生成 HTML 页面
-            </div>
-        </div>
-    </div>
-    <div class="section dsc_wrapper_right">
-        <div>
-            <div class="dsc_left">
-                <img class="logo" src="/static/image/windows.svg"> <img class="logo" src="/static/image/linux.svg"> <img class="logo" src="/static/image/mac.svg"><br/>
-                使用 python 编写， 跨平台， 使用 pip 即可安装，</br>
-                <img class="logo" src="/static/image/plugin.svg"> 支持插件安装及自定义插件
-            </div>
-            <div class="dsc_right">
-                <h2>跨平台</h2>
-                <h2>插件支持</h2>
-            </div>
-        </div>
-    </div>
-    <div class="section dsc_wrapper_left">
-        <div>
-            <div class="dsc_left">
-                <h2>多文档</h2>
-                <h2>博客</h2>
-            </div>
-            <div class="dsc_right">
-                <img class="logo" src="/static/image/books.svg"> 支持多文档，每篇文档有单独的目录，也可以多版本。你的大量文档再也不用散落在各个域名下了！</br>
-                <img class="logo" src="/static/image/blog.svg"> 同时支持轻量博客系统
-            </div>
-        </div>
-    </div>
-    <div class="section dsc_wrapper_right">
-        <div>
-            <div class="dsc_left">
-                <img class="logo" src="/static/image/theme.svg"> 默认主题为高效阅读而设计，提供主题插件支持</br>
-                同时支持自定义 css、js，能通过页面指定 id 精确控制任何一个页面元素的样式
-            </div>
-            <div class="dsc_right">
-                <h2>主题可定制</h2>
-            </div>
-        </div>
-    </div>
-        <div class="section dsc_wrapper_left">
-        <div>
-            <div class="dsc_left">
-                <h2>快速构建</h2>
-                <h2>实时预览</h2>
-            </div>
-            <div class="dsc_right">
-                <img class="logo" src="/static/image/speed.svg"> 并行构建，充分利用处理器性能，文档渲染就在一瞬间</br>
-                <img class="logo" src="/static/image/browser.svg"> 支持浏览器实时预览修改
-            </div>
-        </div>
-    </div>
-    <div class="section dsc_wrapper_right">
-        <div>
-            <div class="dsc_left">
-                <img class="logo" src="/static/image/server.svg"> 生成的都是静态页面，拷贝到服务器即可完成部署</br>
-                <img class="logo" src="/static/image/seo.svg"> SEO 友好，比如 页关键词自定义、sitemap自动生成等
-            </div>
-            <div class="dsc_right">
-                <h2>部署简单</h2>
-                <h2>SEO 友好</h2>
-            </div>
-        </div>
-    </div>
-    <div class="section" style="height: 100vh;">
-        <div class="big_btn_wrapper">
-            <div class="big_btn">
-                <a href="/get_started/zh/">查看详细介绍</a>
-            </div>
-            <div class="big_btn">
-                <a href="/get_started/zh/usage/quick_start.html">快速上手</a>
-            </div>
-        </div>
-    </div> -->
-</div>
+    
+</div> -->
 
-<div>
+<!-- <div>
 <script type='text/javascript'>
     $(document).ready(function () {
         var html = $("#page_footer").html();
@@ -136,7 +247,7 @@ id: home_page
         });
     });
 </script>
-</div>
+</div>   -->
 
 <canvas id="backgroundCanvas"  style="top:0; bottom:0; left:0; right:0; position:fixed; z-index: -99;">
 </canvas>
