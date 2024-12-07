@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+
+<html lang="en"  class="">
+
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <meta name="keywords" content="keyword1, keyword2">
+    
+    
+    <meta name="description" content="description for this article">
+    
+    <meta name="generator" content="teedoc">
+    <meta name="theme" content="teedoc-plugin-theme-default">
+    
+        
+        <meta name="markdown-generator" content="teedoc-plugin-markdown-parser">
+        
+        <script>
+MathJax = {"loader": {"load": ["output/svg"]}, "tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]]}, "svg": {"fontCache": "global"}};
+</script>
+        
+        <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+        
+        <meta name="html-generator" content="teedoc-plugin-jupyter-notebook-parser">
+        
+        <script src="/static/js/theme_default/pre_main.js"></script>
+        
+        <link rel="stylesheet" href="/static/css/theme_default/prism.min.css" type="text/css"/>
+        
+        <link rel="stylesheet" href="/static/css/theme_default/viewer.min.css" type="text/css"/>
+        
+        <link rel="stylesheet" href="/static/css/theme_default/dark.css" type="text/css"/>
+        
+        <link rel="stylesheet" href="/static/css/theme_default/light.css" type="text/css"/>
+        
+        <script src="/static/js/theme_default/jquery.min.js"></script>
+        
+        <script src="/static/js/theme_default/split.js"></script>
+        
+        <link rel="stylesheet" href="/static/css/gitalk/gitalk.css" type="text/css"/>
+        
+        <link rel="stylesheet" href="/static/css/gitalk/custom_gitalk.css" type="text/css"/>
+        
+        <link rel="stylesheet" href="/static/css/custom.css" type="text/css"/>
+        
+        <link rel="stylesheet" href="/static/css/search/style.css" type="text/css"/>
+        
+    
+    
+    <title>C语言环境搭建 - Hdochub</title>
+    
+    <script type="text/javascript">js_vars = {"teedoc-plugin-ad-hint": {"type": "hint", "label": "☆", "content": "这里是老怪鸽的个人技术文档记录中心</br>喜欢项目请<a target=\"_blank\" href=\"https://github.com/LaoGuaiGe/laoguaige.github.io\">点下 ☆ star </a>哦~🦀🦀", "show_times": 2, "show_after_s": 432000, "date": "2021-11-16 14:40", "color": "#a0421d", "link_color": "#e53935", "link_bg_color": "#e6ae5c", "bg_color": "#ffcf89", "color_hover": "white", "bg_color_hover": "#f57c00", "close_color": "#eab971"}}</script>
+    <script type="text/javascript">metadata = {"tags": [], "date": "2024-12-07", "update": [{"date": "2024-12-07", "author": "老怪鸽", "version": "1.0.0", "content": "更新了基本文档"}], "ts": 1733529600, "author": "", "brief": "", "cover": "", "show_source": false}</script>
+</head>
+
+
+<body class="type_doc">
+    
+    <div id="navbar">
+        <div id="navbar_menu">
+            <a class="site_title" href="/">
+                
+                    <img class="site_logo" src="/static/images/logo.png" alt="HDocHub logo">
+                
+                
+                    <h2>HDocHub</h2>
+                
+        </a>
+            <a id="navbar_menu_btn"></a>
+        </div>
+        <div id="navbar_items">
+            <div>
+                <ul id="nav_left">
+<li class=""><a  href="/">首页</a></li>
+<li class="active"><a  href="/c-basics/">C语言</a></li>
+<li class=""><a  href="/python/">Python</a></li>
+<li class=""><a  href="/linux/">Linux</a></li>
+<li class=""><a  href="/markdown/">MarkDown</a></li>
+<li class=""><a  href="/git/">Git</a></li>
+<li class=""><a  href="/mcu/">单片机</a></li>
+<li class=""><a  href="/module/">电子模块驱动合集</a></li>
+<li class=""><a  href="/diy/">DIY项目</a></li>
+</ul>
+
+            </div>
+            <div>
+                <ul id="nav_right">
+<li class=""><a target="_blank" href="https://github.com/LaoGuaiGe/laoguaige.github.io">github</a></li>
+</ul>
+
+                <ul class="nav_plugins"><li><a id="themes" class="light"></a></li></ul><ul class="nav_plugins"><li><a id="search"><span class="icon"></span><span class="placeholder">搜索</span>
+                            <div id="search_hints">
+                                <span id="search_input_hint">输入关键词，多关键词空格隔开</span>
+                                <span id="search_loading_hint">正在加载，请稍候。。。</span>
+                                <span id="search_download_err_hint">下载文件失败，请刷新重试或检查网络</span>
+                                <span id="search_other_docs_result_hint">来自其它文档的结果</span>
+                                <span id="search_curr_doc_result_hint">当前文档搜索结果</span>
+                            </div></a></li></ul>
+            </div>
+        </div>
+    </div>
+    
+    <div id="wrapper">
+        <div id="sidebar_wrapper">
+            <div id="sidebar">
+                <div id="sidebar_title">
+                    
+                </div>
+                <ul class="show">
+<li class="not_active with_link"><a href="/c-basics/index.html"><span class="label">基本介绍</span><span class=""></span></a></li>
+<li class="not_active with_link"><a href="/c-basics/download.html"><span class="label">资料下载</span><span class=""></span></a></li>
+<li class="active with_link"><a href="/c-basics/install.html"><span class="label">环境搭建</span><span class=""></span></a></li>
+<li class="not_active with_link"><a href="/c-basics/basic.html"><span class="label">基本语法</span><span class=""></span></a></li>
+<li class="not_active with_link"><a href="/c-basics/sequence.html"><span class="label">顺序结构程序设计</span><span class=""></span></a></li>
+<li class="not_active with_link"><a href="/c-basics/select.html"><span class="label">选择结构程序设计</span><span class=""></span></a></li>
+<li class="not_active with_link"><a href="/c-basics/loop.html"><span class="label">循环结构程序设计</span><span class=""></span></a></li>
+<li class="not_active with_link"><a href="/c-basics/array.html"><span class="label">数组</span><span class=""></span></a></li>
+<li class="not_active with_link"><a href="/c-basics/function.html"><span class="label">函数</span><span class=""></span></a></li>
+<li class="not_active with_link"><a href="/c-basics/pointer.html"><span class="label">指针</span><span class=""></span></a></li>
+<li class="not_active with_link"><a href="/c-basics/structure.html"><span class="label">结构体与联合体</span><span class=""></span></a></li>
+<li class="not_active with_link"><a href="/c-basics/handle.html"><span class="label">预处理命令</span><span class=""></span></a></li>
+</ul>
+
+            </div>
+        </div>
+        <div id="article">
+            <div id="menu_wrapper">
+                <div id="menu">
+                </div>
+            </div>
+            <div id="content_wrapper">
+                <div id="content_body">
+                    <div id="article_head">
+                        <div id="article_title">
+                            
+                            <h1>C语言环境搭建</h1>
+                            
+                        </div>
+                        <div id="article_tags">
+                            <ul>
+                            
+                            </ul>
+                        </div>
+                        <div id="article_info">
+                        <div id="article_info_left">
+                            <span class="article_author">
+                                
+                            </span>
+                            
+                                <span class="article_date" title="Last modify date: 2024-12-07">
+                                    2024-12-07
+                                </span>
+                            
+                        </div>
+                        <div id="article_info_right">
+                            
+                        </div>
+                        </div>
+                    </div>
+                    <div id="article_tools">
+                        <span></span>
+                        <span id="toc_btn"></span>
+                    </div>
+                    <div id="update_history">
+                        
+                        
+                        <details open>
+                        
+                            <summary>Update history</summary>
+                            <div>
+                                <table>
+                                        <thead>
+                                            <tr>
+                                                <th>Date</th>
+                                                <th>Version</th>
+                                                <th>Author</th>
+                                                <th>Update content</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            
+                                                <tr>
+                                                    <td>2024-12-07</td>
+                                                    <td>1.0.0</td>
+                                                    <td>老怪鸽</td>
+                                                    <td>
+                                                    
+                                                        更新了基本文档
+                                                    
+                                                    </td>
+                                                </tr>
+                                            
+                                        </tbody>
+                                </table>
+                            </div>
+                        </details>
+                        
+                    </div>
+                    <div id="article_content">
+                        
+                            <h2 id="%E8%BD%AF%E4%BB%B6%E4%BB%8B%E7%BB%8D">软件介绍</h2>
+<p><code>Dev C++</code>是一款功能强大的 <strong>C/C++</strong> 语言编译器，不仅界面美观、可操作性高、使用方便，最最重要的是它还是免费的。</p>
+<p>我们后续的C语言编程，都将使用Dev C++。</p>
+<h2 id="%E8%BD%AF%E4%BB%B6%E4%B8%8B%E8%BD%BD">软件下载</h2>
+<h3 id="sourceforge%E5%AE%98%E7%BD%91%E4%B8%8B%E8%BD%BD">sourceforge官网下载</h3>
+<p>从sourceforge官网上下载。链接如下：</p>
+<center>
+<p><a href="https://sourceforge.net/projects/orwelldevcpp/"  target="_blank">👉Dev-C++👈</a></p>
+</center>
+<blockquote>
+<p>提示：SourceForge 是全球最大开源软件开发平台和仓库，网站建立的宗旨，就是为开源软件提供一个存储、协作和发布的平台，拥有大量非常优秀的开源软件</p>
+</blockquote>
+<p><img src="../../static/images/docs/c-basics/install/install-2024-12-07-01-44-18.png" alt="图 0" /></p>
+<p>点击<code>Download</code>下载后，等待几秒便会弹出下载提示，下载完成后根据第二部分安装步骤进行软件的安装即可。</p>
+<h3 id="%E7%99%BE%E5%BA%A6%E7%BD%91%E7%9B%98%E4%B8%8B%E8%BD%BD">百度网盘下载</h3>
+<p>我下载了本系列教程的版本，保存在了百度网盘。如果你不放心说明的链接或者上面sourceforge官网下载不了，那就下载百度网盘的。</p>
+<blockquote>
+<p>通过百度网盘分享的文件：IDE<br />
+链接：<a href="https://pan.baidu.com/s/14TXZLAfEbx-xkuArETeJmg"  target="_blank">https://pan.baidu.com/s/14TXZLAfEbx-xkuArETeJmg</a><br />
+提取码：LGYY</p>
+</blockquote>
+<h2 id="%E5%AE%89%E8%A3%85%E6%AD%A5%E9%AA%A4">安装步骤</h2>
+<ol>
+<li><p>双击下载下来的 <code>Dev-C++Setup.exe</code> 运行安装程序。</p>
+</li>
+<li><p>点击OK，先不管语言，默认选择English。</p>
+</li>
+</ol>
+<p><img src="../../static/images/docs/c-basics/install/install-2024-12-07-01-51-16.png" alt="图 1" /></p>
+<ol start="3">
+<li>点击 <code>I Agree</code></li>
+</ol>
+<p><img src="../../static/images/docs/c-basics/install/install-2024-12-07-01-52-02.png" alt="图 2" /></p>
+<ol start="4">
+<li>点击<code>Next</code>，全部组件都安装。</li>
+</ol>
+<p><img src="../../static/images/docs/c-basics/install/install-2024-12-07-01-52-55.png" alt="图 3" /></p>
+<ol start="5">
+<li>选择软件安装路径，如果使用默认安装路径安装在<code>C盘</code>，直接点击 <code>Install</code> 即可。如果更换安装路径，则点击<code>Browser</code>，选择相应的安装路径即可，如下图我的安装路径是<code>D盘/IDE/dev</code>，Dev-Cpp是它自己会生成的文件夹。确认路径之后点击 <code>Install</code> 。</li>
+</ol>
+<p><img src="../../static/images/docs/c-basics/install/install-2024-12-07-01-54-38.png" alt="图 4" /></p>
+<ol start="6">
+<li>软件安装完成。点击Finish</li>
+</ol>
+<p><img src="../../static/images/docs/c-basics/install/install-2024-12-07-01-55-07.png" alt="图 5" /></p>
+<ol start="7">
+<li>在打开的页面中，我们选择<code>简体中文/Chinese</code>，然后点击<code>Next</code>。</li>
+</ol>
+<p><img src="../../static/images/docs/c-basics/install/install-2024-12-07-01-56-08.png" alt="图 6" /></p>
+<ol start="8">
+<li>设置软件字体、颜色、图标等属性，如果选择使用默认形式，直接单击 <code>Next</code> 即可。</li>
+</ol>
+<p><img src="../../static/images/docs/c-basics/install/install-2024-12-07-01-56-47.png" alt="图 7" /></p>
+<ol start="9">
+<li>提示已经设置成功，说明就配置好了嘛，点击OK，就会打开界面了。</li>
+</ol>
+<p><img src="../../static/images/docs/c-basics/install/install-2024-12-07-01-58-08.png" alt="图 8" /></p>
+<h2 id="%E5%AE%89%E8%A3%85%E9%AA%8C%E8%AF%81">安装验证</h2>
+<ol>
+<li>按键盘的 <code>Ctrl+N</code> 键，快速新建一个文件。</li>
+</ol>
+<p><img src="../../static/images/docs/c-basics/install/install-2024-12-07-02-00-39.png" alt="图 9" /></p>
+<ol start="2">
+<li>往里面写入下面的代码：</li>
+</ol>
+<blockquote>
+<p>在C语言中，<code>//</code> 表示单行注释的开始。任何在 <code>//</code> 之后直到该行末尾的文本都会被编译器忽略，不会影响程序的编译和执行。<strong>注释的主要目的是为了提高代码的可读性</strong>，帮助程序员或其他人理解代码的功能和逻辑。<strong>大家C语言大成后一定要养成习惯注释！！！</strong></p>
+</blockquote>
+
+<pre class="language-c"><code class="language-c">#include &lt;stdio.h&gt; // 引入标准输入输出库的头文件
+
+int main() {
+    // printf函数用于打印格式化的字符串到标准输出
+    printf(&quot;Hello, World!\n&quot;);
+    return 0; // 表示程序执行成功
+}
+</code></pre>
+<p>这个代码的主要功能就是在命令窗口输出一个字符串: <code>Hello, World!</code>，其中<code>\n</code>是特殊字符，表示的是换行显示的意思。</p>
+<p>这个程序的其他C语言编程的基本元素：</p>
+<table>
+<thead>
+<tr>
+  <th style="text-align:center">代码</th>
+  <th style="text-align:center">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td style="text-align:center">#include &lt;stdio.h&gt;</td>
+  <td style="text-align:center">预处理器指令，用于包含标准输入输出库的头文件，这样我们才能使用printf函数。</td>
+</tr>
+<tr>
+  <td style="text-align:center">int main()</td>
+  <td style="text-align:center">主函数，每个C程序都是从main函数开始执行的。</td>
+</tr>
+<tr>
+  <td style="text-align:center">printf(&quot;Hello, World!\n&quot;);</td>
+  <td style="text-align:center">调用printf函数，打印字符串到控制台。</td>
+</tr>
+<tr>
+  <td style="text-align:center">return 0;</td>
+  <td style="text-align:center">表示程序正常结束。</td>
+</tr>
+</tbody>
+</table>
+<p>接下来我们来验证我们安装的IDE能不能运行代码。现在保存我们新建的文件，我这里将它命名为<code>install_test.c</code>，并保存到我指定的文件夹。</p>
+<blockquote>
+<p>保存的快捷键是 <code>Ctrl+S</code></p>
+</blockquote>
+<blockquote class="spoiler warning">
+<p> 必须要对新建的文件要改动才能够保存！</p>
+</blockquote>
+<p><img src="../../static/images/docs/c-basics/install/install-2024-12-07-02-09-44.png" alt="图 10" /></p>
+<ol start="3">
+<li>运行代码</li>
+</ol>
+<p>要先经过编译，编译之后才能够运行。如果你确保你的代码没有问题，可以选择编译+运行同时进行。</p>
+<p><img src="../../static/images/docs/c-basics/install/install-2024-12-07-02-12-30.png" alt="图 11" /></p>
+<p>我这里直接编译运行了。可以按快捷键F11。</p>
+<p>如果不出意外的话，会弹出一个命令窗口，里面的内容显示的就是<code>Hello, World!</code></p>
+<p><img src="../../static/images/docs/c-basics/install/install-2024-12-07-02-13-36.png" alt="图 12" /></p>
+<p>结束。</p>
+
+                        
+                    </div>
+                </div>
+                <div id="previous_next">
+                    <div id="previous">
+                        
+                        <a href="/c-basics/download.html">
+                            <span class="icon"></span>
+                            <span class="label">资料下载</span>
+                        </a>
+                        
+                    </div>
+                    <div id="next">
+                        
+                        <a href="/c-basics/basic.html">
+                            <span class="label">基本语法</span>
+                            <span class="icon"></span>
+                        </a>
+                        
+                    </div>
+                </div>
+                <div id="comments-container"></div>
+            </div>
+            <div id="toc_wrapper">
+                <div id="toc">
+                    <div id="toc_content">
+                            
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <a id="to_top" href="#"></a>
+    <div id="doc_footer">
+        <div id="footer">
+            <div id="footer_top">
+                <ul>
+<li><a>链接</a><ul><li><a target="_blank" href="https://teedoc.neucrack.com">本网站使用 teedoc 构建</a></li>
+</ul>
+</li>
+<li><a>站长</a><ul><li><a target="_blank" href="https://laoguaige.github.io/">老怪鸽</a></li>
+<li><a>邮箱: liguoyi@hdochub.cn</a>
+</li>
+</ul>
+</li>
+<li><a>源码</a><ul><li><a target="_blank" href="https://github.com/LaoGuaiGe/laoguaige.github.io">本站源文件</a></li>
+</ul>
+</li>
+</ul>
+
+            </div>
+            <div id="footer_bottom">
+                <ul>
+<li><a target="_blank" href="https://laoguaige.github.io/">Copyright © 2024 Hdochub</a></li>
+</ul>
+
+            </div>
+        </div>
+    </div>
+    
+        <script src="/teedoc-plugin-markdown-parser/mermaid.min.js"></script>
+    
+        <script>mermaid.initialize({startOnLoad:true});</script>
+    
+        <script src="/static/js/theme_default/tocbot.min.js"></script>
+    
+        <script src="/static/js/theme_default/main.js"></script>
+    
+        <script src="/static/js/theme_default/viewer.min.js"></script>
+    
+        <script src="/static/css/theme_default/prism.min.js"></script>
+    
+        <link rel="stylesheet" href="/static/js/add_hint/style.css" type="text/css"/>
+    
+        <script src="/static/js/add_hint/main.js"></script>
+    
+        <script src="/static/js/gitalk/gitalk.min.js"></script>
+    
+        <script src="/static/js/gitalk/main.js"></script>
+    
+        <script src="/static/js/custom.js"></script>
+    
+        <script src="/static/js/search/search_main.js"></script>
+    
+</body>
+
+</html>

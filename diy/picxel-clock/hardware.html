@@ -40,23 +40,13 @@ MathJax = {"loader": {"load": ["output/svg"]}, "tex": {"inlineMath": [["$", "$"]
         
         <script src="/static/js/theme_default/split.js"></script>
         
-        <link rel="stylesheet" href="/static/css/search/style.css" type="text/css"/>
-        
-        <script>
-var _hmt = _hmt || [];
-(function() {
-  var hm = document.createElement("script");
-  hm.src = "https://hm.baidu.com/hm.js?4d52982572d5512e9762879ebf063c86";
-  var s = document.getElementsByTagName("script")[0]; 
-  s.parentNode.insertBefore(hm, s);
-})();
-</script>
-        
         <link rel="stylesheet" href="/static/css/gitalk/gitalk.css" type="text/css"/>
         
         <link rel="stylesheet" href="/static/css/gitalk/custom_gitalk.css" type="text/css"/>
         
         <link rel="stylesheet" href="/static/css/custom.css" type="text/css"/>
+        
+        <link rel="stylesheet" href="/static/css/search/style.css" type="text/css"/>
         
     
     
@@ -73,10 +63,10 @@ var _hmt = _hmt || [];
         <div id="navbar_menu">
             <a class="site_title" href="/">
                 
-                    <img class="site_logo" src="/static/images/logo.png" alt="老怪鸽的文档中心 logo">
+                    <img class="site_logo" src="/static/images/logo.png" alt="HDocHub logo">
                 
                 
-                    <h2>老怪鸽的文档中心</h2>
+                    <h2>HDocHub</h2>
                 
         </a>
             <a id="navbar_menu_btn"></a>
@@ -84,12 +74,14 @@ var _hmt = _hmt || [];
         <div id="navbar_items">
             <div>
                 <ul id="nav_left">
+<li class=""><a  href="/">首页</a></li>
 <li class=""><a  href="/c-basics/">C语言</a></li>
-<li class=""><a  href="/mpy-basics/">MicroPython</a></li>
+<li class=""><a  href="/python/">Python</a></li>
 <li class=""><a  href="/linux/">Linux</a></li>
 <li class=""><a  href="/markdown/">MarkDown</a></li>
 <li class=""><a  href="/git/">Git</a></li>
 <li class=""><a  href="/mcu/">单片机</a></li>
+<li class=""><a  href="/module/">电子模块驱动合集</a></li>
 <li class="active"><a  href="/diy/">DIY项目</a></li>
 </ul>
 
@@ -99,13 +91,13 @@ var _hmt = _hmt || [];
 <li class=""><a target="_blank" href="https://github.com/LaoGuaiGe/laoguaige.github.io">github</a></li>
 </ul>
 
-                <ul class="nav_plugins"><li><a id="themes" class="light"></a></li></ul><ul class="nav_plugins"><li><a id="search"><span class="icon"></span><span class="placeholder">Search</span>
+                <ul class="nav_plugins"><li><a id="themes" class="light"></a></li></ul><ul class="nav_plugins"><li><a id="search"><span class="icon"></span><span class="placeholder">搜索</span>
                             <div id="search_hints">
-                                <span id="search_input_hint">Keywords separated by space</span>
-                                <span id="search_loading_hint">Loading, wait please ...</span>
-                                <span id="search_download_err_hint">Download error, please check network and refresh again</span>
-                                <span id="search_other_docs_result_hint">Result from other docs</span>
-                                <span id="search_curr_doc_result_hint">Result from current doc</span>
+                                <span id="search_input_hint">输入关键词，多关键词空格隔开</span>
+                                <span id="search_loading_hint">正在加载，请稍候。。。</span>
+                                <span id="search_download_err_hint">下载文件失败，请刷新重试或检查网络</span>
+                                <span id="search_other_docs_result_hint">来自其它文档的结果</span>
+                                <span id="search_curr_doc_result_hint">当前文档搜索结果</span>
                             </div></a></li></ul>
             </div>
         </div>
@@ -119,7 +111,7 @@ var _hmt = _hmt || [];
                 </div>
                 <ul class="show">
 <li class="not_active with_link"><a href="/diy/index.html"><span class="label">项目集合</span><span class=""></span></a></li>
-<li class="active_parent with_link"><a href="/diy/picxel-clock/basic.html"><span class="label">像素时钟⏰</span><span class="sub_indicator"></span></a><ul class="show">
+<li class="active_parent with_link"><a href="/diy/picxel-clock/basic.html"><span class="label">物联网像素时钟⏰</span><span class="sub_indicator"></span></a><ul class="show">
 <li class="not_active with_link"><a href="/diy/picxel-clock/basic.html"><span class="label">✨项目信息</span><span class=""></span></a></li>
 <li class="not_active with_link"><a href="/diy/picxel-clock/download.html"><span class="label">⬇️资料下载</span><span class=""></span></a></li>
 <li class="active with_link"><a href="/diy/picxel-clock/hardware.html"><span class="label">0. 硬件设计</span><span class=""></span></a></li>
@@ -133,6 +125,7 @@ var _hmt = _hmt || [];
 <li class="not_active with_link"><a href="/diy/picxel-clock/voice.html"><span class="label">8. 语音识别与播报</span><span class=""></span></a></li>
 </ul>
 </li>
+<li class="not_active with_link"><a href="/diy/wiki-web/basic.html"><span class="label">WIKI网站搭建🌐</span><span class=""></span></a></li>
 </ul>
 
             </div>
@@ -330,7 +323,15 @@ var _hmt = _hmt || [];
         <div id="footer">
             <div id="footer_top">
                 <ul>
-<li><a></a><ul><li><a target="_blank" href="/#"></a></li>
+<li><a>链接</a><ul><li><a target="_blank" href="https://teedoc.neucrack.com">本网站使用 teedoc 构建</a></li>
+</ul>
+</li>
+<li><a>站长</a><ul><li><a target="_blank" href="https://laoguaige.github.io/">老怪鸽</a></li>
+<li><a>邮箱: liguoyi@hdochub.cn</a>
+</li>
+</ul>
+</li>
+<li><a>源码</a><ul><li><a target="_blank" href="https://github.com/LaoGuaiGe/laoguaige.github.io">本站源文件</a></li>
 </ul>
 </li>
 </ul>
@@ -338,7 +339,7 @@ var _hmt = _hmt || [];
             </div>
             <div id="footer_bottom">
                 <ul>
-<li><a target="_blank" href="https://github.com/teedoc/teedoc">Generated by teedoc</a></li>
+<li><a target="_blank" href="https://laoguaige.github.io/">Copyright © 2024 Hdochub</a></li>
 </ul>
 
             </div>
@@ -357,8 +358,6 @@ var _hmt = _hmt || [];
     
         <script src="/static/css/theme_default/prism.min.js"></script>
     
-        <script src="/static/js/search/search_main.js"></script>
-    
         <link rel="stylesheet" href="/static/js/add_hint/style.css" type="text/css"/>
     
         <script src="/static/js/add_hint/main.js"></script>
@@ -368,6 +367,8 @@ var _hmt = _hmt || [];
         <script src="/static/js/gitalk/main.js"></script>
     
         <script src="/static/js/custom.js"></script>
+    
+        <script src="/static/js/search/search_main.js"></script>
     
 </body>
 

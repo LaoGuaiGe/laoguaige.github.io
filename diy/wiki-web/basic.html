@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+
+<html lang="en"  class="">
+
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <meta name="keywords" content="keyword1, keyword2">
+    
+    
+    <meta name="description" content="description for this article">
+    
+    <meta name="generator" content="teedoc">
+    <meta name="theme" content="teedoc-plugin-theme-default">
+    
+        
+        <meta name="markdown-generator" content="teedoc-plugin-markdown-parser">
+        
+        <script>
+MathJax = {"loader": {"load": ["output/svg"]}, "tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]]}, "svg": {"fontCache": "global"}};
+</script>
+        
+        <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+        
+        <meta name="html-generator" content="teedoc-plugin-jupyter-notebook-parser">
+        
+        <script src="/static/js/theme_default/pre_main.js"></script>
+        
+        <link rel="stylesheet" href="/static/css/theme_default/prism.min.css" type="text/css"/>
+        
+        <link rel="stylesheet" href="/static/css/theme_default/viewer.min.css" type="text/css"/>
+        
+        <link rel="stylesheet" href="/static/css/theme_default/dark.css" type="text/css"/>
+        
+        <link rel="stylesheet" href="/static/css/theme_default/light.css" type="text/css"/>
+        
+        <script src="/static/js/theme_default/jquery.min.js"></script>
+        
+        <script src="/static/js/theme_default/split.js"></script>
+        
+        <link rel="stylesheet" href="/static/css/gitalk/gitalk.css" type="text/css"/>
+        
+        <link rel="stylesheet" href="/static/css/gitalk/custom_gitalk.css" type="text/css"/>
+        
+        <link rel="stylesheet" href="/static/css/custom.css" type="text/css"/>
+        
+        <link rel="stylesheet" href="/static/css/search/style.css" type="text/css"/>
+        
+    
+    
+    <title>wiki网站搭建 - Hdochub</title>
+    
+    <script type="text/javascript">js_vars = {"teedoc-plugin-ad-hint": {"type": "hint", "label": "☆", "content": "这里是老怪鸽的个人技术文档记录中心</br>喜欢项目请<a target=\"_blank\" href=\"https://github.com/LaoGuaiGe/laoguaige.github.io\">点下 ☆ star </a>哦~🦀🦀", "show_times": 2, "show_after_s": 432000, "date": "2021-11-16 14:40", "color": "#a0421d", "link_color": "#e53935", "link_bg_color": "#e6ae5c", "bg_color": "#ffcf89", "color_hover": "white", "bg_color_hover": "#f57c00", "close_color": "#eab971"}}</script>
+    <script type="text/javascript">metadata = {"tags": [], "date": "2024-12-05", "update": [{"date": "2024-12-05", "author": "老怪鸽", "version": "1.0.1", "content": "更新了基本文档"}], "ts": 1733356800, "author": "", "brief": "", "cover": "", "show_source": false}</script>
+</head>
+
+
+<body class="type_doc">
+    
+    <div id="navbar">
+        <div id="navbar_menu">
+            <a class="site_title" href="/">
+                
+                    <img class="site_logo" src="/static/images/logo.png" alt="HDocHub logo">
+                
+                
+                    <h2>HDocHub</h2>
+                
+        </a>
+            <a id="navbar_menu_btn"></a>
+        </div>
+        <div id="navbar_items">
+            <div>
+                <ul id="nav_left">
+<li class=""><a  href="/">首页</a></li>
+<li class=""><a  href="/c-basics/">C语言</a></li>
+<li class=""><a  href="/python/">Python</a></li>
+<li class=""><a  href="/linux/">Linux</a></li>
+<li class=""><a  href="/markdown/">MarkDown</a></li>
+<li class=""><a  href="/git/">Git</a></li>
+<li class=""><a  href="/mcu/">单片机</a></li>
+<li class=""><a  href="/module/">电子模块驱动合集</a></li>
+<li class="active"><a  href="/diy/">DIY项目</a></li>
+</ul>
+
+            </div>
+            <div>
+                <ul id="nav_right">
+<li class=""><a target="_blank" href="https://github.com/LaoGuaiGe/laoguaige.github.io">github</a></li>
+</ul>
+
+                <ul class="nav_plugins"><li><a id="themes" class="light"></a></li></ul><ul class="nav_plugins"><li><a id="search"><span class="icon"></span><span class="placeholder">搜索</span>
+                            <div id="search_hints">
+                                <span id="search_input_hint">输入关键词，多关键词空格隔开</span>
+                                <span id="search_loading_hint">正在加载，请稍候。。。</span>
+                                <span id="search_download_err_hint">下载文件失败，请刷新重试或检查网络</span>
+                                <span id="search_other_docs_result_hint">来自其它文档的结果</span>
+                                <span id="search_curr_doc_result_hint">当前文档搜索结果</span>
+                            </div></a></li></ul>
+            </div>
+        </div>
+    </div>
+    
+    <div id="wrapper">
+        <div id="sidebar_wrapper">
+            <div id="sidebar">
+                <div id="sidebar_title">
+                    
+                </div>
+                <ul class="show">
+<li class="not_active with_link"><a href="/diy/index.html"><span class="label">项目集合</span><span class=""></span></a></li>
+<li class="not_active with_link"><a href="/diy/picxel-clock/basic.html"><span class="label">物联网像素时钟⏰</span><span class="sub_indicator sub_indicator_collapsed"></span></a><ul class="">
+<li class="not_active with_link"><a href="/diy/picxel-clock/basic.html"><span class="label">✨项目信息</span><span class=""></span></a></li>
+<li class="not_active with_link"><a href="/diy/picxel-clock/download.html"><span class="label">⬇️资料下载</span><span class=""></span></a></li>
+<li class="not_active with_link"><a href="/diy/picxel-clock/hardware.html"><span class="label">0. 硬件设计</span><span class=""></span></a></li>
+<li class="not_active with_link"><a href="/diy/picxel-clock/install.html"><span class="label">1. 软件环境搭建</span><span class=""></span></a></li>
+<li class="not_active with_link"><a href="/diy/picxel-clock/ds1302.html"><span class="label">2. RTC时钟驱动</span><span class=""></span></a></li>
+<li class="not_active with_link"><a href="/diy/picxel-clock/dht11.html"><span class="label">3. 温湿度采集</span><span class=""></span></a></li>
+<li class="not_active with_link"><a href="/diy/picxel-clock/ledmatrix.html"><span class="label">4. 彩灯驱动</span><span class=""></span></a></li>
+<li class="not_active with_link"><a href="/diy/picxel-clock/ntptime.html"><span class="label">5. 获取网络时间</span><span class=""></span></a></li>
+<li class="not_active with_link"><a href="/diy/picxel-clock/weather.html"><span class="label">6. 获取天气情况</span><span class=""></span></a></li>
+<li class="not_active with_link"><a href="/diy/picxel-clock/led-oscillating.html"><span class="label">7. 实现FFT音律灯</span><span class=""></span></a></li>
+<li class="not_active with_link"><a href="/diy/picxel-clock/voice.html"><span class="label">8. 语音识别与播报</span><span class=""></span></a></li>
+</ul>
+</li>
+<li class="active with_link"><a href="/diy/wiki-web/basic.html"><span class="label">WIKI网站搭建🌐</span><span class=""></span></a></li>
+</ul>
+
+            </div>
+        </div>
+        <div id="article">
+            <div id="menu_wrapper">
+                <div id="menu">
+                </div>
+            </div>
+            <div id="content_wrapper">
+                <div id="content_body">
+                    <div id="article_head">
+                        <div id="article_title">
+                            
+                            <h1>wiki网站搭建</h1>
+                            
+                        </div>
+                        <div id="article_tags">
+                            <ul>
+                            
+                            </ul>
+                        </div>
+                        <div id="article_info">
+                        <div id="article_info_left">
+                            <span class="article_author">
+                                
+                            </span>
+                            
+                                <span class="article_date" title="Last modify date: 2024-12-05">
+                                    2024-12-05
+                                </span>
+                            
+                        </div>
+                        <div id="article_info_right">
+                            
+                        </div>
+                        </div>
+                    </div>
+                    <div id="article_tools">
+                        <span></span>
+                        <span id="toc_btn"></span>
+                    </div>
+                    <div id="update_history">
+                        
+                        
+                        <details open>
+                        
+                            <summary>Update history</summary>
+                            <div>
+                                <table>
+                                        <thead>
+                                            <tr>
+                                                <th>Date</th>
+                                                <th>Version</th>
+                                                <th>Author</th>
+                                                <th>Update content</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            
+                                                <tr>
+                                                    <td>2024-12-05</td>
+                                                    <td>1.0.1</td>
+                                                    <td>老怪鸽</td>
+                                                    <td>
+                                                    
+                                                        更新了基本文档
+                                                    
+                                                    </td>
+                                                </tr>
+                                            
+                                        </tbody>
+                                </table>
+                            </div>
+                        </details>
+                        
+                    </div>
+                    <div id="article_content">
+                        
+                            <h2 id="%E5%9F%BA%E6%9C%AC%E6%9E%B6%E6%9E%84">基本架构</h2>
+<p>使用 teedoc框架搭建，使用github的pages部署而成。</p>
+<h2 id="teedoc%E4%BB%8B%E7%BB%8D">teedoc介绍</h2>
+<p><strong>简而全的开源静态网站/文档/博客生成器</strong></p>
+<ol>
+<li><p>使用  Markdown 或者 jupyter notebook 书写，自动生成 HTML 页面</p>
+</li>
+<li><p>使用 python 编写， 跨平台， 使用 pip 即可安装， 支持插件安装及自定义插件</p>
+</li>
+<li><p>支持多文档，每篇文档有单独的目录，也可以多版本。你的大量文档再也不用散落在各个域名下了！同时支持轻量博客系统</p>
+</li>
+<li><p>默认主题为高效阅读而设计，提供主题插件支持，同时支持自定义 css、js，能通过页面指定 id 精确控制任何一个页面元素的样式</p>
+</li>
+<li><p>并行构建，充分利用处理器性能，文档渲染就在一瞬间，支持浏览器实时预览修改</p>
+</li>
+<li><p>生成的都是静态页面，拷贝到服务器即可完成部署，SEO 友好，比如 页关键词自定义、sitemap自动生成等</p>
+</li>
+</ol>
+<h2 id="teedoc%E7%9B%B8%E5%85%B3%E8%B5%84%E6%96%99">teedoc相关资料</h2>
+<p>官网: teedoc.neucrack.com 或 teedoc.github.io</p>
+<p>本文档源文件: github.com/teedoc/teedoc.github.io</p>
+<p>源码: <a href="https://github.com/teedoc/teedoc"  target="_blank">https://github.com/teedoc/teedoc</a> 如果你喜欢这个项目，请务必登录 github 给项目点个 star</p>
+<p>以下场景可使用teedoc：</p>
+<ul>
+<li>建文档网站，并且最好支持放多份文档（比如你有一本叫Python学习和C++学习两本书，它们都有单独的目录, teedoc则是书库）</li>
+<li>文档和网页页面共存，支持自定义HTML页面</li>
+<li>建WiKi网站</li>
+<li>建个人或者企业知识库</li>
+<li>建个人或者企业网站</li>
+<li>博客</li>
+</ul>
+<h2 id="%E4%BD%BF%E7%94%A8teedoc%E7%9A%84%E4%BC%81%E4%B8%9A%E6%A1%88%E4%BE%8B">使用teedoc的企业案例</h2>
+<table>
+<thead>
+<tr>
+  <th>网站</th>
+  <th>简介</th>
+  <th>站点源文档</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td><a href="https://teedoc.github.io"  target="_blank">teedoc 官网</a></td>
+  <td>好用的文档网站生成工具</td>
+  <td><a href="https://github.com/teedoc/teedoc.github.io"  target="_blank">teedoc/teedoc.github.io</a></td>
+</tr>
+<tr>
+  <td><a href="https://maixpy.sipeed.com"  target="_blank">MaixPy</a></td>
+  <td>边缘 AI 计算 Python SDK</td>
+  <td><a href="https://github.com/sipeed/MaixPy_DOC"  target="_blank">sipeed/MaixPy_DOC</a></td>
+</tr>
+<tr>
+  <td><a href="https://wiki.sipeed.com"  target="_blank">Sipeed Wiki</a></td>
+  <td>Sipeed 官方Wiki</td>
+  <td><a href="https://github.com/sipeed/sipeed_wiki"  target="_blank">sipeed/sipeed_wiki</a></td>
+</tr>
+<tr>
+  <td><a href="https://teedoc.github.io/re0-web-teedoc/"  target="_blank">teedoc.github.io/re0-web-teedoc/</a></td>
+  <td>从 gitbook 转到 teedoc 的示例网站</td>
+  <td><a href="https://github.com/teedoc/re0-web-teedoc"  target="_blank">teedoc/re0-web-teedoc</a></td>
+</tr>
+<tr>
+  <td><a href="https://python.quectel.com/doc/"  target="_blank">QuecPython</a></td>
+  <td>QuecPython 文档中心</td>
+  <td><a href="https://gitee.com/quecpython/Community-document"  target="_blank">gitee</a> <a href="https://github.com/quecpython/Community-document"  target="_blank">github</a></td>
+</tr>
+<tr>
+  <td><a href="https://bpi-steam.com/"  target="_blank">BPI Steam Doc</a></td>
+  <td>BananaPi, Steam团队的文档（Wiki），包含了开源软件和开源硬件资料，AIOT资料等等</td>
+  <td><a href="https://github.com/BPI-STEAM/BPI-Doc"  target="_blank">BPI-STEAM/BPI-Doc</a></td>
+</tr>
+<tr>
+  <td><a href="https://udbg.github.io/"  target="_blank">udbg</a></td>
+  <td>基于Lua的二进制调试/分析工具</td>
+  <td><a href="https://github.com/udbg/udbg.github.io"  target="_blank">udbg/udbg.github.io</a></td>
+</tr>
+<tr>
+  <td><a href="https://sakurajimamaii.github.io/VastDocs/"  target="_blank">VastUtils</a></td>
+  <td>一款加快你安卓开发的安卓工具集</td>
+  <td><a href="https://github.com/SakurajimaMaii/VastDocs"  target="_blank">SakurajimaMaii/VastDocs</a></td>
+</tr>
+</tbody>
+</table>
+<p>期待你的使用， 欢迎<a href="https://github.com/teedoc/teedoc.github.io/issues"  target="_blank">提交 issue</a> 或者 PR 来添加你的网站</p>
+
+                        
+                    </div>
+                </div>
+                <div id="previous_next">
+                    <div id="previous">
+                        
+                        <a href="/diy/picxel-clock/voice.html">
+                            <span class="icon"></span>
+                            <span class="label">8. 语音识别与播报</span>
+                        </a>
+                        
+                    </div>
+                    <div id="next">
+                        
+                    </div>
+                </div>
+                <div id="comments-container"></div>
+            </div>
+            <div id="toc_wrapper">
+                <div id="toc">
+                    <div id="toc_content">
+                            
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <a id="to_top" href="#"></a>
+    <div id="doc_footer">
+        <div id="footer">
+            <div id="footer_top">
+                <ul>
+<li><a>链接</a><ul><li><a target="_blank" href="https://teedoc.neucrack.com">本网站使用 teedoc 构建</a></li>
+</ul>
+</li>
+<li><a>站长</a><ul><li><a target="_blank" href="https://laoguaige.github.io/">老怪鸽</a></li>
+<li><a>邮箱: liguoyi@hdochub.cn</a>
+</li>
+</ul>
+</li>
+<li><a>源码</a><ul><li><a target="_blank" href="https://github.com/LaoGuaiGe/laoguaige.github.io">本站源文件</a></li>
+</ul>
+</li>
+</ul>
+
+            </div>
+            <div id="footer_bottom">
+                <ul>
+<li><a target="_blank" href="https://laoguaige.github.io/">Copyright © 2024 Hdochub</a></li>
+</ul>
+
+            </div>
+        </div>
+    </div>
+    
+        <script src="/teedoc-plugin-markdown-parser/mermaid.min.js"></script>
+    
+        <script>mermaid.initialize({startOnLoad:true});</script>
+    
+        <script src="/static/js/theme_default/tocbot.min.js"></script>
+    
+        <script src="/static/js/theme_default/main.js"></script>
+    
+        <script src="/static/js/theme_default/viewer.min.js"></script>
+    
+        <script src="/static/css/theme_default/prism.min.js"></script>
+    
+        <link rel="stylesheet" href="/static/js/add_hint/style.css" type="text/css"/>
+    
+        <script src="/static/js/add_hint/main.js"></script>
+    
+        <script src="/static/js/gitalk/gitalk.min.js"></script>
+    
+        <script src="/static/js/gitalk/main.js"></script>
+    
+        <script src="/static/js/custom.js"></script>
+    
+        <script src="/static/js/search/search_main.js"></script>
+    
+</body>
+
+</html>

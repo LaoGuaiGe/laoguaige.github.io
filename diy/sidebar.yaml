@@ -1,7 +1,7 @@
 items:
 -   label: 项目集合
     file: README.md
--   label: 像素时钟⏰
+-   label: 物联网像素时钟⏰
     file: picxel-clock/basic.md
     collapsed: true
     items:
@@ -27,4 +27,6 @@ items:
         file: picxel-clock/led-oscillating.md
     -   label: 8. 语音识别与播报
         file: picxel-clock/voice.md
+-   label: WIKI网站搭建🌐
+    file: wiki-web/basic.md        
         

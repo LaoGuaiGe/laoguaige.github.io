@@ -7,7 +7,7 @@
     return;
   }
   // render
-  var config = {"clientID": "9d215c8c4d2357fab5ba", "clientSecret": "1d641e9f45f74a620a262091409b1d719b626755", "repo": "teedoc.github.io", "owner": "teedoc", "admin": ["Neutree"], "adminAutoCreate": false};
+  var config = {"clientID": "Ov23li0efZsLQDAChESx", "clientSecret": "b7894003cb3fb90d29ccacecc89fcd78252bf777", "repo": "laoguaige.github.io", "owner": "LaoGuaiGe", "admin": ["LaoGuaiGe"], "adminAutoCreate": false};
   var html = document.getElementsByTagName("html")[0];
   var id = html.id;
   if(id){

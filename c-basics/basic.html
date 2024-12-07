@@ -1,0 +1,766 @@
+<!DOCTYPE html>
+
+<html lang="en"  class="">
+
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <meta name="keywords" content="keyword1, keyword2">
+    
+    
+    <meta name="description" content="description for this article">
+    
+    <meta name="generator" content="teedoc">
+    <meta name="theme" content="teedoc-plugin-theme-default">
+    
+        
+        <meta name="markdown-generator" content="teedoc-plugin-markdown-parser">
+        
+        <script>
+MathJax = {"loader": {"load": ["output/svg"]}, "tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]]}, "svg": {"fontCache": "global"}};
+</script>
+        
+        <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+        
+        <meta name="html-generator" content="teedoc-plugin-jupyter-notebook-parser">
+        
+        <script src="/static/js/theme_default/pre_main.js"></script>
+        
+        <link rel="stylesheet" href="/static/css/theme_default/prism.min.css" type="text/css"/>
+        
+        <link rel="stylesheet" href="/static/css/theme_default/viewer.min.css" type="text/css"/>
+        
+        <link rel="stylesheet" href="/static/css/theme_default/dark.css" type="text/css"/>
+        
+        <link rel="stylesheet" href="/static/css/theme_default/light.css" type="text/css"/>
+        
+        <script src="/static/js/theme_default/jquery.min.js"></script>
+        
+        <script src="/static/js/theme_default/split.js"></script>
+        
+        <link rel="stylesheet" href="/static/css/gitalk/gitalk.css" type="text/css"/>
+        
+        <link rel="stylesheet" href="/static/css/gitalk/custom_gitalk.css" type="text/css"/>
+        
+        <link rel="stylesheet" href="/static/css/custom.css" type="text/css"/>
+        
+        <link rel="stylesheet" href="/static/css/search/style.css" type="text/css"/>
+        
+    
+    
+    <title>基本概念 - Hdochub</title>
+    
+    <script type="text/javascript">js_vars = {"teedoc-plugin-ad-hint": {"type": "hint", "label": "☆", "content": "这里是老怪鸽的个人技术文档记录中心</br>喜欢项目请<a target=\"_blank\" href=\"https://github.com/LaoGuaiGe/laoguaige.github.io\">点下 ☆ star </a>哦~🦀🦀", "show_times": 2, "show_after_s": 432000, "date": "2021-11-16 14:40", "color": "#a0421d", "link_color": "#e53935", "link_bg_color": "#e6ae5c", "bg_color": "#ffcf89", "color_hover": "white", "bg_color_hover": "#f57c00", "close_color": "#eab971"}}</script>
+    <script type="text/javascript">metadata = {"tags": [], "date": "2024-12-07", "update": [{"date": "2024-12-07", "author": "老怪鸽", "version": 1.0, "content": "更新了基本文档"}], "ts": 1733529600, "author": "", "brief": "", "cover": "", "show_source": false}</script>
+</head>
+
+
+<body class="type_doc">
+    
+    <div id="navbar">
+        <div id="navbar_menu">
+            <a class="site_title" href="/">
+                
+                    <img class="site_logo" src="/static/images/logo.png" alt="HDocHub logo">
+                
+                
+                    <h2>HDocHub</h2>
+                
+        </a>
+            <a id="navbar_menu_btn"></a>
+        </div>
+        <div id="navbar_items">
+            <div>
+                <ul id="nav_left">
+<li class=""><a  href="/">首页</a></li>
+<li class="active"><a  href="/c-basics/">C语言</a></li>
+<li class=""><a  href="/python/">Python</a></li>
+<li class=""><a  href="/linux/">Linux</a></li>
+<li class=""><a  href="/markdown/">MarkDown</a></li>
+<li class=""><a  href="/git/">Git</a></li>
+<li class=""><a  href="/mcu/">单片机</a></li>
+<li class=""><a  href="/module/">电子模块驱动合集</a></li>
+<li class=""><a  href="/diy/">DIY项目</a></li>
+</ul>
+
+            </div>
+            <div>
+                <ul id="nav_right">
+<li class=""><a target="_blank" href="https://github.com/LaoGuaiGe/laoguaige.github.io">github</a></li>
+</ul>
+
+                <ul class="nav_plugins"><li><a id="themes" class="light"></a></li></ul><ul class="nav_plugins"><li><a id="search"><span class="icon"></span><span class="placeholder">搜索</span>
+                            <div id="search_hints">
+                                <span id="search_input_hint">输入关键词，多关键词空格隔开</span>
+                                <span id="search_loading_hint">正在加载，请稍候。。。</span>
+                                <span id="search_download_err_hint">下载文件失败，请刷新重试或检查网络</span>
+                                <span id="search_other_docs_result_hint">来自其它文档的结果</span>
+                                <span id="search_curr_doc_result_hint">当前文档搜索结果</span>
+                            </div></a></li></ul>
+            </div>
+        </div>
+    </div>
+    
+    <div id="wrapper">
+        <div id="sidebar_wrapper">
+            <div id="sidebar">
+                <div id="sidebar_title">
+                    
+                </div>
+                <ul class="show">
+<li class="not_active with_link"><a href="/c-basics/index.html"><span class="label">基本介绍</span><span class=""></span></a></li>
+<li class="not_active with_link"><a href="/c-basics/download.html"><span class="label">资料下载</span><span class=""></span></a></li>
+<li class="not_active with_link"><a href="/c-basics/install.html"><span class="label">环境搭建</span><span class=""></span></a></li>
+<li class="active with_link"><a href="/c-basics/basic.html"><span class="label">基本语法</span><span class=""></span></a></li>
+<li class="not_active with_link"><a href="/c-basics/sequence.html"><span class="label">顺序结构程序设计</span><span class=""></span></a></li>
+<li class="not_active with_link"><a href="/c-basics/select.html"><span class="label">选择结构程序设计</span><span class=""></span></a></li>
+<li class="not_active with_link"><a href="/c-basics/loop.html"><span class="label">循环结构程序设计</span><span class=""></span></a></li>
+<li class="not_active with_link"><a href="/c-basics/array.html"><span class="label">数组</span><span class=""></span></a></li>
+<li class="not_active with_link"><a href="/c-basics/function.html"><span class="label">函数</span><span class=""></span></a></li>
+<li class="not_active with_link"><a href="/c-basics/pointer.html"><span class="label">指针</span><span class=""></span></a></li>
+<li class="not_active with_link"><a href="/c-basics/structure.html"><span class="label">结构体与联合体</span><span class=""></span></a></li>
+<li class="not_active with_link"><a href="/c-basics/handle.html"><span class="label">预处理命令</span><span class=""></span></a></li>
+</ul>
+
+            </div>
+        </div>
+        <div id="article">
+            <div id="menu_wrapper">
+                <div id="menu">
+                </div>
+            </div>
+            <div id="content_wrapper">
+                <div id="content_body">
+                    <div id="article_head">
+                        <div id="article_title">
+                            
+                            <h1>基本概念</h1>
+                            
+                        </div>
+                        <div id="article_tags">
+                            <ul>
+                            
+                            </ul>
+                        </div>
+                        <div id="article_info">
+                        <div id="article_info_left">
+                            <span class="article_author">
+                                
+                            </span>
+                            
+                                <span class="article_date" title="Last modify date: 2024-12-07">
+                                    2024-12-07
+                                </span>
+                            
+                        </div>
+                        <div id="article_info_right">
+                            
+                        </div>
+                        </div>
+                    </div>
+                    <div id="article_tools">
+                        <span></span>
+                        <span id="toc_btn"></span>
+                    </div>
+                    <div id="update_history">
+                        
+                        
+                        <details open>
+                        
+                            <summary>Update history</summary>
+                            <div>
+                                <table>
+                                        <thead>
+                                            <tr>
+                                                <th>Date</th>
+                                                <th>Version</th>
+                                                <th>Author</th>
+                                                <th>Update content</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            
+                                                <tr>
+                                                    <td>2024-12-07</td>
+                                                    <td>1.0</td>
+                                                    <td>老怪鸽</td>
+                                                    <td>
+                                                    
+                                                        更新了基本文档
+                                                    
+                                                    </td>
+                                                </tr>
+                                            
+                                        </tbody>
+                                </table>
+                            </div>
+                        </details>
+                        
+                    </div>
+                    <div id="article_content">
+                        
+                            <h2 id="%E9%A2%84%E5%A4%84%E7%90%86%E5%99%A8">预处理器</h2>
+<p>C语言使用预处理器来处理源代码中的预处理指令，如 <code>#include</code> 用于包含头文件，<code>#define</code> 用于宏定义等。</p>
+
+<pre class="language-c"><code class="language-c">
+#include &lt;stdio.h&gt; // 预处理器指令，用于包含标准输入输出库的头文件
+//使用printf时需要定义
+
+</code></pre>
+<h2 id="%E8%AF%AD%E6%B3%95%E8%A7%84%E5%88%99">语法规则</h2>
+<p>C语言程序是按顺序执行的，这意味着程序中的语句是从上到下逐条执行的，除非有控制流语句（如循环、分支等）改变执行顺序。</p>
+<ul>
+<li>C语言是区分大小写的，这意味着 <code>main</code> 和 <code>Main</code> 是不同的标识符。</li>
+<li>每条语句通常以分号 <code>;</code> 结尾。</li>
+<li>注释可以用 // 开始单行注释，或者用 <code>/* ... */</code> 包围多行注释。</li>
+</ul>
+<h2 id="%E6%A0%87%E8%AF%86%E7%AC%A6%E4%B8%8E%E5%85%B3%E9%94%AE%E5%AD%97">标识符与关键字</h2>
+<p><strong>标识符</strong> 是程序员用来定义<code>变量</code>、<code>函数</code>或<code>其他用户定义项</code>的 <strong>名称</strong>。标识符的命名规则如下：</p>
+<ul>
+<li>必须以字母（a-z, A-Z）或下划线（_）开头。</li>
+<li>后续字符可以是字母、数字（0-9）或下划线。</li>
+<li>标识符是大小写敏感的。</li>
+<li>标识符不能是关键字。</li>
+</ul>
+<p><strong>关键字</strong> 是C语言预定义的具有特定意义的单词，它们用于表示基本的语言构造和功能。例如：</p>
+<hr />
+<table>
+<thead>
+<tr>
+  <th>类别</th>
+  <th>关键字列表</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td>数据类型</td>
+  <td>char, int, float, double, short, long, signed, unsigned, void, _Bool, _Complex, _Imaginary</td>
+</tr>
+<tr>
+  <td>存储类</td>
+  <td>auto, register, static, extern, typedef, volatile, const</td>
+</tr>
+<tr>
+  <td>控制语句</td>
+  <td>if, else, switch, case, default, while, do, for, break, continue, goto, return</td>
+</tr>
+<tr>
+  <td>结构化数据</td>
+  <td>struct, union, enum</td>
+</tr>
+<tr>
+  <td>其他</td>
+  <td>sizeof, typeof, static_assert, _Alignas, _Alignof (部分为C11标准引入)</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<blockquote>
+<p>有那么多的关键字记不住怎么办？没事，如果你在代码中将关键字用于关键字功能外的其他功能，通常都是会报错了，当报错时，你就该意识到你的标识符定义可能是关键字了。</p>
+</blockquote>
+<h2 id="%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B">数据类型</h2>
+<p>C语言中的数据类型用于指定<strong>变量</strong>存储的数据种类和大小。基本数据类型包括：</p>
+<table>
+<thead>
+<tr>
+  <th>数据类型名称</th>
+  <th>数据类型</th>
+  <th>字节大小</th>
+  <th>常规数据范围</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td>有符号字符型</td>
+  <td>char</td>
+  <td>1</td>
+  <td>-128 到 127</td>
+</tr>
+<tr>
+  <td>无符号字符型</td>
+  <td>unsigned char</td>
+  <td>1</td>
+  <td>0 到 255</td>
+</tr>
+<tr>
+  <td>有符号整型</td>
+  <td>int</td>
+  <td>4</td>
+  <td>-2,147,483,648 到 2,147,483,647</td>
+</tr>
+<tr>
+  <td>无符号整型</td>
+  <td>unsigned int</td>
+  <td>4</td>
+  <td>0 到 4,294,967,295</td>
+</tr>
+<tr>
+  <td>有符号短整型</td>
+  <td>short</td>
+  <td>2</td>
+  <td>-32,768 到 32,767</td>
+</tr>
+<tr>
+  <td>无符号短整型</td>
+  <td>unsigned short</td>
+  <td>2</td>
+  <td>0 到 65,535</td>
+</tr>
+<tr>
+  <td>有符号长整型</td>
+  <td>long</td>
+  <td>4</td>
+  <td>-2,147,483,648 到 2,147,483,647</td>
+</tr>
+<tr>
+  <td>无符号长整型</td>
+  <td>unsigned long</td>
+  <td>4</td>
+  <td>0 到 4,294,967,295</td>
+</tr>
+<tr>
+  <td>单精度浮点型</td>
+  <td>float</td>
+  <td>4</td>
+  <td>约为 -3.4E38 到 3.4E38（6-7位精度）</td>
+</tr>
+<tr>
+  <td>双精度浮点型</td>
+  <td>double</td>
+  <td>8</td>
+  <td>约为 -1.7E308 到 1.7E308（15-16位精度）</td>
+</tr>
+<tr>
+  <td>扩展精度浮点型</td>
+  <td>long double</td>
+  <td>8 或 12 或 16</td>
+  <td>更大的范围和精度</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<details>
+<summary>字符型\整型\短整型\长整型\浮点型的扩展说明</summary>
+<div class="details-content"><p><strong>字符型（char）</strong><br />
+     表示范围：通常是从 -128 到 127（有符号），或者从 0 到 255（无符号）。<br />
+     用途：用于存储单个字符或小的整数值。<br />
+     关键字：char，unsigned char（无符号），signed char（有符号，通常默认）。<br />
+ <strong>整型（int）</strong><br />
+     表示范围：通常是 -2,147,483,648 到 2,147,483,647。<br />
+     用途：用于存储整数，是最常用的整数类型。<br />
+     关键字：int，unsigned int（无符号），signed int（有符号，通常默认）。<br />
+ <strong>短整型（short int）</strong><br />
+     表示范围：通常是 -32,768 到 32,767。<br />
+     用途：当整型太大，而字符型不足以满足需求时使用。<br />
+     关键字：short，short int，unsigned short（无符号），signed short（有符号，通常默认）。<br />
+ <strong>长整型（long int）</strong><br />
+     表示范围：对于32位通常是 -2,147,483,648 到 2,147,483,647，对于64位通常是 -9,223,372,036,854,775,808 到 9,223,372,036,854,775,807。<br />
+     用途：用于需要比普通整型更大范围的整数。<br />
+     关键字：long，long int，unsigned long（无符号），signed long（有符号，通常默认）。<br />
+ <strong>浮点型（float）</strong><br />
+     表示范围：大约是 -3.4E+38 到 +3.4E+38。<br />
+     精度：大约是6-7位十进制数。<br />
+     用途：用于存储带有小数点的数值，但精度不如双精度浮点型。<br />
+     关键字：float<br />
+ <strong>双精度浮点型（double）</strong><br />
+     表示范围：大约是 -1.7E+308 到 +1.7E+308。<br />
+     精度：大约是15位十进制数。<br />
+     用途：用于需要更高精度和更大范围的浮点数。<br />
+     关键字：double<br />
+ <strong>长双精度浮点型（long double）</strong><br />
+     表示范围：比双精度浮点型更大。<br />
+     精度：比双精度浮点型更高。<br />
+     用途：用于需要极高精度和非常大范围的浮点数。<br />
+     关键字：long double</p>
+</div>
+</details>
+<blockquote>
+<p>请注意，数据范围可能因不同的编译器和平台而异，例如，在某些系统上，int 可能是32位的，而在其他系统上可能是16位的。同样，long 类型在某些平台上可能是64位的。<br />
+为了确保跨平台的一致性，可以使用标准头文件 &lt;limits.h&gt; 和 &lt;float.h&gt; 来获取确切的数据类型大小和范围。</p>
+</blockquote>
+<p>不知道大家有没有发现一个现象，使用<code>unsigned</code>修饰的数据类型都是正数，通常我们是叫中无符号型，表示没有负数的意思，例如：</p>
+
+<pre class="language-c"><code class="language-c">unsigned char temp = 0; //表示该temp为无符号整型数据，数据范围是 0 到 4,294,967,295
+char value = 0;         //表示该value为有符号字符型数据，数据范围是 -128 到 127
+</code></pre>
+<blockquote class="spoiler warning">
+<p> 当变量参与到正负的运算时，这个变量的定义很重要，不能使用无符号的变量进行运算，不然无法得到负数。</p>
+</blockquote>
+<h2 id="%E5%8F%98%E9%87%8F%E4%B8%8E%E5%B8%B8%E9%87%8F">变量与常量</h2>
+<h3 id="%E5%8F%98%E9%87%8F">变量</h3>
+<p><strong>变量</strong>是存储数据的标识符，它的值可以在程序执行期间改变。</p>
+
+<pre class="language-c"><code class="language-c">int age; // 声明一个整型变量age
+age = 30; // 给变量age赋值
+</code></pre>
+<details>
+<summary>变量的使用</summary>
+<div class="details-content"><p><strong>1. 声明与初始化</strong><br />
+     在使用变量之前，必须先声明它。<br />
+     &gt; (声明也叫定义，就是通过给变量定义一个数据类型，让变量知道它是干什么的)<br />
+     尽可能对变量进行初始化，以避免不确定的初始值。<br />
+     &gt;（比如在声明时赋值为0，这个涉及到后面的全局变量和局部变量的概念）<br />
+ <strong>2. 作用域</strong><br />
+     了解变量的作用域（全局变量、局部变量）。<br />
+     避免在不同的作用域中使用相同的变量名，以免产生混淆。<br />
+ <strong>3. 命名规则</strong><br />
+     使用有意义的变量名，使其能够反映变量的用途。不要定义什么a,b,c。别人看不懂。<br />
+     遵守一致的命名约定（如驼峰命名法<code>MyValue</code>、下划线分隔<code>my_value</code>等）。<br />
+ <strong>4. 类型一致</strong><br />
+     避免在不同类型之间进行不恰当的赋值，除非进行了显式类型转换。比如 <code>12 + 3.1415</code> 赋值给一个整型的变量，那么最终的结果还是一个整形的数据。<br />
+ <strong>5. 修改与访问</strong><br />
+     不要在多个地方随意修改全局变量，这可能导致难以追踪的bug。<br />
+     尽量减少变量的使用范围，局部变量比全局变量更安全。（通过定义函数返回的方式获取变量）</p>
+</div>
+</details>
+<h3 id="%E5%B8%B8%E9%87%8F">常量</h3>
+<p><strong>常量</strong>是固定值的标识符，一旦定义后其值不能更改。用<code>const</code>定义的参数就是常量。</p>
+
+<pre class="language-c"><code class="language-c">const float PI = 3.14159; // 声明一个常量PI
+</code></pre>
+<details>
+<summary>常量的使用</summary>
+<div class="details-content"><p><strong>1. 定义常量</strong><br />
+ 使用<code>#define</code>或<code>const</code>关键字来定义常量。<br />
+ 对于数值常量，使用<code>const</code>可以提供类型安全。<br />
+ <strong>2. 命名约定</strong><br />
+ 常量名通常使用<code>大写字母</code>，并用下划线分隔单词（如MAX_VALUE）。<br />
+ <strong>3. 使用常量</strong><br />
+ 使用常量代替硬编码的值，以提高代码的可读性和可维护性。<br />
+ <em>如果一个值在程序中多次出现并且是固定的，应该将其定义为常量</em>。<br />
+ <strong>4. 不可变性</strong><br />
+ 一旦定义了常量，就不应该修改它的值。<br />
+ 对于const定义的常量，编译器会确保其值不被修改。<br />
+ <strong>5. 类型安全</strong><br />
+ 使用const关键字定义常量时，应该指定类型，以避免类型隐式转换可能带来的问题。</p>
+</div>
+</details>
+<h2 id="%E8%BF%90%E7%AE%97%E7%AC%A6%E4%B8%8E%E8%A1%A8%E8%BE%BE%E5%BC%8F">运算符与表达式</h2>
+<p>运算符是用于执行某种操作或计算的特殊符号。C语言中有很多运算符，下面将一一介绍。</p>
+<h3 id="%E7%AE%97%E6%9C%AF%E8%BF%90%E7%AE%97%E7%AC%A6">算术运算符</h3>
+<table>
+<thead>
+<tr>
+  <th>运算符</th>
+  <th>符号</th>
+  <th>例子</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td>加法</td>
+  <td><code>+</code></td>
+  <td>value = 1 + 1, value==2</td>
+</tr>
+<tr>
+  <td>减法</td>
+  <td><code>-</code></td>
+  <td>value = 2 - 1, value==1</td>
+</tr>
+<tr>
+  <td>乘法</td>
+  <td><code>*</code></td>
+  <td>value = 2 * 2, value==4</td>
+</tr>
+<tr>
+  <td>除法</td>
+  <td><code>/</code></td>
+  <td>value = 2 / 2, value==1</td>
+</tr>
+<tr>
+  <td>取模</td>
+  <td><code>%</code></td>
+  <td>value = 2 % 2, value==0</td>
+</tr>
+</tbody>
+</table>
+<p>算术运算符用于执行基本的数学运算，如加法、减法、乘法、除法和取模（求余数，只取第一个余数）。</p>
+<h3 id="%E5%85%B3%E7%B3%BB%E8%BF%90%E7%AE%97%E7%AC%A6">关系运算符</h3>
+<table>
+<thead>
+<tr>
+  <th>运算符</th>
+  <th>符号</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td>等于</td>
+  <td><code>==</code></td>
+</tr>
+<tr>
+  <td>不等于</td>
+  <td><code>!=</code></td>
+</tr>
+<tr>
+  <td>小于</td>
+  <td><code>&lt;</code></td>
+</tr>
+<tr>
+  <td>大于</td>
+  <td><code>&gt;</code></td>
+</tr>
+<tr>
+  <td>小于等于</td>
+  <td><code>&lt;=</code></td>
+</tr>
+<tr>
+  <td>大于等于</td>
+  <td><code>&gt;=</code></td>
+</tr>
+</tbody>
+</table>
+<p>关系运算符用于比较两个值，并返回一个布尔结果（真或假）。</p>
+<h3 id="%E9%80%BB%E8%BE%91%E8%BF%90%E7%AE%97%E7%AC%A6">逻辑运算符</h3>
+<table>
+<thead>
+<tr>
+  <th>运算符</th>
+  <th>符号</th>
+  <th>描述</th>
+  <th>例子</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td>逻辑与</td>
+  <td><code>&amp;&amp;</code></td>
+  <td>如果&amp;&amp;两边的条件都成立则为真，否则为假</td>
+  <td>( 1 &amp;&amp; 0 ) 假 <br> ( 1 &amp;&amp; 1 ) 真</td>
+</tr>
+<tr>
+  <td>逻辑或</td>
+  <td><code>||</code></td>
+  <td>如果||两边的条件有一个成立则为真，否则为假</td>
+  <td>( 1 &amp;&amp; 0 ) 真 <br> ( 0 &amp;&amp; 0 ) 假</td>
+</tr>
+<tr>
+  <td>逻辑非</td>
+  <td><code>!</code></td>
+  <td>使用!会将真的条件改为假，假的条件改为真</td>
+  <td>( !1  ) 假 <br> ( !0 ) 真</td>
+</tr>
+</tbody>
+</table>
+<p>逻辑运算符用于组合或修改布尔表达式，逻辑与（<code>&amp;&amp;</code>）和逻辑或（<code>||</code>）用于组合两个条件，逻辑非（<code>!</code>）用于反转条件的布尔值。</p>
+<h3 id="%E8%A1%A8%E8%BE%BE%E5%BC%8F">表达式</h3>
+<p>表达式是由运算符和操作数组成的语句，它计算出一个值。</p>
+
+<pre class="language-c"><code class="language-c">int a = 5, b = 3;
+int sum = a + b; // 这是一个表达式，计算a和b的和
+</code></pre>
+<p>下面举一些例子：</p>
+
+<pre class="language-c"><code class="language-c">5 &gt; 3 &amp;&amp; 2 &lt; 4
+答案: True
+
+7 == 7 || 8 != 8
+答案: True
+
+!(10 &lt; 20)
+答案: False
+
+12 / 4 == 3 &amp;&amp; 5 * 2 &gt; 9
+答案: True
+
+2 + 3 * 4 &lt; 15
+答案: False (因为3 * 4先计算，得到12，然后2 + 12 = 14，14不小于15)
+
+'a' == 'A' || 'b' &lt; 'c'
+答案: True (因为'a' != 'A'为False，但'b' &lt; 'c'为True，所以整体为True)
+
+!(100 % 3 == 1) &amp;&amp; 10 / 2 &gt;= 5
+答案: True (因为100 % 3 == 1为False，所以!False为True，且10 / 2等于5，5 &gt;= 5为True)
+
+3.14 &gt; 2.71 &amp;&amp; 2.71 &lt; 3.14
+答案: True
+
+</code></pre>
+<h2 id="%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2">类型转换</h2>
+<p>类型转换是指将一种数据类型的变量转换为另一种数据类型。在C语言中，类型转换可以是隐式的，也可以是显式的。</p>
+
+<pre class="language-c"><code class="language-c">int num = 5;
+double result = num + 3.5; // num会被隐式转换为double类型
+</code></pre>
+<p>显式类型转换（也称为类型强制转换）：</p>
+
+<pre class="language-c"><code class="language-c">double num = 3.14;
+int intNum = (int)num; // 显式将double类型的num转换为int类型
+</code></pre>
+<h2 id="%E8%BE%93%E5%85%A5%E4%B8%8E%E8%BE%93%E5%87%BA">输入与输出</h2>
+<p>在C语言中，输入是指程序从用户或其他外部源接收数据的过程，而输出是指程序将数据发送到用户或其他外部设备的过程。</p>
+<h3 id="%E8%BE%93%E5%87%BA%EF%BC%88Output%EF%BC%89">输出（Output）</h3>
+<p>在C语言中，<code>printf</code> 函数是最常用的输出函数之一。它用于在控制台上打印格式化的字符串。<code>printf</code> 函数可以包含格式化占位符，如<code>%d</code> 用于整数，<code>%f</code> 用于浮点数，<code>%s</code> 用于字符串等。</p>
+<h3 id="%E8%BE%93%E5%85%A5%EF%BC%88Input%EF%BC%89">输入（Input）</h3>
+<p>输入通常使用 <code>scanf</code> 函数来完成，它是C语言标准库中的一个函数，用于从标准输入（通常是键盘）读取格式化的数据。<code>scanf</code> 函数使用格式化字符串来指定输入数据的类型和格式。</p>
+<h3 id="%E8%BE%93%E5%85%A5%E8%BE%93%E5%87%BA%E4%BE%8B%E5%AD%90">输入输出例子</h3>
+<p><strong>读取并打印一个整数。</strong></p>
+
+<pre class="language-c"><code class="language-c">#include &lt;stdio.h&gt;
+
+int main() {
+    int number;
+
+    printf(&quot;请输入一个整数: &quot;);
+    scanf(&quot;%d&quot;, &amp;number); // 读取一个整数
+
+    printf(&quot;您输入的整数是: %d\n&quot;, number); // 打印这个整数
+
+    return 0;
+}
+</code></pre>
+<p><strong>读取并打印两个浮点数，然后计算它们的和。</strong></p>
+
+<pre class="language-c"><code class="language-c">#include &lt;stdio.h&gt;
+
+int main() {
+    float num1, num2, sum;
+
+    printf(&quot;请输入两个浮点数，用空格隔开: &quot;);
+    scanf(&quot;%f %f&quot;, &amp;num1, &amp;num2); // 读取两个浮点数
+
+    sum = num1 + num2; // 计算和
+
+    printf(&quot;您输入的两个浮点数分别是: %.2f 和 %.2f\n&quot;, num1, num2);
+    printf(&quot;它们的和是: %.2f\n&quot;, sum); // 打印和
+
+    return 0;
+}
+</code></pre>
+<h2 id="%E4%BD%9C%E4%B8%9A">作业</h2>
+<p><strong>温度转换程序</strong></p>
+<p>编写一个C语言程序，该程序能够将用户输入的摄氏度（Celsius）转换为华氏度（Fahrenheit）并输出结果。转换公式如下：</p>
+<blockquote>
+<p>华氏度 = 摄氏度 * 9/5 + 32</p>
+</blockquote>
+<p><strong>要求：</strong></p>
+<p>程序开始时，应提示用户输入摄氏度值。</p>
+<p>输入后，程序应计算对应的华氏度值。</p>
+<p>输出结果应包括原始的摄氏度值和转换后的华氏度值，格式如下：</p>
+
+<pre class="language-c"><code class="language-c">摄氏度: XX
+华氏度: YY
+</code></pre>
+<p>其中 XX 是用户输入的摄氏度值，YY 是计算出的华氏度值。</p>
+<p><strong>示例：</strong></p>
+<p>如果用户输入 25，则程序输出应为：</p>
+
+<pre class="language-c"><code class="language-c">摄氏度: 25
+华氏度: 77
+</code></pre>
+<p>请根据上述要求编写完整的C语言程序。</p>
+<details>
+<summary>答案代码</summary>
+<div class="details-content">
+<pre class="language-c"><code class="language-c">#include &lt;stdio.h&gt;
+
+int main() {
+    float celsius, fahrenheit;
+
+    // 提示用户输入摄氏度
+    printf(&quot;请输入摄氏度值: &quot;);
+    scanf(&quot;%f&quot;, &amp;celsius);
+
+    // 计算华氏度
+    fahrenheit = celsius * 9.0 / 5.0 + 32;
+
+    // 输出结果
+    printf(&quot;摄氏度: %.2f\n&quot;, celsius);
+    printf(&quot;华氏度: %.2f\n&quot;, fahrenheit);
+
+    return 0;
+}
+</code></pre>
+<p>这段代码首先包含了标准输入输出头文件 stdio.h，然后在 main 函数中定义了两个浮点变量 celsius 和 fahrenheit。程序通过 printf 函数提示用户输入摄氏度值，并通过 scanf 函数读取用户输入的值。接着，使用给定的公式计算华氏度，并通过 printf 函数输出摄氏度和华氏度的值。最后，main 函数返回 0 表示程序正常结束。</p>
+</div>
+</details>
+
+                        
+                    </div>
+                </div>
+                <div id="previous_next">
+                    <div id="previous">
+                        
+                        <a href="/c-basics/install.html">
+                            <span class="icon"></span>
+                            <span class="label">环境搭建</span>
+                        </a>
+                        
+                    </div>
+                    <div id="next">
+                        
+                        <a href="/c-basics/sequence.html">
+                            <span class="label">顺序结构程序设计</span>
+                            <span class="icon"></span>
+                        </a>
+                        
+                    </div>
+                </div>
+                <div id="comments-container"></div>
+            </div>
+            <div id="toc_wrapper">
+                <div id="toc">
+                    <div id="toc_content">
+                            
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <a id="to_top" href="#"></a>
+    <div id="doc_footer">
+        <div id="footer">
+            <div id="footer_top">
+                <ul>
+<li><a>链接</a><ul><li><a target="_blank" href="https://teedoc.neucrack.com">本网站使用 teedoc 构建</a></li>
+</ul>
+</li>
+<li><a>站长</a><ul><li><a target="_blank" href="https://laoguaige.github.io/">老怪鸽</a></li>
+<li><a>邮箱: liguoyi@hdochub.cn</a>
+</li>
+</ul>
+</li>
+<li><a>源码</a><ul><li><a target="_blank" href="https://github.com/LaoGuaiGe/laoguaige.github.io">本站源文件</a></li>
+</ul>
+</li>
+</ul>
+
+            </div>
+            <div id="footer_bottom">
+                <ul>
+<li><a target="_blank" href="https://laoguaige.github.io/">Copyright © 2024 Hdochub</a></li>
+</ul>
+
+            </div>
+        </div>
+    </div>
+    
+        <script src="/teedoc-plugin-markdown-parser/mermaid.min.js"></script>
+    
+        <script>mermaid.initialize({startOnLoad:true});</script>
+    
+        <script src="/static/js/theme_default/tocbot.min.js"></script>
+    
+        <script src="/static/js/theme_default/main.js"></script>
+    
+        <script src="/static/js/theme_default/viewer.min.js"></script>
+    
+        <script src="/static/css/theme_default/prism.min.js"></script>
+    
+        <link rel="stylesheet" href="/static/js/add_hint/style.css" type="text/css"/>
+    
+        <script src="/static/js/add_hint/main.js"></script>
+    
+        <script src="/static/js/gitalk/gitalk.min.js"></script>
+    
+        <script src="/static/js/gitalk/main.js"></script>
+    
+        <script src="/static/js/custom.js"></script>
+    
+        <script src="/static/js/search/search_main.js"></script>
+    
+</body>
+
+</html>
