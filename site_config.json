@@ -53,7 +53,9 @@
             "/diy/picxel-clock/voice": "docs/diy/picxel-clock/voice.html",
             "/diy/picxel-clock/hardware": "docs/diy/picxel-clock/hardware.html",
 
-            "/diy/wiki-web/basic": "docs/diy/wiki-web/basic.html"
+            "/diy/wiki-web/basic": "docs/diy/wiki-web/basic.html",
+
+            "/diy/tracking-cannon/basic": "docs/diy/tracking-cannon/basic.html"
 
         },
         "pages": {
