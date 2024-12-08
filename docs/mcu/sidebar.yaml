@@ -1,3 +1,19 @@
 items:
--   label: Brief
+-   label: 单片机基础合集
     file: README.md
+-   label: Arduino开发板入门
+    file: arduino/README.md
+-   label: ESP32S3开发板入门
+    file: esp32s3/README.md
+-   label: GD32F4开发板入门
+    file: gd32f4/README.md
+-   label: K230开发板入门
+    file: k230/README.md
+-   label: RP2040开发板入门
+    file: rp2040/README.md
+-   label: STM32F1开发板入门
+    file: stm32f1/README.md
+-   label: STM32F4开发板入门
+    file: stm32f4/README.md
+-   label: TI-MSPM0G3507开发板入门
+    file: ti-mspm0g3507/README.md

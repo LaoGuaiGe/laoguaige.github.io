@@ -129,66 +129,66 @@ char *strcpy(char *dest, const char *src); // 复制字符串
 5. 使用C标准库函数对数组进行排序（升序），并再次使用printArray函数打印排序后的数组。
 
 .. details::答案代码
-  ```c
-  #include <stdio.h>
+    ```c
+    #include <stdio.h>
 
-  // 函数声明
-  float calculateAverage(int arr[], int size);
-  void printArray(int arr[], int size, int index);
-  void sortArray(int arr[], int size);
+    // 函数声明
+    float calculateAverage(int arr[], int size);
+    void printArray(int arr[], int size, int index);
+    void sortArray(int arr[], int size);
 
-  int main() {
-      int numbers[10] = {34, 78, 12, 9, 87, 66, 88, 99, 56, 45};
-      int size = sizeof(numbers) / sizeof(numbers[0]);
+    int main() {
+        int numbers[10] = {34, 78, 12, 9, 87, 66, 88, 99, 56, 45};
+        int size = sizeof(numbers) / sizeof(numbers[0]);
 
-      // 计算平均值
-      float average = calculateAverage(numbers, size);
-      printf("数组元素的平均值是：%.2f\n", average);
+        // 计算平均值
+        float average = calculateAverage(numbers, size);
+        printf("数组元素的平均值是：%.2f\n", average);
 
-      // 打印数组
-      printf("原始数组：\n");
-      printArray(numbers, size, 0);
+        // 打印数组
+        printf("原始数组：\n");
+        printArray(numbers, size, 0);
 
-      // 排序数组
-      sortArray(numbers, size);
+        // 排序数组
+        sortArray(numbers, size);
 
-      // 打印排序后的数组
-      printf("排序后的数组：\n");
-      printArray(numbers, size, 0);
+        // 打印排序后的数组
+        printf("排序后的数组：\n");
+        printArray(numbers, size, 0);
 
-      return 0;
-  }
+        return 0;
+    }
 
-  // 计算平均值的函数实现
-  float calculateAverage(int arr[], int size) {
-      int sum = 0;
-      for (int i = 0; i < size; i++) {
-          sum += arr[i];
-      }
-      return (float)sum / size;
-  }
+    // 计算平均值的函数实现
+    float calculateAverage(int arr[], int size) {
+        int sum = 0;
+        for (int i = 0; i < size; i++) {
+            sum += arr[i];
+        }
+        return (float)sum / size;
+    }
 
-  // 递归打印数组的函数实现
-  void printArray(int arr[], int size, int index) {
-      if (index < size) {
-          printf("%d ", arr[index]);
-          printArray(arr, size, index + 1); // 递归调用
-      } else {
-          printf("\n");
-      }
-  }
+    // 递归打印数组的函数实现
+    void printArray(int arr[], int size, int index) {
+        if (index < size) {
+            printf("%d ", arr[index]);
+            printArray(arr, size, index + 1); // 递归调用
+        } else {
+            printf("\n");
+        }
+    }
 
-  // 数组排序的函数实现（使用简单的冒泡排序算法）
-  void sortArray(int arr[], int size) {
-      for (int i = 0; i < size - 1; i++) {
-          for (int j = 0; j < size - i - 1; j++) {
-              if (arr[j] > arr[j + 1]) {
-                  // 交换元素
-                  int temp = arr[j];
-                  arr[j] = arr[j + 1];
-                  arr[j + 1] = temp;
-              }
-          }
-      }
-  }
-  ```
+    // 数组排序的函数实现（使用简单的冒泡排序算法）
+    void sortArray(int arr[], int size) {
+        for (int i = 0; i < size - 1; i++) {
+            for (int j = 0; j < size - i - 1; j++) {
+                if (arr[j] > arr[j + 1]) {
+                    // 交换元素
+                    int temp = arr[j];
+                    arr[j] = arr[j + 1];
+                    arr[j + 1] = temp;
+                }
+            }
+        }
+    }
+    ```
