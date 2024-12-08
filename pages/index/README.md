@@ -44,7 +44,7 @@ id: home_page
                 <a href="/c-basics/index.html" class="article-a">
                     <p class="article-p-h">C语言参考手册</p>
                 </a>
-                <p class="article-p-t">最新：2023-09-01</font>
+                <p class="article-p-t">最新：2024-12-08</font>
                 </p>
             </div>
 			<!-- python自学参考手册 -->
@@ -65,7 +65,7 @@ id: home_page
                 <a href="/python/index.html" class="article-a">
                     <p class="article-p-h">python自学参考手册</p>
                 </a>
-                <p class="article-p-t">最新：2023-09-01</font>
+                <p class="article-p-t">最新：2024-12-08</font>
                 </p>
             </div>
             <!-- 个人Linux笔记 -->
@@ -86,7 +86,7 @@ id: home_page
                 <a href="/linux/index.html" class="article-a">
                     <p class="article-p-h">个人Linux笔记</p>
                 </a>
-                <p class="article-p-t">最新：2023-09-01</font>
+                <p class="article-p-t">最新：2024-12-08</font>
                 </p>
             </div>
 			<!-- MarkDown语法手册-->
@@ -107,7 +107,7 @@ id: home_page
 				<a href="/markdown/index.html" class="article-a">
 					<p class="article-p-h">MarkDown语法手册</p>
 				</a>
-				<p class="article-p-t">最新：2023-09-01</font>
+				<p class="article-p-t">最新：2024-12-08</font>
 				</p>
 			</div>
 		</div>
@@ -131,7 +131,7 @@ id: home_page
 				<a href="/git/index.html" class="article-a">
 					<p class="article-p-h">git使用心得</p>
 				</a>
-				<p class="article-p-t">最新：2023-09-01</font>
+				<p class="article-p-t">最新：2024-12-08</font>
 				</p>
 			</div>
             <!-- 单片机入门手册 -->
@@ -152,7 +152,7 @@ id: home_page
 				<a href="/mcu/index.html" class="article-a">
 					<p class="article-p-h">单片机入门手册</p>
 				</a>
-				<p class="article-p-t">最新：2023-09-01</font>
+				<p class="article-p-t">最新：2024-12-08</font>
 				</p>
 			</div>
             <!-- 电子模块驱动合集 -->
@@ -173,7 +173,7 @@ id: home_page
 				<a href="/module/index.html" class="article-a">
 					<p class="article-p-h">电子模块驱动合集</p>
 				</a>
-				<p class="article-p-t">最新：2023-09-01</font>
+				<p class="article-p-t">最新：2024-12-08</font>
 				</p>
 			</div>
             <!-- DIY项目合集 -->
@@ -194,7 +194,7 @@ id: home_page
 				<a href="/diy/index.html" class="article-a">
 					<p class="article-p-h">DIY项目合集</p>
 				</a>
-				<p class="article-p-t">最新：2023-09-01</font>
+				<p class="article-p-t">最新：2024-12-08</font>
 				</p>
 			</div>
         </div>	

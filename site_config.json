@@ -13,15 +13,15 @@
             "/c-basics/download": "docs/c-basics/download.html",
             "/c-basics/install": "docs/c-basics/install.html",
             "/c-basics/basic": "docs/c-basics/basic.html",
-            "/c-basics/sequence": "docs/c-basics/sequence.html",
-            "/c-basics/select": "docs/c-basics/select.html",
-            "/c-basics/loop": "docs/c-basics/loop.html",
+            "/c-basics/control": "docs/c-basics/control.html",
             "/c-basics/array": "docs/c-basics/array.html",
             "/c-basics/function": "docs/c-basics/function.html",
             "/c-basics/pointer": "docs/c-basics/pointer.html",
             "/c-basics/structure": "docs/c-basics/structure.html",
+            "/c-basics/enumeration": "docs/c-basics/enumeration.html",
             "/c-basics/handle": "docs/c-basics/handle.html",
 
+            
             "/python/": "docs/python/",
             "/linux/": "docs/linux/",
             "/markdown/": "docs/markdown/",

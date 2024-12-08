@@ -68,7 +68,7 @@
                 "items": [
                     {
                         "label": "本网站使用 teedoc 构建",
-                        "url": "https://teedoc.neucrack.com",
+                        "url": "https://github.com/teedoc/teedoc",
                         "target": "_blank"
                     }
                 ]
