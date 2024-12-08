@@ -114,13 +114,12 @@ MathJax = {"loader": {"load": ["output/svg"]}, "tex": {"inlineMath": [["$", "$"]
 <li class="not_active with_link"><a href="/c-basics/download.html"><span class="label">资料下载</span><span class=""></span></a></li>
 <li class="not_active with_link"><a href="/c-basics/install.html"><span class="label">环境搭建</span><span class=""></span></a></li>
 <li class="not_active with_link"><a href="/c-basics/basic.html"><span class="label">基本语法</span><span class=""></span></a></li>
-<li class="not_active with_link"><a href="/c-basics/sequence.html"><span class="label">顺序结构程序设计</span><span class=""></span></a></li>
-<li class="not_active with_link"><a href="/c-basics/select.html"><span class="label">选择结构程序设计</span><span class=""></span></a></li>
-<li class="not_active with_link"><a href="/c-basics/loop.html"><span class="label">循环结构程序设计</span><span class=""></span></a></li>
+<li class="not_active with_link"><a href="/c-basics/control.html"><span class="label">C语言控制结构</span><span class=""></span></a></li>
 <li class="not_active with_link"><a href="/c-basics/array.html"><span class="label">数组</span><span class=""></span></a></li>
 <li class="active with_link"><a href="/c-basics/function.html"><span class="label">函数</span><span class=""></span></a></li>
 <li class="not_active with_link"><a href="/c-basics/pointer.html"><span class="label">指针</span><span class=""></span></a></li>
 <li class="not_active with_link"><a href="/c-basics/structure.html"><span class="label">结构体与联合体</span><span class=""></span></a></li>
+<li class="not_active with_link"><a href="/c-basics/enumeration.html"><span class="label">枚举</span><span class=""></span></a></li>
 <li class="not_active with_link"><a href="/c-basics/handle.html"><span class="label">预处理命令</span><span class=""></span></a></li>
 </ul>
 
@@ -201,11 +200,162 @@ MathJax = {"loader": {"load": ["output/svg"]}, "tex": {"inlineMath": [["$", "$"]
                     </div>
                     <div id="article_content">
                         
-                            <p>函数的定义与调用<br />
-函数参数与返回值<br />
-作用域与生命周期<br />
-递归函数<br />
-库函数简介</p>
+                            <h2 id="%E5%87%BD%E6%95%B0%E7%9A%84%E5%AE%9A%E4%B9%89%E4%B8%8E%E8%B0%83%E7%94%A8">函数的定义与调用</h2>
+<p>在C语言中，函数是执行特定任务的代码块。</p>
+<p>以下是函数定义的格式：</p>
+
+<pre class="language-c"><code class="language-c">返回类型 函数名(参数类型 参数名) {
+    // 函数体
+    // 执行的操作
+}
+</code></pre>
+<p>例如，一个计算两个整数和的函数：</p>
+
+<pre class="language-c"><code class="language-c">int add(int a, int b) {
+    return a + b;
+}
+</code></pre>
+<p><strong>调用函数</strong></p>
+<p>函数定义后，可以在代码中的任何位置调用它：</p>
+
+<pre class="language-c"><code class="language-c">int result = add(5, 3); // 调用add函数，并将返回值赋给result变量
+</code></pre>
+<h2 id="%E5%87%BD%E6%95%B0%E5%8F%82%E6%95%B0%E4%B8%8E%E8%BF%94%E5%9B%9E%E5%80%BC">函数参数与返回值</h2>
+<p><strong>参数</strong></p>
+<p>函数参数是传递给函数的值，用于函数内部的计算或操作。</p>
+<ul>
+<li><strong>形参</strong>：函数定义中的参数称为形参。</li>
+<li><strong>实参</strong>：函数调用时传递的参数称为实参。</li>
+</ul>
+<p><strong>返回值</strong></p>
+<p>函数执行完成后，可以通过return语句返回一个值给调用者。</p>
+
+<pre class="language-c"><code class="language-c">int multiply(int a, int b) {
+    return a * b; // 返回a和b的乘积
+}
+</code></pre>
+<h2 id="%E4%BD%9C%E7%94%A8%E5%9F%9F%E4%B8%8E%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F">作用域与生命周期</h2>
+<p><strong>作用域</strong></p>
+<p>变量的作用域是指变量可以被访问和使用的代码区域。</p>
+<ul>
+<li><strong>局部变量</strong>：在函数内部定义的变量，其作用域仅限于该函数。</li>
+<li><strong>全局变量</strong>：在所有函数外部定义的变量，其作用域为整个程序。</li>
+</ul>
+<p><strong>生命周期</strong></p>
+<p>变量的生命周期是指变量从创建到销毁的时间段。</p>
+<ul>
+<li><strong>局部变量</strong>：在函数调用时创建，函数返回时销毁。</li>
+<li><strong>全局变量</strong>：在程序开始时创建，程序结束时销毁。</li>
+</ul>
+<h2 id="%E9%80%92%E5%BD%92%E5%87%BD%E6%95%B0">递归函数</h2>
+<p>递归函数是调用自身的函数。以下是一个计算阶乘的递归函数示例：</p>
+
+<pre class="language-c"><code class="language-c">unsigned long long factorial(unsigned int n) {
+    if (n &lt;= 1) {
+        return 1; // 递归的基本情况
+    } else {
+        return n * factorial(n - 1); // 递归调用
+    }
+}
+</code></pre>
+<h2 id="%E5%BA%93%E5%87%BD%E6%95%B0%E7%AE%80%E4%BB%8B">库函数简介</h2>
+<p>C语言标准库提供了一系列预定义的函数，用于执行常见任务。</p>
+<p><strong>数学库函数</strong></p>
+
+<pre class="language-c"><code class="language-c">#include &lt;math.h&gt;
+
+double sqrt(double x); // 计算平方根
+double pow(double x, double y); // 计算x的y次幂
+</code></pre>
+<p><strong>输入输出库函数</strong></p>
+
+<pre class="language-c"><code class="language-c">#include &lt;stdio.h&gt;
+
+int printf(const char *format, ...); // 格式化输出到标准输出
+int scanf(const char *format, ...); // 格式化输入
+</code></pre>
+<p><strong>字符串处理库函数</strong></p>
+
+<pre class="language-c"><code class="language-c">#include &lt;string.h&gt;
+
+size_t strlen(const char *s); // 计算字符串长度
+char *strcpy(char *dest, const char *src); // 复制字符串
+</code></pre>
+<h2 id="%E4%BD%9C%E4%B8%9A">作业</h2>
+<p>编写一个C语言程序，实现以下功能：</p>
+<ol>
+<li>定义一个函数calculateAverage，该函数接收一个整型数组和数组的大小，计算并返回数组元素的平均值（作为浮点数）。</li>
+<li>定义一个递归函数printArray，该函数接收一个整型数组、数组的大小和当前索引，从当前索引开始打印数组中的所有元素。</li>
+<li>在main函数中，创建一个包含至少10个整数的数组，并使用calculateAverage函数计算其平均值。</li>
+<li>使用printArray函数打印数组中的所有元素。</li>
+<li>使用C标准库函数对数组进行排序（升序），并再次使用printArray函数打印排序后的数组。</li>
+</ol>
+<details>
+<summary>答案代码</summary>
+</details>
+
+<pre class="language-c"><code class="language-c">#include &lt;stdio.h&gt;
+
+// 函数声明
+float calculateAverage(int arr[], int size);
+void printArray(int arr[], int size, int index);
+void sortArray(int arr[], int size);
+
+int main() {
+    int numbers[10] = {34, 78, 12, 9, 87, 66, 88, 99, 56, 45};
+    int size = sizeof(numbers) / sizeof(numbers[0]);
+
+    // 计算平均值
+    float average = calculateAverage(numbers, size);
+    printf(&quot;数组元素的平均值是：%.2f\n&quot;, average);
+
+    // 打印数组
+    printf(&quot;原始数组：\n&quot;);
+    printArray(numbers, size, 0);
+
+    // 排序数组
+    sortArray(numbers, size);
+
+    // 打印排序后的数组
+    printf(&quot;排序后的数组：\n&quot;);
+    printArray(numbers, size, 0);
+
+    return 0;
+}
+
+// 计算平均值的函数实现
+float calculateAverage(int arr[], int size) {
+    int sum = 0;
+    for (int i = 0; i &lt; size; i++) {
+        sum += arr[i];
+    }
+    return (float)sum / size;
+}
+
+// 递归打印数组的函数实现
+void printArray(int arr[], int size, int index) {
+    if (index &lt; size) {
+        printf(&quot;%d &quot;, arr[index]);
+        printArray(arr, size, index + 1); // 递归调用
+    } else {
+        printf(&quot;\n&quot;);
+    }
+}
+
+// 数组排序的函数实现（使用简单的冒泡排序算法）
+void sortArray(int arr[], int size) {
+    for (int i = 0; i &lt; size - 1; i++) {
+        for (int j = 0; j &lt; size - i - 1; j++) {
+            if (arr[j] &gt; arr[j + 1]) {
+                // 交换元素
+                int temp = arr[j];
+                arr[j] = arr[j + 1];
+                arr[j + 1] = temp;
+            }
+        }
+    }
+}
+</code></pre>
 
                         
                     </div>
@@ -244,7 +394,7 @@ MathJax = {"loader": {"load": ["output/svg"]}, "tex": {"inlineMath": [["$", "$"]
         <div id="footer">
             <div id="footer_top">
                 <ul>
-<li><a>链接</a><ul><li><a target="_blank" href="https://teedoc.neucrack.com">本网站使用 teedoc 构建</a></li>
+<li><a>链接</a><ul><li><a target="_blank" href="https://github.com/teedoc/teedoc">本网站使用 teedoc 构建</a></li>
 </ul>
 </li>
 <li><a>站长</a><ul><li><a target="_blank" href="https://laoguaige.github.io/">老怪鸽</a></li>

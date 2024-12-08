@@ -114,13 +114,12 @@ MathJax = {"loader": {"load": ["output/svg"]}, "tex": {"inlineMath": [["$", "$"]
 <li class="not_active with_link"><a href="/c-basics/download.html"><span class="label">资料下载</span><span class=""></span></a></li>
 <li class="not_active with_link"><a href="/c-basics/install.html"><span class="label">环境搭建</span><span class=""></span></a></li>
 <li class="not_active with_link"><a href="/c-basics/basic.html"><span class="label">基本语法</span><span class=""></span></a></li>
-<li class="not_active with_link"><a href="/c-basics/sequence.html"><span class="label">顺序结构程序设计</span><span class=""></span></a></li>
-<li class="not_active with_link"><a href="/c-basics/select.html"><span class="label">选择结构程序设计</span><span class=""></span></a></li>
-<li class="not_active with_link"><a href="/c-basics/loop.html"><span class="label">循环结构程序设计</span><span class=""></span></a></li>
+<li class="not_active with_link"><a href="/c-basics/control.html"><span class="label">C语言控制结构</span><span class=""></span></a></li>
 <li class="not_active with_link"><a href="/c-basics/array.html"><span class="label">数组</span><span class=""></span></a></li>
 <li class="not_active with_link"><a href="/c-basics/function.html"><span class="label">函数</span><span class=""></span></a></li>
 <li class="not_active with_link"><a href="/c-basics/pointer.html"><span class="label">指针</span><span class=""></span></a></li>
 <li class="active with_link"><a href="/c-basics/structure.html"><span class="label">结构体与联合体</span><span class=""></span></a></li>
+<li class="not_active with_link"><a href="/c-basics/enumeration.html"><span class="label">枚举</span><span class=""></span></a></li>
 <li class="not_active with_link"><a href="/c-basics/handle.html"><span class="label">预处理命令</span><span class=""></span></a></li>
 </ul>
 
@@ -201,10 +200,223 @@ MathJax = {"loader": {"load": ["output/svg"]}, "tex": {"inlineMath": [["$", "$"]
                     </div>
                     <div id="article_content">
                         
-                            <p>结构体的定义与使用<br />
-结构体数组<br />
-结构体指针<br />
-联合体的定义与使用</p>
+                            <h2 id="%E7%BB%93%E6%9E%84%E4%BD%93%E7%9A%84%E5%AE%9A%E4%B9%89%E4%B8%8E%E4%BD%BF%E7%94%A8">结构体的定义与使用</h2>
+<p>结构体是C语言中一种组合数据类型，它允许我们将多个不同类型的数据项组合成一个单一的实体。结构体的定义和使用是C语言编程中的基础技能。</p>
+<p><strong>注意事项：</strong></p>
+<ul>
+<li>结构体定义以 struct 关键字开始。</li>
+<li>结构体成员可以是不同的数据类型。</li>
+<li>结构体变量在声明时不会自动初始化，需要手动赋值。</li>
+<li>结构体成员的访问使用点操作符（.）。</li>
+</ul>
+<p><strong>示例</strong></p>
+
+<pre class="language-c"><code class="language-c">#include &lt;stdio.h&gt;
+#include &lt;string.h&gt;
+
+// 定义一个名为Person的结构体
+struct Person {
+    char name[50];
+    int age;
+    float height;
+};
+
+int main() {
+    // 创建结构体变量
+    struct Person person1;
+
+    // 使用点操作符为结构体成员赋值
+    strcpy(person1.name, &quot;Alice Smith&quot;); // 复制字符串到name成员
+    person1.age = 30; // 赋值年龄
+    person1.height = 5.7f; // 赋值身高
+
+    // 打印结构体成员的值
+    printf(&quot;Name: %s\n&quot;, person1.name);
+    printf(&quot;Age: %d\n&quot;, person1.age);
+    printf(&quot;Height: %.2f\n&quot;, person1.height);
+
+    return 0;
+}
+</code></pre>
+<h2 id="%E7%BB%93%E6%9E%84%E4%BD%93%E6%95%B0%E7%BB%84">结构体数组</h2>
+<p>结构体数组是一系列相同结构体的集合，可以用来存储多个具有相同属性的数据项。</p>
+<p><strong>注意事项：</strong></p>
+<ul>
+<li>结构体数组声明时可以初始化。</li>
+<li>结构体数组的索引从0开始。</li>
+<li>可以通过循环遍历结构体数组来访问和操作每个元素。</li>
+</ul>
+<p><strong>示例</strong></p>
+
+<pre class="language-c"><code class="language-c">#include &lt;stdio.h&gt;
+#include &lt;string.h&gt;
+
+// 定义Person结构体
+struct Person {
+    char name[50];
+    int age;
+    float height;
+};
+
+int main() {
+    // 声明并初始化结构体数组
+    struct Person employees[2] = {
+        {&quot;Alice Smith&quot;, 30, 5.7f},
+        {&quot;Bob Johnson&quot;, 25, 5.9f}
+    };
+
+    // 遍历结构体数组并打印成员
+    for (int i = 0; i &lt; 2; i++) {
+        printf(&quot;Employee %d:\n&quot;, i + 1);
+        printf(&quot;Name: %s\n&quot;, employees[i].name);
+        printf(&quot;Age: %d\n&quot;, employees[i].age);
+        printf(&quot;Height: %.2f\n&quot;, employees[i].height);
+        printf(&quot;\n&quot;);
+    }
+
+    return 0;
+}
+
+</code></pre>
+<h2 id="%E7%BB%93%E6%9E%84%E4%BD%93%E6%8C%87%E9%92%88">结构体指针</h2>
+<p>结构体指针是一个变量，它存储了结构体变量的内存地址。使用结构体指针可以更高效地访问结构体成员。</p>
+<p><strong>注意事项：</strong></p>
+<ul>
+<li>结构体指针使用星号（*）声明。</li>
+<li>访问结构体指针指向的成员时，使用箭头操作符（-&gt;）。</li>
+<li>结构体指针可以用来传递结构体变量到函数中，而不需要复制整个结构体。</li>
+<li></li>
+</ul>
+<p><strong>示例</strong></p>
+
+<pre class="language-c"><code class="language-c">#include &lt;stdio.h&gt;
+#include &lt;string.h&gt;
+
+// 定义Person结构体
+struct Person {
+    char name[50];
+    int age;
+    float height;
+};
+
+int main() {
+    // 声明结构体变量
+    struct Person person1 = {&quot;Alice Smith&quot;, 30, 5.7f};
+
+    // 声明结构体指针并指向person1
+    struct Person *ptr = &amp;person1;
+
+    // 使用结构体指针访问成员
+    printf(&quot;Name: %s\n&quot;, ptr-&gt;name); // 使用箭头操作符访问成员
+    printf(&quot;Age: %d\n&quot;, ptr-&gt;age);
+    printf(&quot;Height: %.2f\n&quot;, ptr-&gt;height);
+
+    return 0;
+}
+
+</code></pre>
+<h2 id="%E8%81%94%E5%90%88%E4%BD%93%E7%9A%84%E5%AE%9A%E4%B9%89%E4%B8%8E%E4%BD%BF%E7%94%A8">联合体的定义与使用</h2>
+<p>联合体是一种特殊的存储类，它允许在相同的内存位置存储不同的数据类型，但在任意时刻只能存储其中一个类型的值。</p>
+<p><strong>注意事项：</strong></p>
+<ul>
+<li>联合体以 union 关键字定义。</li>
+<li>联合体的所有成员共享同一块内存。</li>
+<li>联合体的大小是其最大成员的大小。</li>
+<li>赋值给联合体的一个成员会覆盖其他成员的值。</li>
+</ul>
+<p><strong>示例</strong></p>
+
+<pre class="language-c"><code class="language-c">#include &lt;stdio.h&gt;
+
+// 定义一个联合体
+union Value {
+    int intVal;
+    float floatVal;
+    char charVal;
+};
+
+int main() {
+    // 声明联合体变量
+    union Value value;
+
+    // 使用联合体
+    value.intVal = 123; // 存储整数值
+    printf(&quot;Integer: %d\n&quot;, value.intVal);
+
+    // 覆盖整数值，存储浮点数值
+    value.floatVal = 456.789f;
+    printf(&quot;Float: %f\n&quot;, value.floatVal);
+
+    // 覆盖浮点数值，存储字符值
+    value.charVal = 'A';
+    printf(&quot;Char: %c\n&quot;, value.charVal);
+
+    // 注意：由于联合体成员共享内存，以下打印可能不会显示正确的整数值
+    printf(&quot;Integer (after char): %d\n&quot;, value.intVal);
+
+    return 0;
+}
+</code></pre>
+<p>在联合体的使用中，要注意一旦一个新的成员被赋值，之前存储的值就会丢失，因为所有成员共享同一块内存。</p>
+<h2 id="%E4%BD%9C%E4%B8%9A">作业</h2>
+<p>编写一个C语言程序，实现以下功能：</p>
+<ol>
+<li>定义一个结构体 Student，包含姓名（字符数组）、年龄（整型）和成绩（浮点型）。</li>
+<li>声明一个结构体数组 students，包含5个 Student 结构体元素。</li>
+<li>使用循环初始化结构体数组，从用户输入获取每个学生的信息。</li>
+<li>使用另一个循环打印出所有学生的信息。</li>
+<li>计算并打印所有学生的平均成绩。</li>
+</ol>
+<details>
+<summary>答案代码</summary>
+<div class="details-content">
+<pre class="language-c"><code class="language-c">#include &lt;stdio.h&gt;
+
+// 定义Student结构体
+struct Student {
+    char name[50];
+    int age;
+    float grade;
+};
+
+int main() {
+    struct Student students[5];
+    float sum = 0.0f;
+    int i;
+
+    // 初始化结构体数组
+    for (i = 0; i &lt; 5; i++) {
+        printf(&quot;Enter information for student %d:\n&quot;, i + 1);
+        printf(&quot;Name: &quot;);
+        scanf(&quot;%49s&quot;, students[i].name); // 限制输入长度以避免溢出
+        printf(&quot;Age: &quot;);
+        scanf(&quot;%d&quot;, &amp;students[i].age);
+        printf(&quot;Grade: &quot;);
+        scanf(&quot;%f&quot;, &amp;students[i].grade);
+        sum += students[i].grade; // 累加成绩
+    }
+
+    // 打印所有学生的信息
+    printf(&quot;\nList of students:\n&quot;);
+    for (i = 0; i &lt; 5; i++) {
+        printf(&quot;Student %d: %s, Age: %d, Grade: %.2f\n&quot;, i + 1, students[i].name, students[i].age, students[i].grade);
+    }
+
+    // 计算并打印平均成绩
+    float average = sum / 5;
+    printf(&quot;\nAverage grade of all students: %.2f\n&quot;, average);
+
+    return 0;
+}
+</code></pre>
+<blockquote>
+<p>在这个程序中，我们首先定义了一个 Student 结构体，然后声明了一个包含5个 Student 结构体元素的数组 students。通过循环，我们从用户那里获取每个学生的信息，并将这些信息存储在数组中。同时，我们累加所有学生的成绩以计算平均成绩。最后，我们打印出所有学生的信息和平均成绩。</p>
+</blockquote>
+<blockquote>
+<p>这个程序是一个简单的命令行应用程序，它假设用户会按照提示输入正确的信息。在实际应用中，可能需要添加更多的错误检查和异常处理。</p>
+</blockquote>
+</div>
+</details>
 
                         
                     </div>
@@ -220,8 +432,8 @@ MathJax = {"loader": {"load": ["output/svg"]}, "tex": {"inlineMath": [["$", "$"]
                     </div>
                     <div id="next">
                         
-                        <a href="/c-basics/handle.html">
-                            <span class="label">预处理命令</span>
+                        <a href="/c-basics/enumeration.html">
+                            <span class="label">枚举</span>
                             <span class="icon"></span>
                         </a>
                         
@@ -243,7 +455,7 @@ MathJax = {"loader": {"load": ["output/svg"]}, "tex": {"inlineMath": [["$", "$"]
         <div id="footer">
             <div id="footer_top">
                 <ul>
-<li><a>链接</a><ul><li><a target="_blank" href="https://teedoc.neucrack.com">本网站使用 teedoc 构建</a></li>
+<li><a>链接</a><ul><li><a target="_blank" href="https://github.com/teedoc/teedoc">本网站使用 teedoc 构建</a></li>
 </ul>
 </li>
 <li><a>站长</a><ul><li><a target="_blank" href="https://laoguaige.github.io/">老怪鸽</a></li>

@@ -114,13 +114,12 @@ MathJax = {"loader": {"load": ["output/svg"]}, "tex": {"inlineMath": [["$", "$"]
 <li class="not_active with_link"><a href="/c-basics/download.html"><span class="label">资料下载</span><span class=""></span></a></li>
 <li class="not_active with_link"><a href="/c-basics/install.html"><span class="label">环境搭建</span><span class=""></span></a></li>
 <li class="not_active with_link"><a href="/c-basics/basic.html"><span class="label">基本语法</span><span class=""></span></a></li>
-<li class="not_active with_link"><a href="/c-basics/sequence.html"><span class="label">顺序结构程序设计</span><span class=""></span></a></li>
-<li class="not_active with_link"><a href="/c-basics/select.html"><span class="label">选择结构程序设计</span><span class=""></span></a></li>
-<li class="not_active with_link"><a href="/c-basics/loop.html"><span class="label">循环结构程序设计</span><span class=""></span></a></li>
+<li class="not_active with_link"><a href="/c-basics/control.html"><span class="label">C语言控制结构</span><span class=""></span></a></li>
 <li class="not_active with_link"><a href="/c-basics/array.html"><span class="label">数组</span><span class=""></span></a></li>
 <li class="not_active with_link"><a href="/c-basics/function.html"><span class="label">函数</span><span class=""></span></a></li>
 <li class="active with_link"><a href="/c-basics/pointer.html"><span class="label">指针</span><span class=""></span></a></li>
 <li class="not_active with_link"><a href="/c-basics/structure.html"><span class="label">结构体与联合体</span><span class=""></span></a></li>
+<li class="not_active with_link"><a href="/c-basics/enumeration.html"><span class="label">枚举</span><span class=""></span></a></li>
 <li class="not_active with_link"><a href="/c-basics/handle.html"><span class="label">预处理命令</span><span class=""></span></a></li>
 </ul>
 
@@ -201,12 +200,138 @@ MathJax = {"loader": {"load": ["output/svg"]}, "tex": {"inlineMath": [["$", "$"]
                     </div>
                     <div id="article_content">
                         
-                            <p>指针的概念与定义<br />
-指针的运算<br />
-指针与数组<br />
-指针与函数<br />
-指针与字符串<br />
-指针数组与数组指针</p>
+                            <h2 id="%E6%8C%87%E9%92%88%E7%9A%84%E6%A6%82%E5%BF%B5%E4%B8%8E%E5%AE%9A%E4%B9%89">指针的概念与定义</h2>
+<p>指针是一个变量，它存储了另一个变量的地址。</p>
+<p>在C语言中，指针的定义格式如下：</p>
+
+<pre class="language-c"><code class="language-c">数据类型 *指针变量名;
+</code></pre>
+<p><strong>示例：</strong></p>
+
+<pre class="language-c"><code class="language-c">int *ptr; // 定义一个指向整数的指针
+</code></pre>
+<h2 id="%E6%8C%87%E9%92%88%E7%9A%84%E8%BF%90%E7%AE%97">指针的运算</h2>
+<p>指针可以进行几种基本运算，包括加法、减法、自增（++）、自减（–）以及比较运算。<br />
+<strong>示例：</strong></p>
+
+<pre class="language-c"><code class="language-c">int var = 5;
+int *ptr = &amp;var; // ptr指向var的地址
+
+ptr++; // ptr指向下一个int类型的地址
+ptr--; // ptr指向前一个int类型的地址
+</code></pre>
+<h2 id="%E6%8C%87%E9%92%88%E4%B8%8E%E6%95%B0%E7%BB%84">指针与数组</h2>
+<p>数组名在大多数情况下可以作为指向数组首元素的指针使用。</p>
+<p><strong>示例：</strong></p>
+
+<pre class="language-c"><code class="language-c">int arr[5] = {10, 20, 30, 40, 50};
+int *ptr = arr; // ptr指向数组arr的首元素
+
+for (int i = 0; i &lt; 5; i++) {
+    printf(&quot;%d &quot;, *(ptr + i)); // 输出数组元素
+}
+</code></pre>
+<h2 id="%E6%8C%87%E9%92%88%E4%B8%8E%E5%87%BD%E6%95%B0">指针与函数</h2>
+<p>可以通过指针向函数传递变量的地址，这样函数就可以直接修改传入的变量。</p>
+<p><strong>示例：</strong></p>
+
+<pre class="language-c"><code class="language-c">void increment(int *p) {
+    (*p)++; // 直接修改指针所指向的值
+}
+
+int main() {
+    int num = 10;
+    increment(&amp;num); // 传递num的地址
+    printf(&quot;num = %d\n&quot;, num); // 输出11
+    return 0;
+}
+</code></pre>
+<h2 id="%E6%8C%87%E9%92%88%E4%B8%8E%E5%AD%97%E7%AC%A6%E4%B8%B2">指针与字符串</h2>
+<p>在C语言中，字符串实际上是一个字符数组，可以用指针来操作字符串。</p>
+<p><strong>示例：</strong></p>
+
+<pre class="language-c"><code class="language-c">char str[] = &quot;Hello, World!&quot;;
+char *ptr = str; // ptr指向字符串的首字符
+
+while (*ptr != '\0') { // 遍历字符串直到遇到空字符
+    printf(&quot;%c&quot;, *ptr);
+    ptr++; // 移动到下一个字符
+}
+printf(&quot;\n&quot;);
+</code></pre>
+<h2 id="%E6%8C%87%E9%92%88%E6%95%B0%E7%BB%84%E4%B8%8E%E6%95%B0%E7%BB%84%E6%8C%87%E9%92%88">指针数组与数组指针</h2>
+<p>指针数组是一个数组，其元素都是指针。</p>
+<p><strong>示例：</strong></p>
+
+<pre class="language-c"><code class="language-c">int var1 = 10, var2 = 20, var3 = 30;
+int *ptrArr[3] = {&amp;var1, &amp;var2, &amp;var3}; // 指针数组
+
+for (int i = 0; i &lt; 3; i++) {
+    printf(&quot;%d &quot;, *ptrArr[i]); // 输出指针数组指向的值
+}
+printf(&quot;\n&quot;);
+</code></pre>
+<p>数组指针是一个指向数组的指针。</p>
+<p><strong>示例：</strong></p>
+
+<pre class="language-c"><code class="language-c">int arr[3] = {10, 20, 30};
+int (*ptrArr)[3] = &amp;arr; // 数组指针
+
+for (int i = 0; i &lt; 3; i++) {
+    printf(&quot;%d &quot;, (*ptrArr)[i]); // 输出数组指针指向的数组元素
+}
+printf(&quot;\n&quot;);
+
+</code></pre>
+<h2 id="%E4%BD%9C%E4%B8%9A">作业</h2>
+<p>编写一个C语言程序，实现以下功能，不使用任何函数（除了main函数）：</p>
+<ol>
+<li>声明一个整型数组，包含10个元素。</li>
+<li>使用指针初始化数组，使得每个元素的值等于其索引的立方（即array[i] = i * i * i）。</li>
+<li>使用指针遍历数组，并打印出每个元素的值。</li>
+<li>使用指针计算并打印数组中所有元素的总和。</li>
+</ol>
+<p><strong>作业要求</strong></p>
+<ul>
+<li>确保所有操作都通过指针完成。</li>
+<li>程序中不得使用数组下标[]，只能使用指针运算。</li>
+</ul>
+<details>
+<summary>答案代码</summary>
+<div class="details-content">
+<pre class="language-c"><code class="language-c">#include &lt;stdio.h&gt;
+
+int main() {
+    int array[10]; // 声明一个整型数组
+    int *ptr = array; // 指针指向数组的首元素
+    int sum = 0; // 用于存储数组元素的总和
+
+    // 使用指针初始化数组
+    for (int i = 0; i &lt; 10; i++) {
+        *ptr = i * i * i; // 设置元素的值为索引的立方
+        ptr++; // 移动指针到下一个元素
+    }
+
+    // 重置指针指向数组的首元素
+    ptr = array;
+
+    // 使用指针遍历数组并打印元素
+    printf(&quot;数组元素：\n&quot;);
+    for (int i = 0; i &lt; 10; i++) {
+        printf(&quot;%d &quot;, *ptr); // 打印当前指针指向的元素
+        sum += *ptr; // 累加到总和
+        ptr++; // 移动指针到下一个元素
+    }
+    printf(&quot;\n&quot;);
+
+    // 打印数组元素的总和
+    printf(&quot;数组元素的总和：%d\n&quot;, sum);
+
+    return 0;
+}
+</code></pre>
+</div>
+</details>
 
                         
                     </div>
@@ -245,7 +370,7 @@ MathJax = {"loader": {"load": ["output/svg"]}, "tex": {"inlineMath": [["$", "$"]
         <div id="footer">
             <div id="footer_top">
                 <ul>
-<li><a>链接</a><ul><li><a target="_blank" href="https://teedoc.neucrack.com">本网站使用 teedoc 构建</a></li>
+<li><a>链接</a><ul><li><a target="_blank" href="https://github.com/teedoc/teedoc">本网站使用 teedoc 构建</a></li>
 </ul>
 </li>
 <li><a>站长</a><ul><li><a target="_blank" href="https://laoguaige.github.io/">老怪鸽</a></li>

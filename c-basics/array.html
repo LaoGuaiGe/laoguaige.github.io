@@ -114,13 +114,12 @@ MathJax = {"loader": {"load": ["output/svg"]}, "tex": {"inlineMath": [["$", "$"]
 <li class="not_active with_link"><a href="/c-basics/download.html"><span class="label">资料下载</span><span class=""></span></a></li>
 <li class="not_active with_link"><a href="/c-basics/install.html"><span class="label">环境搭建</span><span class=""></span></a></li>
 <li class="not_active with_link"><a href="/c-basics/basic.html"><span class="label">基本语法</span><span class=""></span></a></li>
-<li class="not_active with_link"><a href="/c-basics/sequence.html"><span class="label">顺序结构程序设计</span><span class=""></span></a></li>
-<li class="not_active with_link"><a href="/c-basics/select.html"><span class="label">选择结构程序设计</span><span class=""></span></a></li>
-<li class="not_active with_link"><a href="/c-basics/loop.html"><span class="label">循环结构程序设计</span><span class=""></span></a></li>
+<li class="not_active with_link"><a href="/c-basics/control.html"><span class="label">C语言控制结构</span><span class=""></span></a></li>
 <li class="active with_link"><a href="/c-basics/array.html"><span class="label">数组</span><span class=""></span></a></li>
 <li class="not_active with_link"><a href="/c-basics/function.html"><span class="label">函数</span><span class=""></span></a></li>
 <li class="not_active with_link"><a href="/c-basics/pointer.html"><span class="label">指针</span><span class=""></span></a></li>
 <li class="not_active with_link"><a href="/c-basics/structure.html"><span class="label">结构体与联合体</span><span class=""></span></a></li>
+<li class="not_active with_link"><a href="/c-basics/enumeration.html"><span class="label">枚举</span><span class=""></span></a></li>
 <li class="not_active with_link"><a href="/c-basics/handle.html"><span class="label">预处理命令</span><span class=""></span></a></li>
 </ul>
 
@@ -201,10 +200,108 @@ MathJax = {"loader": {"load": ["output/svg"]}, "tex": {"inlineMath": [["$", "$"]
                     </div>
                     <div id="article_content">
                         
-                            <p>一维数组<br />
-二维数组<br />
-字符数组与字符串<br />
-数组排序与查找</p>
+                            <h2 id="%E4%B8%80%E7%BB%B4%E6%95%B0%E7%BB%84">一维数组</h2>
+<p>一维数组是线性数据结构，用于存储相同数据类型的元素集合。</p>
+<p><strong>定义与初始化</strong></p>
+
+<pre class="language-c"><code class="language-c">int numbers[10]; // 声明一个整型数组，包含10个元素
+int nums[] = {1, 2, 3, 4, 5}; // 声明并初始化一个整型数组
+</code></pre>
+<p><strong>访问元素</strong></p>
+
+<pre class="language-c"><code class="language-c">int value = numbers[2]; // 访问索引为2的元素
+numbers[2] = 10; // 设置索引为2的元素值为10
+</code></pre>
+<p><strong>遍历数组</strong></p>
+
+<pre class="language-c"><code class="language-c">for (int i = 0; i &lt; 5; i++) {
+    printf(&quot;%d &quot;, nums[i]);
+}
+</code></pre>
+<h2 id="%E4%BA%8C%E7%BB%B4%E6%95%B0%E7%BB%84">二维数组</h2>
+<p>二维数组用于存储表格形式的元素，可以看作是一个数组的数组。</p>
+<p><strong>定义与初始化</strong></p>
+
+<pre class="language-c"><code class="language-c">int matrix[3][4]; // 声明一个3行4列的整型数组
+int grid[2][2] = {{1, 2}, {3, 4}}; // 声明并初始化一个2x2的整型数组
+</code></pre>
+<p><strong>访问元素</strong></p>
+
+<pre class="language-c"><code class="language-c">int element = grid[1][0]; // 访问第2行第1列的元素
+grid[0][1] = 10; // 设置第1行第2列的元素值为10
+</code></pre>
+<p><strong>遍历数组</strong></p>
+
+<pre class="language-c"><code class="language-c">for (int i = 0; i &lt; 2; i++) {
+    for (int j = 0; j &lt; 2; j++) {
+        printf(&quot;%d &quot;, grid[i][j]);
+    }
+    printf(&quot;\n&quot;);
+}
+</code></pre>
+<h2 id="%E5%AD%97%E7%AC%A6%E6%95%B0%E7%BB%84%E4%B8%8E%E5%AD%97%E7%AC%A6%E4%B8%B2">字符数组与字符串</h2>
+<p>字符数组用于存储字符序列，C语言中没有专门的字符串类型，字符串通常以字符数组的形式存储。</p>
+<p><strong>定义与初始化</strong></p>
+
+<pre class="language-c"><code class="language-c">char str[11] = &quot;Hello, World&quot;; // 声明并初始化一个字符数组
+</code></pre>
+<p><strong>字符串操作</strong></p>
+
+<pre class="language-c"><code class="language-c">#include &lt;string.h&gt;
+
+// 字符串长度
+int length = strlen(str);
+
+// 字符串复制
+char copy[11];
+strcpy(copy, str);
+
+// 字符串连接
+char dest[21];
+strcat(dest, str);
+strcat(dest, &quot; Goodbye&quot;);
+</code></pre>
+<blockquote>
+<p><strong>strlen、strcpy、strcat</strong>是 <code>string.h</code> 文件的函数用于返回字符串长度、从字符串1复制到字符串2、将字符串2接到字符串1的结尾。<br />
+还有<code>strstr</code>字符串查找函数，具体功能先自行百度。</p>
+</blockquote>
+<h2 id="%E4%BD%9C%E4%B8%9A">作业</h2>
+<p>编写一个C语言程序，实现以下功能：</p>
+<ol>
+<li>创建一个包含10个整数的数组。</li>
+<li>使用循环初始化数组，使得数组的每个元素等于其索引的平方（即array[i] = i * i）。</li>
+<li>打印出数组的每个元素。</li>
+<li>计算数组中所有元素的和，并打印出来。</li>
+</ol>
+<details>
+<summary>答案代码</summary>
+<div class="details-content">
+<pre class="language-c"><code class="language-c">#include &lt;stdio.h&gt;
+
+int main() {
+    int array[10]; // 创建一个包含10个整数的数组
+    int sum = 0;   // 用于存储数组元素的和
+
+    // 初始化数组并计算和
+    for (int i = 0; i &lt; 10; i++) {
+        array[i] = i * i; // 数组元素等于其索引的平方
+        sum += array[i];  // 累加数组元素到sum
+    }
+
+    // 打印数组元素
+    printf(&quot;数组元素：\n&quot;);
+    for (int i = 0; i &lt; 10; i++) {
+        printf(&quot;array[%d] = %d\n&quot;, i, array[i]);
+    }
+
+    // 打印数组元素的和
+    printf(&quot;数组元素的和：%d\n&quot;, sum);
+
+    return 0;
+}
+</code></pre>
+</div>
+</details>
 
                         
                     </div>
@@ -212,9 +309,9 @@ MathJax = {"loader": {"load": ["output/svg"]}, "tex": {"inlineMath": [["$", "$"]
                 <div id="previous_next">
                     <div id="previous">
                         
-                        <a href="/c-basics/loop.html">
+                        <a href="/c-basics/control.html">
                             <span class="icon"></span>
-                            <span class="label">循环结构程序设计</span>
+                            <span class="label">C语言控制结构</span>
                         </a>
                         
                     </div>
@@ -243,7 +340,7 @@ MathJax = {"loader": {"load": ["output/svg"]}, "tex": {"inlineMath": [["$", "$"]
         <div id="footer">
             <div id="footer_top">
                 <ul>
-<li><a>链接</a><ul><li><a target="_blank" href="https://teedoc.neucrack.com">本网站使用 teedoc 构建</a></li>
+<li><a>链接</a><ul><li><a target="_blank" href="https://github.com/teedoc/teedoc">本网站使用 teedoc 构建</a></li>
 </ul>
 </li>
 <li><a>站长</a><ul><li><a target="_blank" href="https://laoguaige.github.io/">老怪鸽</a></li>

@@ -114,13 +114,12 @@ MathJax = {"loader": {"load": ["output/svg"]}, "tex": {"inlineMath": [["$", "$"]
 <li class="not_active with_link"><a href="/c-basics/download.html"><span class="label">资料下载</span><span class=""></span></a></li>
 <li class="not_active with_link"><a href="/c-basics/install.html"><span class="label">环境搭建</span><span class=""></span></a></li>
 <li class="not_active with_link"><a href="/c-basics/basic.html"><span class="label">基本语法</span><span class=""></span></a></li>
-<li class="not_active with_link"><a href="/c-basics/sequence.html"><span class="label">顺序结构程序设计</span><span class=""></span></a></li>
-<li class="not_active with_link"><a href="/c-basics/select.html"><span class="label">选择结构程序设计</span><span class=""></span></a></li>
-<li class="not_active with_link"><a href="/c-basics/loop.html"><span class="label">循环结构程序设计</span><span class=""></span></a></li>
+<li class="not_active with_link"><a href="/c-basics/control.html"><span class="label">C语言控制结构</span><span class=""></span></a></li>
 <li class="not_active with_link"><a href="/c-basics/array.html"><span class="label">数组</span><span class=""></span></a></li>
 <li class="not_active with_link"><a href="/c-basics/function.html"><span class="label">函数</span><span class=""></span></a></li>
 <li class="not_active with_link"><a href="/c-basics/pointer.html"><span class="label">指针</span><span class=""></span></a></li>
 <li class="not_active with_link"><a href="/c-basics/structure.html"><span class="label">结构体与联合体</span><span class=""></span></a></li>
+<li class="not_active with_link"><a href="/c-basics/enumeration.html"><span class="label">枚举</span><span class=""></span></a></li>
 <li class="active with_link"><a href="/c-basics/handle.html"><span class="label">预处理命令</span><span class=""></span></a></li>
 </ul>
 
@@ -201,9 +200,78 @@ MathJax = {"loader": {"load": ["output/svg"]}, "tex": {"inlineMath": [["$", "$"]
                     </div>
                     <div id="article_content">
                         
-                            <p>宏定义<br />
-文件包含<br />
-条件编译</p>
+                            <h2 id="%E5%AE%8F%E5%AE%9A%E4%B9%89">宏定义</h2>
+<p>宏定义是C语言预处理器的一个重要功能，它可以定义常量或者简单的函数。本身的作用是替代！</p>
+
+<pre class="language-c"><code class="language-c">#include &lt;stdio.h&gt;
+
+// 定义一个宏来表示圆周率
+#define PI 3.14159
+
+// 定义一个宏来计算一个数的平方
+#define SQUARE(x) ((x) * (x))
+
+int main() {
+    float radius = 5.0f;
+    float area;
+
+    // 使用宏PI来计算圆的面积
+    area = PI * SQUARE(radius);
+    printf(&quot;Area of the circle with radius %f is %f\n&quot;, radius, area);
+
+    return 0;
+}
+
+</code></pre>
+<h2 id="%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB">文件包含</h2>
+<p>文件包含使用 #include 指令，它允许将一个源文件的内容包含到另一个源文件中。</p>
+
+<pre class="language-c"><code class="language-c">// my_macros.h
+#ifndef MY_MACROS_H
+#define MY_MACROS_H
+
+#define MAX_SIZE 100
+#define MIN_SIZE 10
+
+#endif // MY_MACROS_H
+
+// main.c
+#include &lt;stdio.h&gt;
+#include &quot;my_macros.h&quot; // 包含自定义的宏定义文件
+
+int main() {
+    int array[MAX_SIZE];
+    printf(&quot;The size of the array is %d\n&quot;, MAX_SIZE);
+    return 0;
+}
+</code></pre>
+<h2 id="%E6%9D%A1%E4%BB%B6%E7%BC%96%E8%AF%91">条件编译</h2>
+<p>条件编译允许根据特定条件编译代码的一部分。这通常用于跨平台兼容性或调试。</p>
+
+<pre class="language-c"><code class="language-c">#include &lt;stdio.h&gt;
+
+#define DEBUG
+
+int main() {
+    int value = 10;
+
+    #ifdef DEBUG
+    printf(&quot;Debug: Value is set to %d\n&quot;, value);
+    #endif
+
+    #if defined(DEBUG) &amp;&amp; (value &gt; 5)
+    printf(&quot;Debug: Value is greater than 5\n&quot;);
+    #endif
+
+    #ifndef RELEASE
+    printf(&quot;This is a debug build.\n&quot;);
+    #else
+    printf(&quot;This is a release build.\n&quot;);
+    #endif
+
+    return 0;
+}
+</code></pre>
 
                         
                     </div>
@@ -211,9 +279,9 @@ MathJax = {"loader": {"load": ["output/svg"]}, "tex": {"inlineMath": [["$", "$"]
                 <div id="previous_next">
                     <div id="previous">
                         
-                        <a href="/c-basics/structure.html">
+                        <a href="/c-basics/enumeration.html">
                             <span class="icon"></span>
-                            <span class="label">结构体与联合体</span>
+                            <span class="label">枚举</span>
                         </a>
                         
                     </div>
@@ -237,7 +305,7 @@ MathJax = {"loader": {"load": ["output/svg"]}, "tex": {"inlineMath": [["$", "$"]
         <div id="footer">
             <div id="footer_top">
                 <ul>
-<li><a>链接</a><ul><li><a target="_blank" href="https://teedoc.neucrack.com">本网站使用 teedoc 构建</a></li>
+<li><a>链接</a><ul><li><a target="_blank" href="https://github.com/teedoc/teedoc">本网站使用 teedoc 构建</a></li>
 </ul>
 </li>
 <li><a>站长</a><ul><li><a target="_blank" href="https://laoguaige.github.io/">老怪鸽</a></li>
