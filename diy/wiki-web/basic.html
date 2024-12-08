@@ -126,6 +126,7 @@ MathJax = {"loader": {"load": ["output/svg"]}, "tex": {"inlineMath": [["$", "$"]
 </ul>
 </li>
 <li class="active with_link"><a href="/diy/wiki-web/basic.html"><span class="label">WIKI网站搭建🌐</span><span class=""></span></a></li>
+<li class="not_active with_link"><a href="/diy/tracking-cannon/basic.html"><span class="label">年轻人的第一台舰防跑🔫</span><span class=""></span></a></li>
 </ul>
 
             </div>
@@ -289,6 +290,55 @@ MathJax = {"loader": {"load": ["output/svg"]}, "tex": {"inlineMath": [["$", "$"]
 </tbody>
 </table>
 <p>期待你的使用， 欢迎<a href="https://github.com/teedoc/teedoc.github.io/issues"  target="_blank">提交 issue</a> 或者 PR 来添加你的网站</p>
+<h2 id="%E5%BF%AB%E9%80%9F%E6%90%AD%E5%BB%BAwiki%E7%BD%91%E7%AB%99">快速搭建wiki网站</h2>
+<h3 id="%E5%AE%89%E8%A3%85-python3">安装 python3</h3>
+<p>需要先安装Python3 （仅支持 Python3）</p>
+<p>比如在Ubuntu上：</p>
+
+<pre class="language-sh"><code class="language-sh">sudo apt install python3 python3-pip git
+</code></pre>
+<p>Windows 和 macOS请到<a href="https://www.python.org/downloads/"  target="_blank">官网下载</a></p>
+<h3 id="%E5%AE%89%E8%A3%85-teedoc">安装 teedoc</h3>
+<p>打开终端(Windows按Ctrl+R输入cmd)，输入：</p>
+
+<pre class="language-sh"><code class="language-sh">pip3 install teedoc
+</code></pre>
+<p>以后使用以下命令来更新软件：</p>
+
+<pre class="language-sh"><code class="language-sh">pip3 install teedoc --upgrade
+</code></pre>
+<p>如果你的网络使用 pypi.org 速度很慢，可以选择其它源，比如清华 tuna 源： <code>pip3 install teedoc -i https://pypi.tuna.tsinghua.edu.cn/simple</code></p>
+<p>现在你可以在终端使用 <code>teedoc</code> 命令了</p>
+<p>如果不能，请检查是不是<code>Python</code>可执行目录没有加入到环境变量 <code>PATH</code>,<br />
+比如可能在 <code>~/.local/bin</code></p>
+<h3 id="%E6%96%B0%E5%BB%BA%E5%B7%A5%E7%A8%8B">新建工程</h3>
+<p>新建一个空目录用来放文档工程</p>
+
+<pre class="language-sh"><code class="language-sh">mkdir my_site
+cd my_site
+teedoc init
+</code></pre>
+<p>选择1，也就是minimal模板进行生成， 也可以直接<code>teedoc -d my_site --template=minimal init</code>进行生成</p>
+<p>这会在 <code>my_site</code> 目录下自动生成一些基础文件</p>
+<h3 id="%E5%AE%89%E8%A3%85%E6%8F%92%E4%BB%B6">安装插件</h3>
+<p>这会根据<code>site_config.json</code>中的<code>plugins</code>的插件设置安装插件</p>
+
+<pre class="language-sh"><code class="language-sh">cd my_site
+teedoc install
+</code></pre>
+<p>插件也是以 <code>python</code> 包的形式发布的， 所以这会从 <code>pypi.org</code> 下载对应的插件，同样，也可以使用其它源，比如清华 tuna 源： <code>teedoc -i https://pypi.tuna.tsinghua.edu.cn/simple install</code></p>
+<h3 id="%E6%9E%84%E5%BB%BA-%3Ccode%3EHTML%3C/code%3E-%E9%A1%B5%E9%9D%A2%E5%B9%B6%E8%B5%B7%E4%B8%80%E4%B8%AA%3Ccode%3EHTTP%3C/code%3E%E6%9C%8D%E5%8A%A1">构建 <code>HTML</code> 页面并起一个<code>HTTP</code>服务</h3>
+
+<pre class="language-sh"><code class="language-sh">teedoc serve
+</code></pre>
+<p>这个命令会先构建所有<code>HTML</code>页面以及拷贝资源文件，然后起一个<code>HTTP</code>服务<br />
+如果只需要生成页面，使用</p>
+
+<pre class="language-sh"><code class="language-sh">teedoc build
+</code></pre>
+<p>在显示 <code>Starting server at 0.0.0.0:2333 ....</code> 后，就可以了</p>
+<p>打开浏览器访问: <code>http://127.0.0.1:2333</code></p>
+<p>同时可以看到目录下多了一个<code>out</code>目录，里面就是生成的静态网站内容，直接拷贝到服务器使用<code>nginx</code>或者<code>apache</code>进行部署即可</p>
 
                         
                     </div>
@@ -303,6 +353,11 @@ MathJax = {"loader": {"load": ["output/svg"]}, "tex": {"inlineMath": [["$", "$"]
                         
                     </div>
                     <div id="next">
+                        
+                        <a href="/diy/tracking-cannon/basic.html">
+                            <span class="label">年轻人的第一台舰防跑🔫</span>
+                            <span class="icon"></span>
+                        </a>
                         
                     </div>
                 </div>

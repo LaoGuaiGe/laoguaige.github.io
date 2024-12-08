@@ -29,4 +29,5 @@ items:
         file: picxel-clock/voice.md
 -   label: WIKI网站搭建🌐
     file: wiki-web/basic.md        
-        
+-   label: 年轻人的第一台舰防跑🔫
+    file: tracking-cannon/basic.md

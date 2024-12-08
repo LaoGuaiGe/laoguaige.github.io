@@ -86,7 +86,7 @@
         </url>
         <url>
             <loc>https://https://laoguaige.github.io//markdown/index.html</loc>
-            <lastmod>2024-12-08</lastmod>
+            <lastmod>2021-09-19</lastmod>
             <changefreq>weekly</changefreq>
             <priority>1.0</priority>
         </url>
@@ -165,6 +165,12 @@
         <url>
             <loc>https://https://laoguaige.github.io//diy/index.html</loc>
             <lastmod>2024-12-07</lastmod>
+            <changefreq>weekly</changefreq>
+            <priority>1.0</priority>
+        </url>
+        <url>
+            <loc>https://https://laoguaige.github.io//diy/tracking-cannon/basic.html</loc>
+            <lastmod>2024-12-05</lastmod>
             <changefreq>weekly</changefreq>
             <priority>1.0</priority>
         </url>
