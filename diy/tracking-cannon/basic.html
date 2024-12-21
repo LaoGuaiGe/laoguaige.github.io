@@ -206,7 +206,543 @@ MathJax = {"loader": {"load": ["output/svg"]}, "tex": {"inlineMath": [["$", "$"]
                     </div>
                     <div id="article_content">
                         
-                            
+                            <h2 id="%E9%A1%B9%E7%9B%AE%E8%83%8C%E6%99%AF">项目背景</h2>
+<p>项目参考来源：</p>
+<p><strong>【给玩具枪加装云台和人脸识别功能，实现目标自动识别锁定功能】 </strong></p>
+<iframe src="//player.bilibili.com/player.html?isOutside=true&aid=986378786&bvid=BV1at4y1c7kt&cid=858044263&p=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true" style="width:43vw;height:34vw;min-width: 85%;"></iframe>
+<p>原作者是采用的 <code>opencv</code> 作为识别方案，而 <code>opencv</code> 需要运行在电脑的操作系统上，不是很方便。而最近正好看到立创开发板的 <code>K230-AI</code> 开发板在找内测，有幸联系到并且参与其中。</p>
+<p>将决定以 <code>K230</code> 为主要核心，控制二维舵机云台作为<code>运动装置</code>、板载摄像头识别物品功能作为<code>瞄准装置</code>、电动玩具枪作为<code>发射装置</code>等，以实现自动追踪炮台的功能。</p>
+<h2 id="%E7%A1%AC%E4%BB%B6%E8%AE%BE%E8%AE%A1">硬件设计</h2>
+<h3 id="%E7%A1%AC%E4%BB%B6%E5%87%86%E5%A4%87">硬件准备</h3>
+<ol>
+<li><p><strong>二维舵机云台</strong></p>
+<p><img src="../../static/images/docs/diy/tracking-cannon/basic/basic-2024-12-21-22-32-10.png" alt="图 3" /><br />
+ 地址：<a href="https://item.taobao.com/item.htm?_u=l2t4uge5db1c&amp;id=560120308139"  target="_blank">https://item.taobao.com/item.htm?_u=l2t4uge5db1c&amp;id=560120308139</a></p>
+</li>
+<li><p><strong>电动玩具枪</strong></p>
+<p><img src="../../static/images/docs/diy/tracking-cannon/basic/basic-2024-12-21-22-31-08.png" alt="图 2" /><br />
+ 地址：<a href="https://item.taobao.com/item.htm?_u=l2t4uge530d9&amp;id=684699922229"  target="_blank">https://item.taobao.com/item.htm?_u=l2t4uge530d9&amp;id=684699922229</a></p>
+</li>
+<li><p><strong>K230-AI识别开发板</strong></p>
+<p><img src="../../static/images/docs/diy/tracking-cannon/basic/basic-2024-12-21-22-29-03.png" alt="图 0" /><br />
+ 地址：<a href="https://lckfb.com/project/detail/lckfb-lspi-k230-1g-canmv?param=baseInfo"  target="_blank">https://lckfb.com/project/detail/lckfb-lspi-k230-1g-canmv?param=baseInfo</a></p>
+</li>
+<li><p><strong>辅助工具</strong></p>
+<p>螺丝批套装、热胶枪、杜邦线等。</p>
+</li>
+</ol>
+<h3 id="%E7%A1%AC%E4%BB%B6%E8%BF%9E%E6%8E%A5">硬件连接</h3>
+<p><img src="../../static/images/docs/diy/tracking-cannon/basic/basic-2024-12-21-22-54-53.png" alt="图 4" /></p>
+<p>电动玩具枪也是可以通过开关控制的，只需要通过继电器的方式，连接到GPIO上是可以控制开枪的，这里我因为没有买继电器所以我就先不画。</p>
+<details>
+<summary>K230排针接口示意图，点击展开</summary>
+<div class="details-content"><p><img src="../../static/images/docs/diy/tracking-cannon/basic/basic-2024-12-21-22-57-24.png" alt="图 5" /></p>
+</div>
+</details>
+<h2 id="%E8%BD%AF%E4%BB%B6%E8%AE%BE%E8%AE%A1">软件设计</h2>
+<p>K230的快速入门请参考：<a href="https://wiki.lckfb.com/zh-hans/lushan-pi-k230/quick-start.html"  target="_blank">https://wiki.lckfb.com/zh-hans/lushan-pi-k230/quick-start.html</a></p>
+<p>请按照上面的链接，完成开发板的组装、<code>CanMV</code> 固件烧录、电脑连接等操作。我在后面将不会介绍什么是 <code>IDE</code> ，以及如何连接。</p>
+<h3 id="IDE%E6%98%BE%E7%A4%BA%E5%9B%BE%E5%83%8F">IDE显示图像</h3>
+<p>显示图像在K230的固件中一共支持4种，分别是 <code>HDMI</code> 的 <code>VGA</code> ， <code>HDMI</code> 的 <code>1080P</code> 、<code>LCD</code>、<code>IDE</code> 等。我们先了解怎么将摄像头采集到的画面显示在 <code>IDE</code> 的<strong>图像缓冲区</strong>。</p>
+<p>根据 <code>K230</code> 资料的<a href="https://developer.canaan-creative.com/k230_canmv/dev/zh/example/media/sensor.html"  target="_blank">Sensor例程讲解</a> ，提取出 <strong>摄像头的初始化</strong> <code>+</code> <strong>采集图像的代码</strong>。</p>
+
+<pre class="language-py"><code class="language-py"># Camera 示例
+import time
+import os
+import sys
+
+from media.sensor import *
+from media.display import *
+from media.media import *
+
+DETECT_WIDTH = 640
+DETECT_HEIGHT = 480
+
+sensor = None
+
+try:
+    # 配置摄像头的图像大小
+    sensor = Sensor(width = DETECT_WIDTH, height = DETECT_HEIGHT)
+    # 摄像头传感器复位
+    sensor.reset()
+    # 设置图像是否镜像
+    # sensor.set_hmirror(False)
+    # 设置图像是否翻转
+    # sensor.set_vflip(False)
+    # 设置通道0的图像输出尺寸
+    sensor.set_framesize(width = DETECT_WIDTH, height = DETECT_HEIGHT)
+    #设置通道0输出格式为RGB565（彩色图像）
+    sensor.set_pixformat(Sensor.RGB565)
+    # Init媒体管理器
+    MediaManager.init()
+    # 传感器启动运行
+    sensor.run()
+
+    while True:
+        sensor.snapshot() #获取一帧图像
+
+except KeyboardInterrupt as e:
+    print(f&quot;user stop&quot;)
+except BaseException as e:
+    print(f&quot;Exception '{e}'&quot;)
+finally:
+    # sensor stop run
+    if isinstance(sensor, Sensor):
+        sensor.stop()
+
+    os.exitpoint(os.EXITPOINT_ENABLE_SLEEP)
+    time.sleep_ms(100)
+
+    # release media buffer
+    MediaManager.deinit()
+
+</code></pre>
+<p>根据<a href="https://developer.canaan-creative.com/k230_canmv/dev/zh/example/media/display.html"  target="_blank">Display例程讲解</a>，提取出将<strong>图像显示到 <code>IDE</code> 上的代码</strong>。</p>
+
+<pre class="language-python"><code class="language-python">import time, os, gc, sys, math
+
+from media.sensor import *
+from media.display import *
+from media.media import *
+
+DETECT_WIDTH = 640
+DETECT_HEIGHT = 480
+
+try:
+    #配置图像显示方式为IDE显示，显示的宽高为DETECT_WIDTH+DETECT_HEIGHT，帧率100fps
+    Display.init(Display.VIRT, width = DETECT_WIDTH, height = DETECT_HEIGHT, fps = 100)
+
+    while True:
+        Display.show_image(img) #显示一个图像，这个img是摄像头采集的一帧图像
+
+except KeyboardInterrupt as e:
+    print(f&quot;user stop&quot;)
+except BaseException as e:
+    print(f&quot;Exception '{e}'&quot;)
+finally:
+    # 清除显示缓存
+    Display.deinit()
+
+    os.exitpoint(os.EXITPOINT_ENABLE_SLEEP)
+    time.sleep_ms(100)
+</code></pre>
+<p>将这两个代码一整合，就得到了将图像显示到 <code>IDE</code> 中的代码：</p>
+
+<pre class="language-python"><code class="language-python">import time
+import os
+import sys
+
+from media.sensor import *
+from media.display import *
+from media.media import *
+
+DETECT_WIDTH = 640
+DETECT_HEIGHT = 480
+
+sensor = None
+
+try:
+    # 配置摄像头的图像大小
+    sensor = Sensor(width = DETECT_WIDTH, height = DETECT_HEIGHT)
+    # 摄像头传感器复位
+    sensor.reset()
+    # 设置图像是否镜像
+    # sensor.set_hmirror(False)
+    # 设置图像是否翻转
+    # sensor.set_vflip(False)
+    # 设置通道0的图像输出尺寸
+    sensor.set_framesize(width = DETECT_WIDTH, height = DETECT_HEIGHT)
+    #设置通道0输出格式为RGB565（彩色图像）
+    sensor.set_pixformat(Sensor.RGB565)
+    #配置图像显示方式为IDE显示，显示的宽高为DETECT_WIDTH+DETECT_HEIGHT，帧率100fps
+    Display.init(Display.VIRT, width = DETECT_WIDTH, height = DETECT_HEIGHT, fps = 100)
+    # Init媒体管理器
+    MediaManager.init()
+    # 传感器启动运行
+    sensor.run()
+
+    while True:
+       img = sensor.snapshot() #获取一帧图像
+       Display.show_image(img) #显示摄像头采集的图像
+
+except KeyboardInterrupt as e:
+    print(f&quot;user stop&quot;)
+except BaseException as e:
+    print(f&quot;Exception '{e}'&quot;)
+finally:
+    # sensor stop run
+    if isinstance(sensor, Sensor):
+        sensor.stop()
+    # deinit display
+    Display.deinit()
+
+    os.exitpoint(os.EXITPOINT_ENABLE_SLEEP)
+    time.sleep_ms(100)
+
+    # release media buffer
+    MediaManager.deinit()
+</code></pre>
+<p>大家可以运行上面的例程看看，在 <code>CanMV IDE</code> 中会不会显示出K230开发板摄像头的画面。</p>
+<h3 id="%E9%A2%9C%E8%89%B2%E8%AF%86%E5%88%AB">颜色识别</h3>
+<p>K230是一个AI视觉芯片，根据官网资料可以知道，其可以通过摄像头识别出很多东西，比如人脸、形状、颜色、物品、水果等等，这里我比较熟练使用的是<strong>颜色识别</strong>，就先以颜色识别为例，获取指定颜色的目标方位。</p>
+<p>而我们能够获取颜色的方位，那就可以根据官方例程推举出识别其他东西时，怎么获取对应识别目标的方位了。</p>
+<p>根据  <code>canMV-K230 IDE</code> 自带的颜色识别例程，整理出关键的代码。</p>
+<p>以下是颜色识别例程：</p>
+
+<pre class="language-python"><code class="language-python"># Find Blobs Example
+#
+# This example shows off how to find blobs in the image.
+import time, os, gc, sys
+
+from media.sensor import *
+from media.display import *
+from media.media import *
+
+DETECT_WIDTH = ALIGN_UP(320, 16)
+DETECT_HEIGHT = 240
+
+sensor = None
+
+def camera_init():
+    global sensor
+
+    # construct a Sensor object with default configure
+    sensor = Sensor(width=DETECT_WIDTH,height=DETECT_HEIGHT)
+    # sensor reset
+    sensor.reset()
+    # set hmirror
+    # sensor.set_hmirror(False)
+    # sensor vflip
+    # sensor.set_vflip(False)
+
+    # set chn0 output size
+    sensor.set_framesize(width=DETECT_WIDTH,height=DETECT_HEIGHT)
+    # set chn0 output format
+    sensor.set_pixformat(Sensor.RGB565)
+    # use IDE as display output
+    Display.init(Display.VIRT, width= DETECT_WIDTH, height = DETECT_HEIGHT,fps=100,to_ide = True)
+    # init media manager
+    MediaManager.init()
+    # sensor start run
+    sensor.run()
+
+def camera_deinit():
+    global sensor
+    # sensor stop run
+    sensor.stop()
+    # deinit display
+    Display.deinit()
+    # sleep
+    os.exitpoint(os.EXITPOINT_ENABLE_SLEEP)
+    time.sleep_ms(100)
+    # release media buffer
+    MediaManager.deinit()
+
+def capture_picture():
+
+    fps = time.clock()
+    while True:
+        fps.tick()
+        try:
+            os.exitpoint()
+            global sensor
+            img = sensor.snapshot()#获取图像
+
+            # 设置颜色阈值
+            thresholds = [[0, 80, 40, 80, 10, 80]]      # 红色的阈值，这样代码就只识别红色
+            # 从图像中查找颜色，根据阈值进行对比，当阈值一致时，将对应颜色的各个参数/位置等保存到blobs变量中
+            blobs=img.find_blobs(thresholds ,pixels_threshold= 500)
+            # 从blobs中遍历各个被识别到的阈值一样的颜色，将遍历到的颜色参数赋值给blob
+            for blob in blobs:
+                # 调用画矩形API，填入遍历到的颜色4个角的位置，设置矩形框的颜色为RGB的RG全色
+                img.draw_rectangle(blob[0], blob[1], blob[2], blob[3], color = (255, 255, 0))
+
+            # 显示图像
+            Display.show_image(img)
+            img = None
+
+            gc.collect()
+            print(fps.fps()) #输出帧率
+        except KeyboardInterrupt as e:
+            print(&quot;user stop: &quot;, e)
+            break
+        except BaseException as e:
+            print(f&quot;Exception {e}&quot;)
+            break
+
+def main():
+    os.exitpoint(os.EXITPOINT_ENABLE)
+    camera_is_init = False
+    try:
+        print(&quot;camera init&quot;)
+        camera_init()
+        camera_is_init = True
+        print(&quot;camera capture&quot;)
+        capture_picture()
+    except Exception as e:
+        print(f&quot;Exception {e}&quot;)
+    finally:
+        if camera_is_init:
+            print(&quot;camera deinit&quot;)
+            camera_deinit()
+
+if __name__ == &quot;__main__&quot;:
+    main()
+
+</code></pre>
+<p><strong>分析：</strong></p>
+<p>其实主要就是 <a href="https://developer.canaan-creative.com/k230_canmv/dev/zh/api/openmv/image.html#find-blobs"  target="_blank">find_blobs</a>  <code>API</code>，它会去图像中查找我们设置的阈值的颜色，找到 一个就记录起来成为一个对象，找到一个就记一个，然后我们就可以对该颜色对象为所欲为了。</p>
+<p>但是这个例程还是有一点问题，也不能说是问题，只是不符合我们的要求，我们的要求是只识别一个颜色。毕竟我们只有一个炮台，识别再多个也只能打一个。那么问题来了，这个例程是会将图像中识别到的颜色都画框并记录，类似以下现象：（识别浅蓝色）</p>
+<p><img src="../../static/images/docs/diy/tracking-cannon/basic/basic-2024-12-21-23-09-37.png" alt="图 6" /></p>
+<p>图中的白色矩形框+白色十字就是表示的识别到的颜色。现在识别出了那么多个目标，我们只有一个炮口怎么办？<strong>我们可以优先找到最大的，最近的一个开炮！</strong>，而在图像的世界里，在多个目标里，像素越多的，说明离摄像头越近！那就是最大的目标！</p>
+<p>以下是在一堆识别到的图像中，找到最大像素的图像代码：<strong>(只写关键的了)</strong></p>
+
+<pre class="language-python"><code class="language-python"># 拍摄一张图片
+img = sensor.snapshot()
+
+# 查找图像中满足红色阈值（red_threshold）的区域
+blobs = img.find_blobs([red_threshold], pixels_threshold=200, area_threshold=200, merge=True)
+
+# 如果找到了至少一个blob
+if blobs:
+    # 从blobs中找到最大像素点的blob
+    largest_blob = max(blobs, key=lambda b: b.pixels())
+
+    # 只对最大像素点的目标画框，框的颜色是RGB中的R（红色）
+    img.draw_rectangle(largest_blob.rect(), color=(255, 0, 0))
+    # 在框内画十字，标记中心点
+    img.draw_cross(largest_blob.cx(), largest_blob.cy(), color=(255, 0, 0))
+
+    # 将位置和宽高格式化为字符串
+    wz = &quot;x={}, y={}, w={}, h={}&quot;.format(x_offset, y_offset, largest_blob.w(), largest_blob.h())
+
+    # 图像上显示位置和宽高信息的字符串，字符的大小是32
+    img.draw_string_advanced(0,0,32,wz)
+</code></pre>
+<blockquote>
+<p>上面代码中的阈值注释虽然是红色阈值，但是我实际上用的是绿色的阈值</p>
+</blockquote>
+<p>现在我们就已经完成了目标定位的任务了，上面的代码中找到了最大像素的目标，并且输出它对于摄像头图像大小的X轴Y轴位置。</p>
+<p><img src="../../static/images/docs/diy/tracking-cannon/basic/basic-2024-12-21-23-09-46.png" alt="图 7" /></p>
+<p>我还加了一些辅助内容，比如给图像的中心画一个绿色的十字。其他内容具体看源码 <code>main.py</code>。</p>
+<h3 id="%E8%88%B5%E6%9C%BA%E6%8E%A7%E5%88%B6">舵机控制</h3>
+<p>舵机控制的基本原理，参考该博主的文章：<a href="https://blog.csdn.net/weixin_38288325/article/details/132366604?fromshare=blogdetail&amp;sharetype=blogdetail&amp;sharerId=132366604&amp;sharerefer=PC&amp;sharesource=qq_51930953&amp;sharefrom=from_link"  target="_blank">舵机篇（一）舵机原理</a></p>
+<p>舵机控制简单来说，就是输入一个20ms周期的PWM给他，通过调整高电平占空比实现舵机的旋转。</p>
+<blockquote>
+<p>频率等于周期的倒数，所以 <code>20ms</code>  周期 = <code>1 / 20</code>  = <code>50 Hz</code>  频率</p>
+</blockquote>
+<p>在庐山派K230开发板引出的PWM中，PWM只有5个，分别是PWM0~PWM4。只有特定的引脚支持PWM功能，具体见下图：</p>
+<p><img src="../../static/images/docs/diy/tracking-cannon/basic/basic-2024-12-21-22-57-24.png" alt="图 5" /></p>
+<p>在我们的舵机案例中，使用的是 <code>GPIO46</code> 、 <code>GPIO47</code> 上的，<code>PWM2</code> 和 <code>PWM3</code>。</p>
+<p>在代码中初始化PWM参数如果下：</p>
+<blockquote>
+<p>配置方法具体说明，请参考立创开发板wiki：<a href="https://wiki.lckfb.com/zh-hans/lushan-pi-k230/basic/pwm.html"  target="_blank">庐山派开发板资料-PWM</a></p>
+</blockquote>
+
+<pre class="language-python"><code class="language-python">from machine import PWM, FPIOA, Pin
+
+# 配置排针引脚号12，芯片引脚号为47的排针复用为PWM通道3输出
+pwm_io1 = FPIOA()
+pwm_io1.set_function(47, FPIOA.PWM3)
+# 初始化PWM参数
+pwm_ud = PWM(3, 50, 50, enable=True)  # 默认频率50Hz,占空比50% 3~12
+
+# 配置排针引脚号32，芯片引脚号为46的排针复用为PWM通道2输出
+pwm_io2 = FPIOA()
+pwm_io2.set_function(46, FPIOA.PWM2)
+# 初始化PWM参数
+pwm_lr = PWM(2, 50, 50, enable=True)  # 默认频率50Hz,占空比50% 2~13
+
+pwm_lr.duty(7.5)    #旋转到中间
+pwm_ud.duty(7.7)    #旋转到中间
+
+</code></pre>
+<p>在案例中，我将左右旋转的舵机命名为  <code>pwm_lr</code>  ，上下旋转的舵机命名为  <code>pwm_ud</code>  。</p>
+<p>在上面的案例中还有一个地方需要说明，我为了让舵机一上电就默认旋转到中间，设置了两个舵机动作：</p>
+
+<pre class="language-python"><code class="language-python">pwm_lr.duty(7.5)    #旋转到中间
+pwm_ud.duty(7.7)    #旋转到中间
+</code></pre>
+<p>这里的 <code>7.5</code> 指的是占空比的百分比，即7.5%的高电平占空比。我们现在知道了以下参数：</p>
+<ul>
+<li>PWM周期为 <code>20 ms</code></li>
+<li>PWM频率为 <code>50 Hz</code></li>
+<li>高电平的占空比为 <code>7.5%</code></li>
+</ul>
+<p>求我们当前旋转的角度。</p>
+<p>根据180度旋转的舵机控制原理，可以可以知道舵机旋转角度和周期的关系如下图：</p>
+<p><img src="../../static/images/docs/diy/tracking-cannon/basic/basic-2024-12-21-23-39-34.png" alt="图 8" /></p>
+<p>我们只要控制在20ms的周期内的高电平时间，就可以控制舵机的旋转角度。</p>
+<p>那么获取高电平时间公式如下：</p>
+<center> 高电平时间 = PWM周期 × 占空比 </center>
+<p>参照之前的参数 带入得到：</p>
+<center> 高电平时间 = 20 ms × 0.075 </center>
+<p>高电平的时间是 <code>1.5</code> 毫秒 。</p>
+<p>而 <code>1.5 ms</code> 就是控制舵机旋转到0度。所以代码中设置 <code>7.5%</code> 的占空比就是让舵机旋转到中间（舵机最左是-90度，中间是0度，最右是90度）。</p>
+<p>而上下旋转的舵机占空比，我设置为了7.7%，这个是我的测试值，测试出来的舵机旋转比较接近中间的值，大家自行测试。</p>
+<hr />
+<p>现在180度的舵机，我们将其分成为 <code>-90~90度</code> 的范围。我们还要知道3个参数：</p>
+<ol>
+<li><p>最大角度 <code>90度</code> 时我们要设置多少占空比；</p>
+</li>
+<li><p>最小角度 <code>-90度</code> 时我们要设置多少占空比；</p>
+</li>
+<li><p>中间角度 <code>0度</code> 时我们要设置多少占空比；</p>
+</li>
+</ol>
+<p>经过我自己实测，上下动作的舵机占空比范围是 <code>2.5~12.5%</code> 的占空比，<code>2.5%</code>占空比时角度最小，<code>12.5%</code> 占空比时角度最大，<code>7.5%</code> 占空比时角度居中。</p>
+<blockquote>
+<p><strong>为什么不直接用理论值计算？而是要手动测试呢？</strong><br />
+这个是因为舵机云台结构的原因，比如上下旋转的舵机我们设置旋转为了0度，但是因为结构上的原因，舵机转不到0度，它被结构框体卡死了，这个就是赌死现象：没有转到0度，舵机就一直转。<br />
+为了防止堵死的现象出现，就需要我们手动测试一个安全的旋转范围。</p>
+</blockquote>
+<p>这里以Y轴举例(Y轴就是上下旋转的舵机)，现在Y轴的范围在摄像头采集的图像中是 <code>0 ~ 479</code> 个像素，屏幕的中心值就是 <code>480/2=240</code> ，而Y轴的范围是从 <code>0</code> 开始的，所以我们得减一，屏幕的中心值就是 <code>239</code> 。我们以屏幕中心为参考，</p>
+<p><strong>当Y轴的值小于239时</strong>，我们就判断识别物体是上方；</p>
+<p><strong>当Y轴的值大于239时</strong>，我们就判断识别物体是下方；</p>
+<p><strong>当Y轴的值等于239时</strong>，我们就判断识别的物体是Y轴中心；</p>
+<p><img src="../../static/images/docs/diy/tracking-cannon/basic/basic-2024-12-22-00-00-10.png" alt="图 9" /></p>
+<p>我个人觉得全部是正数的范围，不方便我们去处理舵机，0 ~ 238是上方，239是中间，240 ~ 379是下方，这样不好带入到我们后面的舵机控制中。为了更加方便我自己，我将其Y轴范围修改如下：</p>
+<table>
+<thead>
+<tr>
+  <th style="text-align:center">数值范围</th>
+  <th style="text-align:center">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td style="text-align:center">-239~0</td>
+  <td style="text-align:center">上方</td>
+</tr>
+<tr>
+  <td style="text-align:center">0</td>
+  <td style="text-align:center">中间</td>
+</tr>
+<tr>
+  <td style="text-align:center">0~239</td>
+  <td style="text-align:center">下方</td>
+</tr>
+</tbody>
+</table>
+<p>这样分布后我们就知道负数是上，正数是下，我们要让舵机尽量往中间（就是0的位置）移动。</p>
+<p>实现的代码：</p>
+<blockquote>
+<p>实现了X轴和Y轴距离中心的位置反馈</p>
+</blockquote>
+
+<pre class="language-python"><code class="language-python"># 如果找到了至少一个blob
+if blobs:
+    # 找到最大的blob
+    largest_blob = max(blobs, key=lambda b: b.pixels())
+
+    # 画框
+    img.draw_rectangle(largest_blob.rect(), color=(255, 0, 0))
+    # 在框内画十字，标记中心点
+    img.draw_cross(largest_blob.cx(), largest_blob.cy(), color=(255, 0, 0))
+
+    # 计算相对于屏幕中心的X轴和Y轴的偏移量
+    x_offset = largest_blob.cx() - img.width() // 2
+    y_offset = largest_blob.cy() - img.height() // 2
+
+    # 屏幕显示位置信息和像素大小，包含正负号
+    wz = &quot;x={}, y={}, w={}, h={}&quot;.format(x_offset, y_offset, largest_blob.w(), largest_blob.h())
+    img.draw_string_advanced(0,0,32,wz)
+</code></pre>
+<blockquote class="spoiler warning">
+<p> <strong>接下来我们来考虑一个问题：如何将Y轴的数值反馈给舵机让它按照我们设置的方向动作？</strong></p>
+</blockquote>
+<p>接下来了解一下我的想法，我们要让舵机往Y轴的中心 0 去动作。</p>
+<p>当识别物体Y轴为-239 ~ 0时，我们让舵机向上，直到识别物体Y轴的数值为0；<br />
+当识别物体Y轴为0 ~ 239 时,我们让舵机向下，直到识别物体Y轴的数值为0；</p>
+<p><strong>现在这个Y轴就是舵机角度与目标方位的误差！我们要让误差尽量保持为0！</strong></p>
+<p>首先是考虑如何解决数值不对等问题。舵机的范围是 <code>2.5 ~ 12.5</code>，Y轴的范围是 <code>-239 ~ +239</code> ，我们要将Y轴的数值压缩到 <code>2.5 ~ 12.5</code> 的范围。可以通过以下代码实现：</p>
+
+<pre class="language-python"><code class="language-python"># 将数值转换为占空比的函数
+def input_to_duty_cycle(input_value):
+    min_input = -max_duty
+    max_input = max_duty
+    min_duty_cycle = min_duty
+    max_duty_cycle = max_duty
+
+    # 确保输入值在允许的范围内
+    if input_value &lt; min_input or input_value &gt; max_input:
+        raise ValueError('输入值超出范围，应为{}到{}'.format(min_input,max_input))
+
+    # 计算输出占空比
+    output_value = min_duty_cycle + ((input_value - min_input) / (max_input - min_input)) * (max_duty_cycle - min_duty_cycle)
+    return output_value
+</code></pre>
+<p>现在解决了这个数值不对等问题，舵机的居中角度是 <code>7.5</code>，当识别物体在上方时，舵机的数值输出小于 <code>7.5</code> ; 当识别物体在下方时，舵机的数值输出大于7.5;</p>
+<p>GIF动图(终端输入PWM的数值)</p>
+<p>如果我们将摄像头固定在舵机上，舵机移动的时候，我们的摄像头也移动。那按照想法就是屏幕跟舵机一起动，这样就能够稳定的固定到中心，实现了识别瞄准功能。</p>
+<p>将这个代码直接应用到舵机上的效果:</p>
+<p>GIF动图（没有PID的直接控制）</p>
+<h3 id="PID%E8%87%AA%E5%8A%A8%E6%8E%A7%E5%88%B6">PID自动控制</h3>
+<p>大家根据上面的舵机控制章节，应该是可以实现最简单的舵机追踪功能，但是大家会发现有不稳定的现象，比如我举一些例子：</p>
+<ol>
+<li>当识别目标快速运动时，舵机的运动速度不会跟着识别目标的速度而进行变化，一直保持一个速度；</li>
+<li>超调现象。误差已经到0了，但是因为舵机的旋转惯性，（假设的，实际的舵机速度一直不变惯性很小）导致会超出0误差，比如-1 -&gt; 0 -&gt; 1，因为惯性从0到1了，又从 1 -&gt; 0 -&gt; -1，导致怎么都不能正常的误差为0，舵机一直抖。</li>
+</ol>
+<p>这个时候我们就要了解一个最常用的控制算法：<strong>PID算法</strong>。</p>
+<hr />
+<p>PID控制器，即比例-积分-微分控制器，是一种广泛应用于工业控制系统中的<strong>反馈回路控制器</strong>。它通过控制系统的偏差（设定值与实际值之间的差）来调节控制变量，使得系统达到或维持在一个预定的状态。PID控制器由三个基本控制动作组成：<code>比例（Proportional）</code>、<code>积分（Integral）</code> 和 <code>微分（Derivative）</code> ，下面详细介绍这三个部分：</p>
+<p><strong>比例（P）控制</strong><br />
+比例控制的作用是根据设定值与实际值之间的误差（e），进行比例放大后作为控制输出。其数学表达式为：</p>
+<center> P = Kp * e </center>
+<p>其中，<code>Kp</code> 是比例增益，决定了比例控制的强度。比例控制的特点是动作快速直接，<strong>但通常会存在一个稳态误差，即系统稳定后，输出值与设定值之间仍会有一定的差距。</strong></p>
+<p><strong>积分（I）控制</strong><br />
+积分控制的作用是对偏差进行积分运算，<strong>以消除稳态误差</strong>。积分作用考虑了误差的历史累积，其数学表达式为</p>
+<center>
+<p><img src="../../static/images/docs/diy/tracking-cannon/basic/basic-2024-12-22-00-35-56.png" alt="图 12" /></p>
+</center>
+<blockquote>
+<p>你也可以这么看这个参数：I = Ki * e的历史累积</p>
+</blockquote>
+<p>其中，<code>Ki</code> 是积分增益。积分控制能够消除稳态误差，<strong>但可能会引起系统的响应速度变慢，并且可能造成系统的超调和振荡。</strong></p>
+<p><strong>微分（D）控制</strong><br />
+微分控制的作用是根据误差变化的速率（即偏差的微分）来进行控制，以预测误差的未来趋势。微分作用的数学表达式为：</p>
+<center>
+<p><img src="../../static/images/docs/diy/tracking-cannon/basic/basic-2024-12-22-00-35-06.png" alt="图 11" /></p>
+</center>
+<p>其中，<code>Kd</code> 是微分增益。微分控制有助于减少系统的超调和振荡，提高系统的动态性能，<strong>但它对噪声敏感，可能会放大控制信号中的噪声。</strong></p>
+<p><strong>PID控制器的基本形式</strong></p>
+<p>将上述三个控制作用结合起来，PID控制器的理论基本形式可以表示为：</p>
+<center>
+<p><img src="../../static/images/docs/diy/tracking-cannon/basic/basic-2024-12-22-00-37-48.png" alt="图 13" /></p>
+</center>
+<p>其中 <code>u(t)</code> 是控制器的输出，<code>e(t)</code> 是在时间t时的偏差。</p>
+<p>上面的原理部分大家看看就可以了，我们从实际应用入手。</p>
+<p>首先总结几个关键的名词：</p>
+<ol>
+<li><strong>误差（e）</strong><br />
+ 根据设定值与实际值之间的误差（e），应该很好理解 ，我们之前的舵机控制章节就说明了误差的概念，尽可能的让误差为0。</li>
+<li><strong>稳态误差</strong><br />
+ 即系统稳定后，输出值与设定值之间仍会有一定的差距。就是误差值明明是0了，但是实际上却是在1~2之间徘徊，就是到不了0。</li>
+<li><strong>系统的响应速度变慢</strong><br />
+系统的响应速度变慢通常是由于PID控制器中的积分（I）控制作用过强导致的。积分作用是为了消除稳态误差，它会累积历史偏差，使得控制动作缓慢增长，以渐进方式达到设定值。以下是详细介绍：<br />
+<strong>原因：</strong>积分增益 <code>Ki</code> 设置过高，导致系统对偏差的累积反应过度，使得控制输出缓慢增加，从而减慢了系统的响应速度。<br />
+<strong>影响：</strong>系统达到设定值的时间延长，对于需要快速响应的控制系统来说，这可能是不可接受的。<br />
+<strong>解决方法：</strong>适当减小积分增益 <code>Ki</code>，或者优化积分项的作用范围，以加快系统的响应速度。</li>
+<li><strong>系统的超调和振荡</strong><br />
+<strong>原因：</strong>比例增益 <code>Kp</code> 过高或微分增益 <code>Kd</code> 过低，可能导致系统在接近设定值时反应过激，从而引起超调；而微分增益 <code>Kd</code> 过高则可能导致系统在设定值附近振荡。<br />
+<strong>影响：</strong>超调意味着系统输出超过了设定值，而振荡则是指系统在设定值附近反复波动，两者都会影响系统的稳定性和控制精度。<br />
+<strong>解决方法：</strong>适当调整比例增益 <code>Kp</code> 和微分增益 <code>Kd</code> ，以减少超调和振荡。通常需要通过试验和调整来找到最佳参数。</li>
+<li><strong>噪声敏感</strong><br />
+<strong>原因：</strong>微分增益 <code>Kd</code> 过高，使得控制器对偏差的微小变化反应过度，而实际系统中的偏差变化可能是由噪声引起的。<br />
+<strong>影响：</strong>控制器可能会对噪声产生过大的反应，导致控制输出不稳定，从而影响系统的性能。<br />
+<strong>解决方法：</strong>适当降低微分增益 <code>Kd</code> ，或者增加滤波器来平滑控制信号，减少噪声的影响。</li>
+</ol>
+<p>PID控制器的参数调整<br />
+在实际应用中，需要对PID控制器的参数 <code>Kp \ Ki \ Kd</code> 进行调整，以达到理想的控制效果。这通常通过以下步骤进行：</p>
+<ul>
+<li><strong>先设定比例增益 <code>Kp</code></strong> ：使系统响应快速，但可能会出现稳态误差。</li>
+<li><strong>调整积分增益 <code>Ki</code></strong> ：消除稳态误差，但要注意超调和振荡。</li>
+<li><strong>最后调整微分增益 <code>Kd</code></strong> ：改善系统的动态行为，减少超调和振荡。</li>
+</ul>
+<p>PID控制器因其结构简单、适用范围广、易于理解和实现，而被广泛应用于各种工业控制场合，如温度控制、流量控制、位置控制等。然而，对于一些复杂的系统，可能需要更高级的控制策略来获得更好的控制效果。</p>
+<p><img src="../../static/images/docs/diy/tracking-cannon/basic/basic-2024-12-22-00-06-01.gif" alt="图 10" /></p>
+<h1 id="%E6%95%B0%E6%8D%AE%E6%BB%A4%E6%B3%A2%E7%AF%87">数据滤波篇</h1>
+
                         
                     </div>
                 </div>
