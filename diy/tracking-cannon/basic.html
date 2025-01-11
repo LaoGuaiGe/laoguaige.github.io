@@ -690,6 +690,19 @@ def input_to_duty_cycle(input_value):
 比例控制的作用是根据设定值与实际值之间的误差（e），进行比例放大后作为控制输出。其数学表达式为：</p>
 <center> P = Kp * e </center>
 <p>其中，<code>Kp</code> 是比例增益，决定了比例控制的强度。比例控制的特点是动作快速直接，<strong>但通常会存在一个稳态误差，即系统稳定后，输出值与设定值之间仍会有一定的差距。</strong></p>
+<details>
+<summary>误差的说明，点击展开</summary>
+<div class="details-content"><p>根据设定值与实际值之间的误差（e），应该很好理解 ，我们之前的舵机控制章节就说明了误差的概念，尽可能的让误差为0。<br />
+ 实际值就是摄像头识别物体的方位；<br />
+ 设定值就是摄像头采集的图像中心；<br />
+ 我们要让图像中心接近物体方位。让它们的误差越来越小，直到为0。</p>
+</div>
+</details>
+<details>
+<summary>稳态误差的说明，点击展开</summary>
+<div class="details-content"><p>即系统稳定后，输出值与设定值之间仍会有一定的差距。就是误差值明明是0了，但是实际上却是在1~2之间徘徊，就是到不了0。</p>
+</div>
+</details>
 <p><strong>积分（I）控制</strong><br />
 积分控制的作用是对偏差进行积分运算，<strong>以消除稳态误差</strong>。积分作用考虑了误差的历史累积，其数学表达式为</p>
 <center>
@@ -699,39 +712,143 @@ def input_to_duty_cycle(input_value):
 <p>你也可以这么看这个参数：I = Ki * e的历史累积</p>
 </blockquote>
 <p>其中，<code>Ki</code> 是积分增益。积分控制能够消除稳态误差，<strong>但可能会引起系统的响应速度变慢，并且可能造成系统的超调和振荡。</strong></p>
+<details>
+<summary>超调和振荡的说明，点击展开</summary>
+<div class="details-content"><p><strong>超调</strong> 意味着系统输出超过了设定值，比如你的舵机值设定范围是<code>2.5~12.5%</code> ，但是PID计算的结果超过了12.5，变成15？20？100？或者更高，这个是严重的问题；<br />
+ <strong>振荡</strong> 则是指系统在设定值附近反复波动，就是猛过头了，反应过激，刹车不了。</p>
+</div>
+</details>
 <p><strong>微分（D）控制</strong><br />
 微分控制的作用是根据误差变化的速率（即偏差的微分）来进行控制，以预测误差的未来趋势。微分作用的数学表达式为：</p>
 <center>
 <p><img src="../../static/images/docs/diy/tracking-cannon/basic/basic-2024-12-22-00-35-06.png" alt="图 11" /></p>
 </center>
 <p>其中，<code>Kd</code> 是微分增益。微分控制有助于减少系统的超调和振荡，提高系统的动态性能，<strong>但它对噪声敏感，可能会放大控制信号中的噪声。</strong></p>
+<details>
+<summary>噪声的说明，点击展开</summary>
+<div class="details-content"><p>噪声就是干扰，我们用电机速度PID做一个例子，当前我们速度为0，我们设置目标速度为10，通过PID的计算，电机旋转速度会逐渐接近10，这个时候你去手动干预它，让电机不能转，这个就是干扰，你干扰了电机的运动，电机的速度变慢了，导致PID的误差在时间上一直越来越大，那么PID为了让电机速度更快接近目标，PID计算的值就越来越大，电机的旋转力度就越来越大，直到挣脱你的束缚。那对噪声敏感，表示的就是你干扰了一下，PID就崩溃了，对噪声产生过大的反应，导致控制输出不稳定。</p>
+</div>
+</details>
 <p><strong>PID控制器的基本形式</strong></p>
 <p>将上述三个控制作用结合起来，PID控制器的理论基本形式可以表示为：</p>
 <center>
 <p><img src="../../static/images/docs/diy/tracking-cannon/basic/basic-2024-12-22-00-37-48.png" alt="图 13" /></p>
 </center>
-<p>其中 <code>u(t)</code> 是控制器的输出，<code>e(t)</code> 是在时间t时的偏差。</p>
-<p>上面的原理部分大家看看就可以了，我们从实际应用入手。</p>
-<p>首先总结几个关键的名词：</p>
-<ol>
-<li><strong>误差（e）</strong><br />
- 根据设定值与实际值之间的误差（e），应该很好理解 ，我们之前的舵机控制章节就说明了误差的概念，尽可能的让误差为0。</li>
-<li><strong>稳态误差</strong><br />
- 即系统稳定后，输出值与设定值之间仍会有一定的差距。就是误差值明明是0了，但是实际上却是在1~2之间徘徊，就是到不了0。</li>
-<li><strong>系统的响应速度变慢</strong><br />
-系统的响应速度变慢通常是由于PID控制器中的积分（I）控制作用过强导致的。积分作用是为了消除稳态误差，它会累积历史偏差，使得控制动作缓慢增长，以渐进方式达到设定值。以下是详细介绍：<br />
-<strong>原因：</strong>积分增益 <code>Ki</code> 设置过高，导致系统对偏差的累积反应过度，使得控制输出缓慢增加，从而减慢了系统的响应速度。<br />
-<strong>影响：</strong>系统达到设定值的时间延长，对于需要快速响应的控制系统来说，这可能是不可接受的。<br />
-<strong>解决方法：</strong>适当减小积分增益 <code>Ki</code>，或者优化积分项的作用范围，以加快系统的响应速度。</li>
-<li><strong>系统的超调和振荡</strong><br />
-<strong>原因：</strong>比例增益 <code>Kp</code> 过高或微分增益 <code>Kd</code> 过低，可能导致系统在接近设定值时反应过激，从而引起超调；而微分增益 <code>Kd</code> 过高则可能导致系统在设定值附近振荡。<br />
-<strong>影响：</strong>超调意味着系统输出超过了设定值，而振荡则是指系统在设定值附近反复波动，两者都会影响系统的稳定性和控制精度。<br />
-<strong>解决方法：</strong>适当调整比例增益 <code>Kp</code> 和微分增益 <code>Kd</code> ，以减少超调和振荡。通常需要通过试验和调整来找到最佳参数。</li>
-<li><strong>噪声敏感</strong><br />
-<strong>原因：</strong>微分增益 <code>Kd</code> 过高，使得控制器对偏差的微小变化反应过度，而实际系统中的偏差变化可能是由噪声引起的。<br />
-<strong>影响：</strong>控制器可能会对噪声产生过大的反应，导致控制输出不稳定，从而影响系统的性能。<br />
-<strong>解决方法：</strong>适当降低微分增益 <code>Kd</code> ，或者增加滤波器来平滑控制信号，减少噪声的影响。</li>
-</ol>
+<p>其中 <code>u(t)</code> 是控制器的输出，<code>e(t)</code> 是在时间t时的偏差。通过PID我们就能够让舵机动作的更加快速，稳定的到达我们设置的目标位置。</p>
+<p>上面的原理部分大家看看就可以了，我们从实际应用入手。首先将以上PID数学公式转化为代码公式：</p>
+
+<pre class="language-python"><code class="language-python">out = (Kp * p) + (Ki * i) + (Kd * d)
+</code></pre>
+<p>整理参数，参数分为静态参数和动态参数：</p>
+
+<pre class="language-python"><code class="language-python">#静态参数
+Kp = 0
+Ki = 0
+Kd = 0
+#动态参数
+i = 0			#积分I
+e = 0			#当前误差
+last_e = 0		#之前误差
+max_out = 0		#最大输出
+
+</code></pre>
+<p>将代码公式一一拆分，得到下面的PID的计算函数：</p>
+
+<pre class="language-PYTHON"><code class="language-PYTHON"> def pid_calc(reference, feedback):#reference=目标位置	feedback=当前位置
+        last_e = e  #更新之前的误差
+        e = reference - feedback #通过当前值和目标值计算获取新的误差
+
+        #计算比例P
+        p = e * Kp
+
+        #计算积分I
+        i += e * Ki
+
+        #计算微分D
+        d = (e - last_e) * Kd
+
+        #计算PID输出
+        out = p + i + d
+
+        #输出限制
+        if out &gt; max_out:
+            out =   max_out
+        elif out &lt; -max_out:
+            out = -max_out
+
+        return out
+</code></pre>
+<blockquote class="spoiler warning">
+<p> 注意，PID计算是要实时的，请确保PID的计算不会被阻塞太久；积分<code>I</code>是累加的，必须是全局变量；</p>
+</blockquote>
+<p>现在PID部分的代码基本完成了，接下来是最重要的如何使用PID。</p>
+<p>静态参数的设置：</p>
+
+<pre class="language-python"><code class="language-python">lr_kp = 0.013
+lr_ki = 0.0008
+lr_kd = 0.016
+lr_max_out = 12.5		#最大输出
+pid_lr = PID(lr_kp, lr_ki, lr_kd,10,12.5)
+
+ud_kp = 0.013
+ud_ki = 0.00091
+ud_kd = 0.02
+pid_ud = PID(ud_kp, ud_ki, ud_kd,10,12.5)
+</code></pre>
+<p>我将关键代码取出分析：</p>
+
+<pre class="language-python"><code class="language-python"># 如果找到了至少一个目标色块
+        if blobs:
+            # 找到最大的目标色块
+            largest_blob = max(blobs, key=lambda b: b.pixels())
+
+            # 给目标色块画框标记出来
+            img.draw_rectangle(largest_blob.rect(), color=(255, 0, 0))
+            # 在标记框内画十字，标记中心点
+            img.draw_cross(largest_blob.cx(), largest_blob.cy(), color=(255, 0, 0))
+
+            # 计算目标色块相对于屏幕中心的X轴和Y轴的偏移量
+            x_offset = largest_blob.cx() - img.width() // 2
+            y_offset = largest_blob.cy() - img.height() // 2
+
+            # 在屏幕显示目标色块的位置信息和像素大小，包含正负号
+            wz = &quot;x={}, y={}, w={}, h={}&quot;.format(x_offset, y_offset, largest_blob.w(), largest_blob.h())
+         	# 显示字符串
+            img.draw_string_advanced(0,0,32,wz)
+
+            # 根据中心偏移量计算PWM的PID
+            # 0为目标值，x_offset表示当前设定值
+            pid_lr_value = pid_lr.pid_calc(0,x_offset)
+            pid_ud_value = pid_ud.pid_calc(0,y_offset)
+    		''' 关键点一 '''
+            # 将PID值转换为舵机的范围并且输出实际的占空比
+            duty_lr_value = input_to_duty_cycle(pid_lr_value)
+            duty_ud_value = input_to_duty_cycle(pid_ud_value)
+    		''' 关键点二 '''
+            # 根据计算后的占空比控制舵机动作
+            #pwm_lr.duty(duty_lr_value)
+            #pwm_ud.duty(duty_ud_value)
+</code></pre>
+<blockquote>
+<p>lr表示左右旋转的舵机，ud表示上下旋转的舵机。</p>
+</blockquote>
+<p>大家可以在上面的代码中看到 <strong>关键点一</strong> 和 <strong>关键点二</strong> 的注释，在关键点一的位置可以通过<code>print</code>输出一下<code>PID</code>计算后的值<code>pid_lr_value</code>；在关键点二的位置输出实际占空比值<code>duty_lr_value</code>。</p>
+
+<pre class="language-python"><code class="language-python"># 将数值转换为占空比的函数
+def input_to_duty_cycle(input_value):
+    min_input = -max_duty
+    max_input = max_duty
+    min_duty_cycle = min_duty
+    max_duty_cycle = max_duty
+
+    # 确保输入值在允许的范围内
+    if input_value &lt; min_input or input_value &gt; max_input:
+        raise ValueError('输入值超出范围，应为{}到{}'.format(min_input,max_input))
+
+    # 计算输出占空比
+    output_value = min_duty_cycle + ((input_value - min_input) / (max_input - min_input)) * (max_duty_cycle - min_duty_cycle)
+    return output_value
+</code></pre>
 <p>PID控制器的参数调整<br />
 在实际应用中，需要对PID控制器的参数 <code>Kp \ Ki \ Kd</code> 进行调整，以达到理想的控制效果。这通常通过以下步骤进行：</p>
 <ul>
