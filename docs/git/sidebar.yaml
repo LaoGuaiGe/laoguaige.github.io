@@ -1,3 +1,5 @@
 items:
 -   label: Brief
     file: README.md
+-   label: 绑定多个平台
+    file: config-ssh.md
