@@ -7,6 +7,24 @@
             <priority>1.0</priority>
         </url>
         <url>
+            <loc>https://https://laoguaige.github.io//c-basics/handle.html</loc>
+            <lastmod>2024-12-07</lastmod>
+            <changefreq>weekly</changefreq>
+            <priority>1.0</priority>
+        </url>
+        <url>
+            <loc>https://https://laoguaige.github.io//c-basics/array.html</loc>
+            <lastmod>2024-12-07</lastmod>
+            <changefreq>weekly</changefreq>
+            <priority>1.0</priority>
+        </url>
+        <url>
+            <loc>https://https://laoguaige.github.io//c-basics/structure.html</loc>
+            <lastmod>2024-12-07</lastmod>
+            <changefreq>weekly</changefreq>
+            <priority>1.0</priority>
+        </url>
+        <url>
             <loc>https://https://laoguaige.github.io//c-basics/control.html</loc>
             <lastmod>2024-12-07</lastmod>
             <changefreq>weekly</changefreq>
@@ -26,24 +44,6 @@
         </url>
         <url>
             <loc>https://https://laoguaige.github.io//c-basics/install.html</loc>
-            <lastmod>2024-12-07</lastmod>
-            <changefreq>weekly</changefreq>
-            <priority>1.0</priority>
-        </url>
-        <url>
-            <loc>https://https://laoguaige.github.io//c-basics/handle.html</loc>
-            <lastmod>2024-12-07</lastmod>
-            <changefreq>weekly</changefreq>
-            <priority>1.0</priority>
-        </url>
-        <url>
-            <loc>https://https://laoguaige.github.io//c-basics/array.html</loc>
-            <lastmod>2024-12-07</lastmod>
-            <changefreq>weekly</changefreq>
-            <priority>1.0</priority>
-        </url>
-        <url>
-            <loc>https://https://laoguaige.github.io//c-basics/structure.html</loc>
             <lastmod>2024-12-07</lastmod>
             <changefreq>weekly</changefreq>
             <priority>1.0</priority>
@@ -80,7 +80,13 @@
         </url>
         <url>
             <loc>https://https://laoguaige.github.io//linux/index.html</loc>
-            <lastmod>2025-03-28</lastmod>
+            <lastmod>2025-04-02</lastmod>
+            <changefreq>weekly</changefreq>
+            <priority>1.0</priority>
+        </url>
+        <url>
+            <loc>https://https://laoguaige.github.io//linux/vmware-install.html</loc>
+            <lastmod>2025-04-02</lastmod>
             <changefreq>weekly</changefreq>
             <priority>1.0</priority>
         </url>
@@ -92,13 +98,13 @@
         </url>
         <url>
             <loc>https://https://laoguaige.github.io//git/index.html</loc>
-            <lastmod>2025-03-28</lastmod>
+            <lastmod>2025-04-02</lastmod>
             <changefreq>weekly</changefreq>
             <priority>1.0</priority>
         </url>
         <url>
             <loc>https://https://laoguaige.github.io//git/config-ssh.html</loc>
-            <lastmod>2025-03-28</lastmod>
+            <lastmod>2025-04-02</lastmod>
             <changefreq>weekly</changefreq>
             <priority>1.0</priority>
         </url>
@@ -116,24 +122,6 @@
         </url>
         <url>
             <loc>https://https://laoguaige.github.io//mcu/arduino/index.html</loc>
-            <lastmod>2024-12-07</lastmod>
-            <changefreq>weekly</changefreq>
-            <priority>1.0</priority>
-        </url>
-        <url>
-            <loc>https://https://laoguaige.github.io//mcu/k230/index.html</loc>
-            <lastmod>2024-12-07</lastmod>
-            <changefreq>weekly</changefreq>
-            <priority>1.0</priority>
-        </url>
-        <url>
-            <loc>https://https://laoguaige.github.io//mcu/ti-mspm0g3507/index.html</loc>
-            <lastmod>2024-12-07</lastmod>
-            <changefreq>weekly</changefreq>
-            <priority>1.0</priority>
-        </url>
-        <url>
-            <loc>https://https://laoguaige.github.io//mcu/gd32f4/index.html</loc>
             <lastmod>2024-12-07</lastmod>
             <changefreq>weekly</changefreq>
             <priority>1.0</priority>
@@ -157,8 +145,50 @@
             <priority>1.0</priority>
         </url>
         <url>
+            <loc>https://https://laoguaige.github.io//mcu/ti-mspm0g3507/index.html</loc>
+            <lastmod>2024-12-07</lastmod>
+            <changefreq>weekly</changefreq>
+            <priority>1.0</priority>
+        </url>
+        <url>
+            <loc>https://https://laoguaige.github.io//mcu/gd32f4/index.html</loc>
+            <lastmod>2024-12-07</lastmod>
+            <changefreq>weekly</changefreq>
+            <priority>1.0</priority>
+        </url>
+        <url>
+            <loc>https://https://laoguaige.github.io//mcu/k230/index.html</loc>
+            <lastmod>2024-12-07</lastmod>
+            <changefreq>weekly</changefreq>
+            <priority>1.0</priority>
+        </url>
+        <url>
             <loc>https://https://laoguaige.github.io//module/index.html</loc>
             <lastmod>2024-12-07</lastmod>
+            <changefreq>weekly</changefreq>
+            <priority>1.0</priority>
+        </url>
+        <url>
+            <loc>https://https://laoguaige.github.io//diy/index.html</loc>
+            <lastmod>2024-12-07</lastmod>
+            <changefreq>weekly</changefreq>
+            <priority>1.0</priority>
+        </url>
+        <url>
+            <loc>https://https://laoguaige.github.io//diy/tracking-cannon/basic.html</loc>
+            <lastmod>2024-12-05</lastmod>
+            <changefreq>weekly</changefreq>
+            <priority>1.0</priority>
+        </url>
+        <url>
+            <loc>https://https://laoguaige.github.io//diy/wiki-web/basic.html</loc>
+            <lastmod>2024-12-05</lastmod>
+            <changefreq>weekly</changefreq>
+            <priority>1.0</priority>
+        </url>
+        <url>
+            <loc>https://https://laoguaige.github.io//diy/picxel-clock/led-oscillating.html</loc>
+            <lastmod>2024-12-05</lastmod>
             <changefreq>weekly</changefreq>
             <priority>1.0</priority>
         </url>
@@ -188,30 +218,6 @@
         </url>
         <url>
             <loc>https://https://laoguaige.github.io//diy/picxel-clock/download.html</loc>
-            <lastmod>2024-12-05</lastmod>
-            <changefreq>weekly</changefreq>
-            <priority>1.0</priority>
-        </url>
-        <url>
-            <loc>https://https://laoguaige.github.io//diy/index.html</loc>
-            <lastmod>2024-12-07</lastmod>
-            <changefreq>weekly</changefreq>
-            <priority>1.0</priority>
-        </url>
-        <url>
-            <loc>https://https://laoguaige.github.io//diy/tracking-cannon/basic.html</loc>
-            <lastmod>2024-12-05</lastmod>
-            <changefreq>weekly</changefreq>
-            <priority>1.0</priority>
-        </url>
-        <url>
-            <loc>https://https://laoguaige.github.io//diy/wiki-web/basic.html</loc>
-            <lastmod>2024-12-05</lastmod>
-            <changefreq>weekly</changefreq>
-            <priority>1.0</priority>
-        </url>
-        <url>
-            <loc>https://https://laoguaige.github.io//diy/picxel-clock/led-oscillating.html</loc>
             <lastmod>2024-12-05</lastmod>
             <changefreq>weekly</changefreq>
             <priority>1.0</priority>

@@ -1,3 +1,5 @@
 items:
 -   label: Brief
     file: README.md
+-   label: 虚拟机搭建
+    file: vmware-install.md
