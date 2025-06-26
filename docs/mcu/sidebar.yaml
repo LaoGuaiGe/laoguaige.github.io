@@ -17,3 +17,13 @@ items:
     file: stm32f4/README.md
 -   label: TI-MSPM0G3507开发板入门
     file: ti-mspm0g3507/README.md
+-   label: TI-TMS320F28P550开发板入门
+    file: ti-tms320f28p55x/README.md
+    collapsed: true
+    items:
+    -   label: 系统延时
+        file: ti-tms320f28p55x/delay.md
+    -   label: 系统中断
+        file: ti-tms320f28p55x/interrupt.md
+    -   label: 串口通信
+        file: ti-tms320f28p55x/uart.md
