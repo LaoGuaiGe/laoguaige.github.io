@@ -773,3 +773,97 @@ sequenceDiagram
           }
         ```
     ```
+
+## 圆角矩形色块文本显示
+
+<div style="
+  background-color: #3498db;  /* 背景色 */
+  border-radius: 15px;        /* 圆角半径 */
+  padding: 20px;              /* 内边距 */
+  color: white;               /* 文字颜色 */
+  text-align: center;         /* 文字对齐 */
+  box-sizing: border-box;     /* 尺寸包含内边距 */
+">
+  这里是显示的文本内容
+</div>
+
+源码：
+
+```html
+<div style="
+  background-color: #3498db;  /* 背景色 */
+  border-radius: 15px;        /* 圆角半径 */
+  padding: 20px;              /* 内边距 */
+  color: white;               /* 文字颜色 */
+  text-align: center;         /* 文字对齐 */
+  box-sizing: border-box;     /* 尺寸包含内边距 */
+">
+  这里是显示的文本内容
+</div>
+```
+
+**关键属性详解：**
+
+**​1. ​背景与圆角​​**
+
+* background-color：支持颜色名（如coral）、十六进制（#ff5857）、RGB（rgb(52, 152, 219)）或渐变（linear-gradient(...)）
+
+* border-radius：
+  * 统一圆角：border-radius: 15px;
+  * 独立圆角：border-radius: 左上 右上 右下 左下;（例：10px 5px 10px 5px）
+
+* 圆形：正方形元素 + border-radius: 50%
+
+**2. ​​文字与内边距​​**
+* padding：控制文字与边框间距（如padding: 10px 20px;为上下10px/左右20px）
+* color：文字颜色（与背景需有足够对比度）
+* text-align：文字对齐（left/center/right）
+* 垂直居中：设置line-height等于容器高度（需固定高度）
+
+## 带小标题的圆角矩形色块文本显示
+
+<div style="
+  background-color: #f0f8ff;
+  border-radius: 12px;
+  padding: 20px;
+  margin: 15px 0;
+">
+  <span style="
+    font-weight: bold;
+    font-size: 1.2em;
+    display: block;
+    color: #2c3e50;
+    border-left: 4px solid #3498db; /* 左侧装饰线 */
+    padding-left: 10px;
+  ">
+    自定义小标题
+  </span>
+  <p style="color: #34495e; line-height: 1.6">
+    这里是详细介绍文本，可多行显示...
+  </p>
+</div>
+
+源码：
+
+```html
+<div style="
+  background-color: #f0f8ff;
+  border-radius: 12px;
+  padding: 20px;
+  margin: 15px 0;
+">
+  <span style="
+    font-weight: bold;
+    font-size: 1.2em;
+    display: block;
+    color: #2c3e50;
+    border-left: 4px solid #3498db; /* 左侧装饰线 */
+    padding-left: 10px;
+  ">
+    自定义小标题
+  </span>
+  <p style="color: #34495e; line-height: 1.6">
+    这里是详细介绍文本，可多行显示...
+  </p>
+</div>
+```
