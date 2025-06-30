@@ -954,6 +954,95 @@ sequenceDiagram
 </code></pre>
 </div>
 </details>
+<h2 id="%E5%9C%86%E8%A7%92%E7%9F%A9%E5%BD%A2%E8%89%B2%E5%9D%97%E6%96%87%E6%9C%AC%E6%98%BE%E7%A4%BA">圆角矩形色块文本显示</h2>
+<div style="
+  background-color: #3498db;  /* 背景色 */
+  border-radius: 15px;        /* 圆角半径 */
+  padding: 20px;              /* 内边距 */
+  color: white;               /* 文字颜色 */
+  text-align: center;         /* 文字对齐 */
+  box-sizing: border-box;     /* 尺寸包含内边距 */
+">
+  这里是显示的文本内容
+</div>
+<p>源码：</p>
+
+<pre class="language-html"><code class="language-html">&lt;div style=&quot;
+  background-color: #3498db;  /* 背景色 */
+  border-radius: 15px;        /* 圆角半径 */
+  padding: 20px;              /* 内边距 */
+  color: white;               /* 文字颜色 */
+  text-align: center;         /* 文字对齐 */
+  box-sizing: border-box;     /* 尺寸包含内边距 */
+&quot;&gt;
+  这里是显示的文本内容
+&lt;/div&gt;
+</code></pre>
+<p><strong>关键属性详解：</strong></p>
+<p><strong>​1. ​背景与圆角​​</strong></p>
+<ul>
+<li><p>background-color：支持颜色名（如coral）、十六进制（#ff5857）、RGB（rgb(52, 152, 219)）或渐变（linear-gradient(...)）</p>
+</li>
+<li><p>border-radius：</p>
+<ul>
+<li>统一圆角：border-radius: 15px;</li>
+<li>独立圆角：border-radius: 左上 右上 右下 左下;（例：10px 5px 10px 5px）</li>
+</ul>
+</li>
+<li><p>圆形：正方形元素 + border-radius: 50%</p>
+</li>
+</ul>
+<p><strong>2. ​​文字与内边距​​</strong></p>
+<ul>
+<li>padding：控制文字与边框间距（如padding: 10px 20px;为上下10px/左右20px）</li>
+<li>color：文字颜色（与背景需有足够对比度）</li>
+<li>text-align：文字对齐（left/center/right）</li>
+<li>垂直居中：设置line-height等于容器高度（需固定高度）</li>
+</ul>
+<h2 id="%E5%B8%A6%E5%B0%8F%E6%A0%87%E9%A2%98%E7%9A%84%E5%9C%86%E8%A7%92%E7%9F%A9%E5%BD%A2%E8%89%B2%E5%9D%97%E6%96%87%E6%9C%AC%E6%98%BE%E7%A4%BA">带小标题的圆角矩形色块文本显示</h2>
+<div style="
+  background-color: #f0f8ff;
+  border-radius: 12px;
+  padding: 20px;
+  margin: 15px 0;
+">
+  <span style="
+    font-weight: bold;
+    font-size: 1.2em;
+    display: block;
+    color: #2c3e50;
+    border-left: 4px solid #3498db; /* 左侧装饰线 */
+    padding-left: 10px;
+  ">
+    自定义小标题
+  </span>
+  <p style="color: #34495e; line-height: 1.6">
+    这里是详细介绍文本，可多行显示...
+  </p>
+</div>
+<p>源码：</p>
+
+<pre class="language-html"><code class="language-html">&lt;div style=&quot;
+  background-color: #f0f8ff;
+  border-radius: 12px;
+  padding: 20px;
+  margin: 15px 0;
+&quot;&gt;
+  &lt;span style=&quot;
+    font-weight: bold;
+    font-size: 1.2em;
+    display: block;
+    color: #2c3e50;
+    border-left: 4px solid #3498db; /* 左侧装饰线 */
+    padding-left: 10px;
+  &quot;&gt;
+    自定义小标题
+  &lt;/span&gt;
+  &lt;p style=&quot;color: #34495e; line-height: 1.6&quot;&gt;
+    这里是详细介绍文本，可多行显示...
+  &lt;/p&gt;
+&lt;/div&gt;
+</code></pre>
 <section class="footnotes">
 <ol>
 <li id="fn-1"><p>老子说道<a href="#fnref-1" class="footnote">&#8617;</a></p></li>
