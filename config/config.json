@@ -19,33 +19,13 @@
                 "position": "left"
             },
             {
-                "url": "/python/",
-                "label": "Python",
-                "position": "left"
-            },
-            {
-                "url": "/linux/",
-                "label": "Linux",
-                "position": "left"
-            },
-            {
                 "url": "/markdown/",
                 "label": "MarkDown",
                 "position": "left"
             },
             {
-                "url": "/git/",
-                "label": "Git",
-                "position": "left"
-            },
-            {
                 "url": "/mcu/",
                 "label": "单片机",
-                "position": "left"
-            },
-            {
-                "url": "/module/",
-                "label": "电子模块驱动合集",
                 "position": "left"
             },
             {

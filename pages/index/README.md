@@ -13,7 +13,7 @@ id: home_page
 
 <div id="home_page">
     <div>
-        <h1><span>硬件文档中心</span></h1>
+        <h1><span>个人知识分享站</span></h1>
         <h2>学广而闻多，则不求于人</h3>
     </div>
     <link rel="stylesheet" href="static/css/just-the-docs.css">
@@ -47,48 +47,6 @@ id: home_page
                 <p class="article-p-t">最新：2024-12-08</font>
                 </p>
             </div>
-			<!-- python自学参考手册 -->
-            <div class="col-item">
-                <figure class="c4-izmir c4-border-corners-1 c4-image-zoom-out c4-gradient-bottom" tabindex="0"
-                    style="--primary-color: #E0EAFC; --secondary-color: #CFDEF3; --text-color: #1f467b; --border-color: #1f467b; --image-opacity: .1;">
-                    <img src="static/images/python-img.png" alt="Sample Image" />
-                    <a href="/python/index.html" class="article-a">
-                        <figcaption class="c4-layout-top-left">
-                            <div class="c4-reveal-down">
-                                <div>
-                                    <h2 style="margin-bottom: 5px;"></h2>
-                                    <p>Python自学指南，一站式助你丐版入门的学习手册。</p>
-                                </div>
-                            </div>
-                        </figcaption>
-                </figure>
-                <a href="/python/index.html" class="article-a">
-                    <p class="article-p-h">python自学参考手册</p>
-                </a>
-                <p class="article-p-t">最新：2024-12-08</font>
-                </p>
-            </div>
-            <!-- 个人Linux笔记 -->
-            <div class="col-item">
-                <figure class="c4-izmir c4-border-corners-1 c4-image-zoom-out c4-gradient-bottom" tabindex="0"
-                    style="--primary-color: #E0EAFC; --secondary-color: #CFDEF3; --text-color: #1f467b; --border-color: #1f467b; --image-opacity: .1;">
-                    <img src="static/images/linux.png" alt="Sample Image" />
-                    <a href="/linux/index.html" class="article-a">
-                        <figcaption class="c4-layout-top-left">
-                            <div class="c4-reveal-down">
-                                <div>
-                                    <h2 style="margin-bottom: 5px;"></h2>
-                                    <p>我在开发Linux过程中，遇到的问题和解决方法。带一点个人学习笔记</p>
-                                </div>
-                            </div>
-                        </figcaption>
-                </figure>
-                <a href="/linux/index.html" class="article-a">
-                    <p class="article-p-h">个人Linux笔记</p>
-                </a>
-                <p class="article-p-t">最新：2024-12-08</font>
-                </p>
-            </div>
 			<!-- MarkDown语法手册-->
 			<div class="col-item">
 				<figure class="c4-izmir c4-border-corners-1 c4-image-zoom-out c4-gradient-bottom" tabindex="0"
@@ -110,30 +68,6 @@ id: home_page
 				<p class="article-p-t">最新：2024-12-08</font>
 				</p>
 			</div>
-		</div>
-        <!-- 第二行 -->
-        <div class="col-4">
-            <!-- git使用心得 -->
-			<div class="col-item">
-				<figure class="c4-izmir c4-border-corners-1 c4-image-zoom-out c4-gradient-bottom" tabindex="0"
-					style="--primary-color: #E0EAFC; --secondary-color: #CFDEF3; --text-color: #1f467b; --border-color: #1f467b; --image-opacity: .1;">
-					<img src="static/images/git.png" alt="Sample Image" />
-					<a href="/git/index.html" class="article-a">
-						<figcaption class="c4-layout-top-left">
-							<div class="c4-reveal-down">
-								<div>
-									<h2 style="margin-bottom: 5px;"></h2>
-									<p>基于teedoc静态网站框架的markdown语法总结，收录优美排版的语法记录</p>
-								</div>
-							</div>
-						</figcaption>
-				</figure>
-				<a href="/git/index.html" class="article-a">
-					<p class="article-p-h">git使用心得</p>
-				</a>
-				<p class="article-p-t">最新：2024-12-08</font>
-				</p>
-			</div>
             <!-- 单片机入门手册 -->
             <div class="col-item">
 				<figure class="c4-izmir c4-border-corners-1 c4-image-zoom-out c4-gradient-bottom" tabindex="0"
@@ -151,27 +85,6 @@ id: home_page
 				</figure>
 				<a href="/mcu/index.html" class="article-a">
 					<p class="article-p-h">单片机入门手册</p>
-				</a>
-				<p class="article-p-t">最新：2024-12-08</font>
-				</p>
-			</div>
-            <!-- 电子模块驱动合集 -->
-            <div class="col-item">
-				<figure class="c4-izmir c4-border-corners-1 c4-image-zoom-out c4-gradient-bottom" tabindex="0"
-					style="--primary-color: #E0EAFC; --secondary-color: #CFDEF3; --text-color: #1f467b; --border-color: #1f467b; --image-opacity: .1;">
-					<img src="static/images/module.png" alt="Sample Image" />
-					<a href="/module/index.html" class="article-a">
-						<figcaption class="c4-layout-top-left">
-							<div class="c4-reveal-down">
-								<div>
-									<h2 style="margin-bottom: 5px;"></h2>
-									<p>记录在单片机中使用过的电子模块，来源参考自立创开发板的模块移植手册</p>
-								</div>
-							</div>
-						</figcaption>
-				</figure>
-				<a href="/module/index.html" class="article-a">
-					<p class="article-p-h">电子模块驱动合集</p>
 				</a>
 				<p class="article-p-t">最新：2024-12-08</font>
 				</p>
