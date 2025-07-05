@@ -897,19 +897,22 @@ keil通常下载安装完成后，不能编译一些大的工程。要编译大�
 HAL_Delay(500);
 HAL_GPIO_WritePin(LED_TEST2_GPIO_Port, LED_TEST2_Pin, GPIO_PIN_RESET);
 HAL_Delay(500);
-HAL_GPIO_WritePin(LED_TEST2_GPIO_Port, LED_TEST2_Pin, GPIO_PIN_RESET);
+HAL_GPIO_WritePin(LED_TEST2_GPIO_Port, LED_TEST2_Pin, GPIO_PIN_SET);
 ```
+
+> 关于代码的解析请看下一节 `GPIO使用`。
 
 <table>
 <thead>
   <tr>
-      <th><img src="../../static/images/docs/mcu/stm32f4/install/install-2025-07-06-00-00-48.png" width="800"></th>
+      <th><img src="../../static/images/docs/mcu/stm32f4/install/install-2025-07-06-04-53-27.png" width="800"></th>
   </tr>
   <tr>
       <th><center>添加代码</center></th>
   </tr>  
 </thead>
 </table>
+
 
 对我们的工程进行编译，如果没有问题则是输出 `- 0 Error(s), 0 Warning(s).`
 
@@ -1028,16 +1031,17 @@ HAL_GPIO_WritePin(LED_TEST2_GPIO_Port, LED_TEST2_Pin, GPIO_PIN_RESET);
 
 ### 效果验证
 
-F411 的 LED 灯一直闪烁。
+开发板右侧最上方 F411 的 LED 灯缓慢闪烁。
 
 
 <table>
 <thead>
   <tr>
-      <th><img src="../../static/images/docs/mcu/stm32f4/install/install-2025-07-06-00-17-02.gif" width="800"></th>
+      <th><img src="../../static/images/docs/mcu/stm32f4/install/install-2025-07-06-04-55-51.gif" width="800"></th>
   </tr>
   <tr>
       <th><center>验证效果</center></th>
   </tr>  
 </thead>
 </table>
+
