@@ -1,16 +1,16 @@
 <!DOCTYPE html>
 
-<html lang="en"  class="">
+<html lang="en" id="zh_readme" class=" zh_readme ">
 
 
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
-    <meta name="keywords" content="">
+    <meta name="keywords" content="STM32, STM32CubeMX, STM32F411, 手册介绍, 教程目录">
     
     
-    <meta name="description" content="">
+    <meta name="description" content="基于 astraLauncher 开发板的入门手册介绍">
     
     <meta name="generator" content="teedoc">
     <meta name="theme" content="teedoc-plugin-theme-default">
@@ -50,10 +50,10 @@ MathJax = {"loader": {"load": ["output/svg"]}, "tex": {"inlineMath": [["$", "$"]
         
     
     
-    <title>Hdochub</title>
+    <title>手册介绍 - Hdochub</title>
     
     <script type="text/javascript">js_vars = {"teedoc-plugin-ad-hint": {"type": "hint", "label": "☆", "content": "这里是老怪鸽的个人技术文档记录中心</br>喜欢项目请<a target=\"_blank\" href=\"https://github.com/LaoGuaiGe/laoguaige.github.io\">点下 ☆ star </a>哦~🦀🦀", "show_times": 2, "show_after_s": 432000, "date": "2021-11-16 14:40", "color": "#a0421d", "link_color": "#e53935", "link_bg_color": "#e6ae5c", "bg_color": "#ffcf89", "color_hover": "white", "bg_color_hover": "#f57c00", "close_color": "#eab971"}}</script>
-    <script type="text/javascript">metadata = {"tags": [], "date": null, "update": [], "ts": 0, "author": "", "brief": "", "cover": ""}</script>
+    <script type="text/javascript">metadata = {"tags": ["STM32", "STM32CubeMX", "STM32F411", "手册介绍", "教程目录"], "date": false, "update": [], "ts": 0, "author": "", "brief": "", "cover": "", "id": "zh_readme", "class": "zh_readme", "draft": false}</script>
 </head>
 
 
@@ -128,11 +128,21 @@ MathJax = {"loader": {"load": ["output/svg"]}, "tex": {"inlineMath": [["$", "$"]
                     <div id="article_head">
                         <div id="article_title">
                             
-                            <h1></h1>
+                            <h1>手册介绍</h1>
                             
                         </div>
                         <div id="article_tags">
                             <ul>
+                            
+                                <li>STM32</li>
+                            
+                                <li>STM32CubeMX</li>
+                            
+                                <li>STM32F411</li>
+                            
+                                <li>手册介绍</li>
+                            
+                                <li>教程目录</li>
                             
                             </ul>
                         </div>
@@ -141,10 +151,6 @@ MathJax = {"loader": {"load": ["output/svg"]}, "tex": {"inlineMath": [["$", "$"]
                             <span class="article_author">
                                 
                             </span>
-                            
-                                <span class="article_date" title="Last modify date: 2025-07-06">
-                                    2025-07-06
-                                </span>
                             
                         </div>
                         <div id="article_info_right">
@@ -161,7 +167,93 @@ MathJax = {"loader": {"load": ["output/svg"]}, "tex": {"inlineMath": [["$", "$"]
                     </div>
                     <div id="article_content">
                         
-                            <p>todo</p>
+                            <h1 id="astraLauncher-%E5%BC%80%E5%8F%91%E6%9D%BF">astraLauncher 开发板</h1>
+<img src="../../static/images/docs/mcu/stm32f4/README/README-2025-07-06-05-56-15.png" alt="实物大图" style="border-radius: 10px; width: auto; height: auto;">
+<h2 id="%E4%B8%BA%E4%BB%80%E4%B9%88%E7%94%A8%E5%AE%83%E4%BD%9C%E4%B8%BA%E6%A1%88%E4%BE%8B%EF%BC%9F">为什么用它作为案例？</h2>
+<img src="../../static/images/docs/mcu/stm32f4/README/README-2025-07-06-06-00-20.png" alt="特性描述" style="border-radius: 10px; width: auto; height: auto;">
+<h2 id="%E5%A6%82%E4%BD%95%E4%BE%BF%E6%90%BA%EF%BC%9F">如何便携？</h2>
+<p>核心板仅 36.4 x 26.3 mm</p>
+<p><img src="../../static/images/docs/mcu/stm32f4/README/README-2025-07-06-06-06-16.png" alt="图 2" /></p>
+<h2 id="%E4%B8%BA%E4%BD%95%E7%B2%BE%E8%87%B4%EF%BC%9F">为何精致？</h2>
+<p><img src="../../static/images/docs/mcu/stm32f4/README/README-2025-07-06-06-07-50.png" alt="图 3" /><br />
+<img src="../../static/images/docs/mcu/stm32f4/README/README-2025-07-06-06-07-54.png" alt="图 4" /></p>
+<h2 id="%E6%80%8E%E4%B9%88%E6%98%93%E7%94%A8%EF%BC%9F">怎么易用？</h2>
+<p>将根据其制作入门手册：</p>
+<table>
+<thead>
+<tr>
+  <th>序号</th>
+  <th>章节名称</th>
+  <th>知识</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td>1</td>
+  <td><strong>环境搭建</strong></td>
+  <td>软件的安装、工程的创建、代码下载</td>
+</tr>
+<tr>
+  <td>2</td>
+  <td><strong>GPIO使用</strong></td>
+  <td>GPIO介绍、引脚输出功能介绍及使用、引脚输入功能介绍及使用</td>
+</tr>
+<tr>
+  <td>3</td>
+  <td><strong>时钟与延时</strong></td>
+  <td>主控时钟介绍与主频配置、常用延时方法介绍和使用方法</td>
+</tr>
+<tr>
+  <td>4</td>
+  <td><strong>外部中断</strong></td>
+  <td>中断的概念、主控的中断介绍、引脚的外部中断功能使用</td>
+</tr>
+<tr>
+  <td>5</td>
+  <td><strong>串口通信</strong></td>
+  <td>串口通信介绍、主控的串口介绍、开发板的串口通过下载器的串口功能与电脑进行的数据传输和接收实验</td>
+</tr>
+<tr>
+  <td>6</td>
+  <td><strong>定时器</strong></td>
+  <td>定时器的概念、主控的定时器介绍、实现定时的让灯交替闪烁的功能</td>
+</tr>
+<tr>
+  <td>7</td>
+  <td><strong>PWM输出</strong></td>
+  <td>什么是PWM、主控的PWM功能介绍、通过PWM输出频率可变、占空比可变的方波</td>
+</tr>
+<tr>
+  <td>8</td>
+  <td><strong>输入捕获</strong></td>
+  <td>概念介绍、主控的硬件介绍、采集外部信号的边缘或电平，实现外部信号的频率和占空比的识别</td>
+</tr>
+<tr>
+  <td>9</td>
+  <td><strong>ADC采集</strong></td>
+  <td>概念介绍、主控的硬件介绍、通过ADC功能采集外部电压换算并输出</td>
+</tr>
+<tr>
+  <td>11</td>
+  <td><strong>DMA传输</strong></td>
+  <td>概念介绍、主控的硬件介绍、通过DMA功能将ADC采集到的数据直接搬运到内存中</td>
+</tr>
+<tr>
+  <td>12</td>
+  <td><strong>I2C协议</strong></td>
+  <td>概念介绍、主控的硬件介绍、通过I2C设备姿态传感器实现数据互传功能</td>
+</tr>
+<tr>
+  <td>13</td>
+  <td><strong>SPI协议</strong></td>
+  <td>概念介绍、主控的硬件介绍、通过SPI设备W25Q32内存芯片，实现数据存储与读取</td>
+</tr>
+</tbody>
+</table>
+<h2 id="%E4%B8%BA%E4%BB%80%E4%B9%88%E6%89%A9%E5%B1%95%E6%80%A7%E5%BC%BA%EF%BC%9F">为什么扩展性强？</h2>
+<p><img src="../../static/images/docs/mcu/stm32f4/README/README-2025-07-06-06-08-58.png" alt="图 5" /></p>
+<h2 id="%E5%85%B6%E4%BB%96%E7%89%B9%E6%80%A7">其他特性</h2>
+<p>todo</p>
 
                         
                     </div>
