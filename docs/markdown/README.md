@@ -731,48 +731,31 @@ sequenceDiagram
 </details>
 ```
 
+```txt
+.. details::我的下载器实物（点击展开）
+
+    下载线的购买链接：[SH1.0间距转杜邦2.54母头杜邦线](https://item.taobao.com/item.htm?id=743375010573)
+
+    ![图 96](../../static/images/docs/mcu/stm32f4/install/install-2025-07-06-00-20-02.png)  
+    
+    DAP-LINK的购买链接：[高速无线调试器DAPLink仿真器](https://item.taobao.com/item.htm?id=745548099223)
+
+    ![图 95](../../static/images/docs/mcu/stm32f4/install/install-2025-07-06-00-19-03.png)
+
+```
+
 效果：
 
-.. details::标题，点击展开
+.. details::我的下载器实物（点击展开）
 
-    内容一，可以使用 Markdown 语法
-    ```kotlin
-      fun main() {
-          println("Hello World")
-      }
-    ```
+    下载线的购买链接：[SH1.0间距转杜邦2.54母头杜邦线](https://item.taobao.com/item.htm?id=743375010573)
 
-.. details::标题，默认展开
-    :open: true
+    ![图 96](../../static/images/docs/mcu/stm32f4/install/install-2025-07-06-00-20-02.png)  
+    
+    DAP-LINK的购买链接：[高速无线调试器DAPLink仿真器](https://item.taobao.com/item.htm?id=745548099223)
 
-    内容一，可以使用 Markdown 语法
-    ```kotlin
-      fun main() {
-          println("Hello World")
-      }
-    ```
+    ![图 95](../../static/images/docs/mcu/stm32f4/install/install-2025-07-06-00-19-03.png)
 
-.. details::Markdown 源码，点击展开
-    ```markdown
-    .. details::标题，点击展开
-
-        内容一，可以使用 Markdown 语法
-        ```kotlin
-          fun main() {
-              println("Hello World")
-          }
-        ```
-
-    .. details::标题，默认展开
-        :open: true
-
-        内容一，可以使用 Markdown 语法
-        ```kotlin
-          fun main() {
-              println("Hello World")
-          }
-        ```
-    ```
 
 ## 圆角矩形色块文本显示
 
@@ -867,3 +850,32 @@ sequenceDiagram
   </p>
 </div>
 ```
+
+## 带图片描述加边框的图片显示
+
+源码：
+```html
+<table>
+<thead>
+  <tr>
+      <th><img src="../../static/images/docs/mcu/stm32f4/install/install-2025-07-05-22-40-43.png" width="800"></th>
+  </tr>
+  <tr>
+      <th><center>芯片包下载选项</center></th>
+  </tr>  
+</thead>
+</table>
+```
+
+效果：
+
+<table>
+<thead>
+  <tr>
+      <th><img src="../../static/images/docs/mcu/stm32f4/install/install-2025-07-05-22-40-43.png" width="800"></th>
+  </tr>
+  <tr>
+      <th><center>芯片包下载选项</center></th>
+  </tr>  
+</thead>
+</table>
