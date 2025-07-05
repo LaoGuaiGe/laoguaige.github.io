@@ -91,6 +91,12 @@
             <priority>1.0</priority>
         </url>
         <url>
+            <loc>https://https://laoguaige.github.io//mcu/stm32f4/download.html</loc>
+            <lastmod>2025-07-05</lastmod>
+            <changefreq>weekly</changefreq>
+            <priority>1.0</priority>
+        </url>
+        <url>
             <loc>https://https://laoguaige.github.io//mcu/stm32f4/install.html</loc>
             <lastmod>2025-07-05</lastmod>
             <changefreq>weekly</changefreq>
@@ -133,24 +139,6 @@
             <priority>1.0</priority>
         </url>
         <url>
-            <loc>https://https://laoguaige.github.io//diy/picxel-clock/ds1302.html</loc>
-            <lastmod>2024-12-05</lastmod>
-            <changefreq>weekly</changefreq>
-            <priority>1.0</priority>
-        </url>
-        <url>
-            <loc>https://https://laoguaige.github.io//diy/index.html</loc>
-            <lastmod>2024-12-07</lastmod>
-            <changefreq>weekly</changefreq>
-            <priority>1.0</priority>
-        </url>
-        <url>
-            <loc>https://https://laoguaige.github.io//diy/tracking-cannon/basic.html</loc>
-            <lastmod>2025-06-27</lastmod>
-            <changefreq>weekly</changefreq>
-            <priority>1.0</priority>
-        </url>
-        <url>
             <loc>https://https://laoguaige.github.io//diy/picxel-clock/download.html</loc>
             <lastmod>2024-12-05</lastmod>
             <changefreq>weekly</changefreq>
@@ -177,6 +165,24 @@
         <url>
             <loc>https://https://laoguaige.github.io//diy/picxel-clock/voice.html</loc>
             <lastmod>2024-12-05</lastmod>
+            <changefreq>weekly</changefreq>
+            <priority>1.0</priority>
+        </url>
+        <url>
+            <loc>https://https://laoguaige.github.io//diy/picxel-clock/ds1302.html</loc>
+            <lastmod>2024-12-05</lastmod>
+            <changefreq>weekly</changefreq>
+            <priority>1.0</priority>
+        </url>
+        <url>
+            <loc>https://https://laoguaige.github.io//diy/index.html</loc>
+            <lastmod>2024-12-07</lastmod>
+            <changefreq>weekly</changefreq>
+            <priority>1.0</priority>
+        </url>
+        <url>
+            <loc>https://https://laoguaige.github.io//diy/tracking-cannon/basic.html</loc>
+            <lastmod>2025-06-27</lastmod>
             <changefreq>weekly</changefreq>
             <priority>1.0</priority>
         </url>
