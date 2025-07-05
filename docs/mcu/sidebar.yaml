@@ -7,6 +7,8 @@ items:
     items:
     -   label: 项目介绍
         file: stm32f4/README.md
+    -   label: 资料下载
+        file: stm32f4/download.md
     -   label: 环境搭建
         file: stm32f4/install.md
     -   label: GPIO使用
