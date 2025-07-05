@@ -1,0 +1,986 @@
+<!DOCTYPE html>
+
+<html lang="en" id="zh_readme" class=" zh_readme ">
+
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <meta name="keywords" content="STM32, STM32CubeMX, keil, gpio, 引脚控制">
+    
+    
+    <meta name="description" content="基于 CubeMX+keil5 环境下的 STM32F411 - GPIO外设开发介绍与使用">
+    
+    <meta name="generator" content="teedoc">
+    <meta name="theme" content="teedoc-plugin-theme-default">
+    
+        
+        <meta name="markdown-generator" content="teedoc-plugin-markdown-parser">
+        
+        <script>
+MathJax = {"loader": {"load": ["output/svg"]}, "tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]]}, "svg": {"fontCache": "global"}};
+</script>
+        
+        <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+        
+        <meta name="html-generator" content="teedoc-plugin-jupyter-notebook-parser">
+        
+        <script src="/static/js/theme_default/pre_main.js"></script>
+        
+        <link rel="stylesheet" href="/static/css/theme_default/prism.min.css" type="text/css"/>
+        
+        <link rel="stylesheet" href="/static/css/theme_default/viewer.min.css" type="text/css"/>
+        
+        <link rel="stylesheet" href="/static/css/theme_default/dark.css" type="text/css"/>
+        
+        <link rel="stylesheet" href="/static/css/theme_default/light.css" type="text/css"/>
+        
+        <script src="/static/js/theme_default/jquery.min.js"></script>
+        
+        <script src="/static/js/theme_default/split.js"></script>
+        
+        <link rel="stylesheet" href="/static/css/gitalk/gitalk.css" type="text/css"/>
+        
+        <link rel="stylesheet" href="/static/css/gitalk/custom_gitalk.css" type="text/css"/>
+        
+        <link rel="stylesheet" href="/static/css/custom.css" type="text/css"/>
+        
+        <link rel="stylesheet" href="/static/css/search/style.css" type="text/css"/>
+        
+    
+    
+    <title>GPIO使用 - Hdochub</title>
+    
+    <script type="text/javascript">js_vars = {"teedoc-plugin-ad-hint": {"type": "hint", "label": "☆", "content": "这里是老怪鸽的个人技术文档记录中心</br>喜欢项目请<a target=\"_blank\" href=\"https://github.com/LaoGuaiGe/laoguaige.github.io\">点下 ☆ star </a>哦~🦀🦀", "show_times": 2, "show_after_s": 432000, "date": "2021-11-16 14:40", "color": "#a0421d", "link_color": "#e53935", "link_bg_color": "#e6ae5c", "bg_color": "#ffcf89", "color_hover": "white", "bg_color_hover": "#f57c00", "close_color": "#eab971"}}</script>
+    <script type="text/javascript">metadata = {"tags": ["STM32", "STM32CubeMX", "keil", "gpio", "引脚控制"], "date": false, "update": [], "ts": 0, "author": "", "brief": "", "cover": "", "id": "zh_readme", "class": "zh_readme", "draft": false}</script>
+</head>
+
+
+<body class="type_doc">
+    
+    <div id="navbar">
+        <div id="navbar_menu">
+            <a class="site_title" href="/">
+                
+                    <img class="site_logo" src="/static/images/logo.png" alt="HDocHub logo">
+                
+                
+                    <h2>HDocHub</h2>
+                
+        </a>
+            <a id="navbar_menu_btn"></a>
+        </div>
+        <div id="navbar_items">
+            <div>
+                <ul id="nav_left">
+<li class=""><a  href="/">首页</a></li>
+<li class=""><a  href="/c-basics/">C语言</a></li>
+<li class=""><a  href="/markdown/">MarkDown</a></li>
+<li class="active"><a  href="/mcu/">单片机</a></li>
+<li class=""><a  href="/diy/">DIY项目</a></li>
+</ul>
+
+            </div>
+            <div>
+                <ul id="nav_right">
+<li class=""><a target="_blank" href="https://github.com/LaoGuaiGe/laoguaige.github.io">github</a></li>
+</ul>
+
+                <ul class="nav_plugins"><li><a id="themes" class="light"></a></li></ul><ul class="nav_plugins"><li><a id="search"><span class="icon"></span><span class="placeholder">搜索</span>
+                            <div id="search_hints">
+                                <span id="search_input_hint">输入关键词，多关键词空格隔开</span>
+                                <span id="search_loading_hint">正在加载，请稍候。。。</span>
+                                <span id="search_download_err_hint">下载文件失败，请刷新重试或检查网络</span>
+                                <span id="search_other_docs_result_hint">来自其它文档的结果</span>
+                                <span id="search_curr_doc_result_hint">当前文档搜索结果</span>
+                            </div></a></li></ul>
+            </div>
+        </div>
+    </div>
+    
+    <div id="wrapper">
+        <div id="sidebar_wrapper">
+            <div id="sidebar">
+                <div id="sidebar_title">
+                    
+                </div>
+                <ul class="show">
+<li class="not_active with_link"><a href="/mcu/index.html"><span class="label">单片机基础合集</span><span class=""></span></a></li>
+<li class="active_parent with_link"><a href="/mcu/stm32f4/index.html"><span class="label">STM32F4入门</span><span class="sub_indicator"></span></a><ul class="show">
+<li class="not_active with_link"><a href="/mcu/stm32f4/index.html"><span class="label">项目介绍</span><span class=""></span></a></li>
+<li class="not_active with_link"><a href="/mcu/stm32f4/install.html"><span class="label">环境搭建</span><span class=""></span></a></li>
+<li class="active with_link"><a href="/mcu/stm32f4/gpio.html"><span class="label">GPIO使用</span><span class=""></span></a></li>
+</ul>
+</li>
+</ul>
+
+            </div>
+        </div>
+        <div id="article">
+            <div id="menu_wrapper">
+                <div id="menu">
+                </div>
+            </div>
+            <div id="content_wrapper">
+                <div id="content_body">
+                    <div id="article_head">
+                        <div id="article_title">
+                            
+                            <h1>GPIO使用</h1>
+                            
+                        </div>
+                        <div id="article_tags">
+                            <ul>
+                            
+                                <li>STM32</li>
+                            
+                                <li>STM32CubeMX</li>
+                            
+                                <li>keil</li>
+                            
+                                <li>gpio</li>
+                            
+                                <li>引脚控制</li>
+                            
+                            </ul>
+                        </div>
+                        <div id="article_info">
+                        <div id="article_info_left">
+                            <span class="article_author">
+                                
+                            </span>
+                            
+                        </div>
+                        <div id="article_info_right">
+                            
+                        </div>
+                        </div>
+                    </div>
+                    <div id="article_tools">
+                        <span></span>
+                        <span id="toc_btn"></span>
+                    </div>
+                    <div id="update_history">
+                        
+                    </div>
+                    <div id="article_content">
+                        
+                            <h2 id="%E6%9C%AC%E8%8A%82%E4%BB%8B%E7%BB%8D">本节介绍</h2>
+<p>📝本节您将了解 GPIO 的概念，并且了解开发板的 LED 硬件电路，学习如何使用图形化代码生成工具CubeMX，让开发板上的LED灯进行闪烁。</p>
+<div style="
+  background-color:rgb(235, 224, 245);
+  border-radius: 12px;
+  padding: 20px;
+  margin: 15px 0;
+">
+  <span style="
+    font-weight: bold;
+    font-size: 1.2em;
+    display: block;
+    color:rgb(0, 0, 0);
+    border-left: 4px solid rgb(151, 151, 151); /* 左侧装饰线 */
+    padding-left: 10px;
+  ">
+    🏆本章⽬标
+  </span>
+  <p style="color: #34495e; line-height: 1.6">
+    1️⃣了解 GPIO 的概念。</br>
+    2️⃣了解主控 STM32F411 的 GPIO 硬件特性和 GPIO 结构。</br>
+    3️⃣了解开发板上的 LED 硬件电路。</br>
+    4️⃣使用图形化工具通过 GPIO 外设，控制 LED 灯闪烁。</br>
+  </p>
+</div>
+<h2 id="GPIO-%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5">GPIO 的基本概念</h2>
+<h3 id="%E4%BB%80%E4%B9%88%E6%98%AF-GPIO">什么是 GPIO</h3>
+<p><strong>GPIO</strong>，全称为 「General-Purpose Input/Output」，即<code>通用输入 / 输出端口</code>。</p>
+<p>它是微控制器、微处理器和某些其他集成电路上的<code>一个引脚</code>，可以由软件控制其输入或输出状态。</p>
+<p>GPIO 为开发者提供了一种简单、灵活的方式来控制硬件设备或与外部设备进行通信。</p>
+<h3 id="GPIO-%E7%9A%84%E8%BE%93%E5%85%A5-/-%E8%BE%93%E5%87%BA">GPIO 的输入 / 输出</h3>
+<div style="
+  background-color:rgb(212, 227, 238);
+  border-radius: 12px;
+  padding: 20px;
+  margin: 15px 0;
+">
+  <span style="
+    font-weight: bold;
+    font-size: 1.2em;
+    display: block;
+    color:rgb(0, 0, 0);
+    border-left: 4px solid rgb(151, 151, 151); /* 左侧装饰线 */
+    padding-left: 10px;
+  ">
+    GPIO 输入模式
+  </span>
+  <p style="color: #34495e; line-height: 1.6">
+    当 GPIO 引脚被配置为输入模式时，它可以读取外部信号的状态，通常是高电平或低电平。 这种模式常用于以下场景：</br></br>
+    📌 读取开关/按钮状态：例如，检测一个按钮是否被按下。</br>
+    📌 接收信号：从其他设备（如传感器、其他微控制器）接收数字信号。</br>
+    📌 中断触发：配置为输入的 GPIO 引脚可以用于触发中断，响应外部事件。</br></br>
+    需要注意，在输入模式下，GPIO 引脚通常具有高阻态，以防止对连接的设备造成影响。</br>
+  </p>
+</div>
+<div style="
+  background-color:rgb(212, 227, 238);
+  border-radius: 12px;
+  padding: 20px;
+  margin: 15px 0;
+">
+  <span style="
+    font-weight: bold;
+    font-size: 1.2em;
+    display: block;
+    color:rgb(0, 0, 0);
+    border-left: 4px solid rgb(151, 151, 151); /* 左侧装饰线 */
+    padding-left: 10px;
+  ">
+    GPIO 输出模式
+  </span>
+  <p style="color: #34495e; line-height: 1.6">
+    当 GPIO引 脚被配置为输出模式时，它可以输出高电平或低电平，用于控制外部设备。 这种模式常用于以下场景：</br></br>
+    📌 驱动LED：通过输出高电平或低电平来控制LED的亮灭。</br>
+    📌 控制继电器：通过输出信号来控制继电器的开关。</br>
+    📌 通信：在诸如I2C、SPI等通信协议中，GPIO引脚用于输出时钟信号或数据。</br></br>
+    需要注意，在输出模式下，GPIO 引脚只能提供一些驱动能力，以驱动外部负载。需要大电流的时候使用 GPIO 输出是无法驱动的。 通常 GPIO 的输出电流只有为 20mA 左右</br>
+  </p>
+</div>
+<h3 id="%E9%AB%98%E7%94%B5%E5%B9%B3%E4%B8%8E%E4%BD%8E%E7%94%B5%E5%B9%B3">高电平与低电平</h3>
+<p><strong>高电平</strong>与<strong>低电平</strong>是数字电路中的基本概念，用于表示电路中的两种不同的电压状态，这两种状态通常用于表示二进制数据中的 <strong>1</strong> 和 <strong>0</strong> 。</p>
+<div style="
+  background-color:rgb(212, 227, 238);
+  border-radius: 12px;
+  padding: 20px;
+  margin: 15px 0;
+">
+  <span style="
+    font-weight: bold;
+    font-size: 1.2em;
+    display: block;
+    color:rgb(0, 0, 0);
+    border-left: 4px solid rgb(151, 151, 151); /* 左侧装饰线 */
+    padding-left: 10px;
+  ">
+    高电平（High Level / 1）
+  </span>
+  <p style="color: #34495e; line-height: 1.6">
+    📌 定义：在数字电路中，高电平通常表示一种较高的电压状态。</br>
+    📌 电压范围：具体的电压范围取决于所使用的逻辑电路标准。在 STM32F411 中，IO 电平是3.3V。</br>
+    📌 表示：在数字逻辑中，高电平通常表示 “1” 或 “真（True）” 状态。
+  </p>
+</div>
+<div style="
+  background-color:rgb(212, 227, 238);
+  border-radius: 12px;
+  padding: 20px;
+  margin: 15px 0;
+">
+  <span style="
+    font-weight: bold;
+    font-size: 1.2em;
+    display: block;
+    color:rgb(0, 0, 0);
+    border-left: 4px solid rgb(151, 151, 151); /* 左侧装饰线 */
+    padding-left: 10px;
+  ">
+    低电平（Low Level / 0）
+  </span>
+  <p style="color: #34495e; line-height: 1.6">
+    📌 定义：与高电平相对，低电平表示一种较低的电压状态。</br>
+    📌 电压范围：同样，具体的电压范围取决于逻辑电路标准。在 STM32F411 中，低电平是接近 地 电位的值（如 0 V）。</br>
+    📌 表示：在数字逻辑中，低电平通常表示 “0” 或 “假（false）” 状态。
+  </p>
+</div>
+<p>注意！不同的电子设备可能使用不同的电平标准，因此在连接不同设备时需要确保电平兼容。比如芯片的 IO 是 3.3V，当它需要接入到 5V 的传感器时，就需要考虑电平兼容问题。不过这个问题在STM32上基本被解决了，大部分的 IO 是兼容 5V 的。</p>
+<table>
+<thead>
+  <tr>
+      <th><img src="../../static/images/docs/mcu/stm32f4/gpio/gpio-2025-07-06-02-28-25.png" width="800"></th>
+  </tr>
+  <tr>
+      <th><center>数据手册上关于 5V 兼容引脚的说明</center></th>
+  </tr>  
+</thead>
+</table>
+<h2 id="%E4%B8%BB%E6%8E%A7%E7%9A%84-GPIO-%E7%A1%AC%E4%BB%B6%E7%89%B9%E6%80%A7">主控的 GPIO 硬件特性</h2>
+<h3 id="%E7%BB%9D%E5%AF%B9%E6%9C%80%E5%A4%A7%E9%A2%9D%E5%AE%9A%E5%80%BC">绝对最大额定值</h3>
+<table>
+<thead>
+  <tr>
+      <th><img src="../../static/images/docs/mcu/stm32f4/gpio/gpio-2025-07-06-01-59-44.png" width="800"></th>
+  </tr>
+  <tr>
+      <th><center>电压特性</center></th>
+  </tr>  
+</thead>
+</table>
+<table>
+<thead>
+  <tr>
+      <th><img src="../../static/images/docs/mcu/stm32f4/gpio/gpio-2025-07-06-02-15-39.png" width="800"></th>
+  </tr>
+  <tr>
+      <th><center>电流特性</center></th>
+  </tr>  
+</thead>
+</table>
+<h3 id="%E5%BB%BA%E8%AE%AE%E8%BF%90%E8%A1%8C%E6%9D%A1%E4%BB%B6">建议运行条件</h3>
+<table>
+<thead>
+  <tr>
+      <th><img src="../../static/images/docs/mcu/stm32f4/gpio/gpio-2025-07-06-02-00-52.png" width="800"></th>
+  </tr>
+  <tr>
+      <th><center>一般运行条件下的情况</center></th>
+  </tr>  
+</thead>
+</table>
+<h3 id="GPIO%E7%94%B5%E6%BA%90%E7%89%B9%E6%80%A7%E6%80%BB%E7%BB%93">GPIO电源特性总结</h3>
+<p>芯片标准工作电压 1.7~3.6V，最大输入 4V。除 PA0 \ PB5 \ PA4 \ PA5 是标准的 3.3V 的引脚外，其他的 GPIO 都是兼容 5V 电压，最高输入 5.5V。</p>
+<p>单 GPIO 口的输出电流为 25 mA，全部 GPIO 的输出电流最大 120 mA。</p>
+<p>单 GPIO 口的输入电流为 5 mA，全部 GPIO 的输入电流最大 25 mA。</p>
+<h2 id="GPIO-%E7%BB%93%E6%9E%84%E4%BB%8B%E7%BB%8D">GPIO 结构介绍</h2>
+<h3 id="%E8%BE%93%E5%87%BA%E6%A8%A1%E5%BC%8F">输出模式</h3>
+<p>输出模式有两种结构。</p>
+<div style="
+  background-color: #f0f8ff;
+  border-radius: 12px;
+  padding: 20px;
+  margin: 15px 0;
+">
+  <span style="
+    font-weight: bold;
+    font-size: 1.2em;
+    display: block;
+    color: #2c3e50;
+    border-left: 4px solid #3498db; /* 左侧装饰线 */
+    padding-left: 10px;
+  ">
+    推挽输出结构
+  </span>
+  <p style="color: #34495e; line-height: 1.6">
+    既能输出低电平，也能输出高电平。</br>
+    <img src="../../static/images/docs/mcu/stm32f4/gpio/gpio-2025-07-06-02-55-57.png" width="800"> 
+  </p>
+</div>
+<div style="
+  background-color: #f0f8ff;
+  border-radius: 12px;
+  padding: 20px;
+  margin: 15px 0;
+">
+  <span style="
+    font-weight: bold;
+    font-size: 1.2em;
+    display: block;
+    color: #2c3e50;
+    border-left: 4px solid #3498db; /* 左侧装饰线 */
+    padding-left: 10px;
+  ">
+    开漏输出结构
+  </span>
+  <p style="color: #34495e; line-height: 1.6">
+    只能输出低电平，不能输出高电平。</br>
+    <img src="../../static/images/docs/mcu/stm32f4/gpio/gpio-2025-07-06-02-56-17.png" width="800"> 
+  </p>
+</div>
+<h3 id="%E8%BE%93%E5%85%A5%E6%A8%A1%E5%BC%8F">输入模式</h3>
+<p>通过引脚输入的模拟电压信号，经过一个 TTL 施密特触发器后，转化为一个 TTL 电平（即只有高电平和低电平的区别），然后进入到寄存器中。</p>
+<table>
+<thead>
+<tr>
+    <th><img src="../../static/images/docs/mcu/stm32f4/gpio/gpio-2025-07-06-02-57-04.png" width="800"></th>
+</tr>
+<tr>
+    <th><center>输入模式结构框图</center></th>
+</tr>  
+</thead>
+</table>
+<h3 id="%E6%B5%AE%E7%A9%BA%E4%B8%8E%E4%B8%8A%E4%B8%8B%E6%8B%89%E7%94%B5%E9%98%BB">浮空与上下拉电阻</h3>
+<p>通过配置上拉电阻（pull up）和下拉电阻（pull down）实现让引脚默认为高电平还是低电平。</p>
+<p>浮空就是既不配置上拉也不配置下拉，这个时候除非接入有信号，不然输入值是不确定的。</p>
+<table>
+<thead>
+<tr>
+    <th><img src="../../static/images/docs/mcu/stm32f4/gpio/gpio-2025-07-06-02-57-33.png" width="800"></th>
+</tr>
+<tr>
+    <th><center>GPIO结构中上下拉电阻的位置</center></th>
+</tr>  
+</thead>
+</table>
+<h2 id="LED-%E7%94%B5%E8%B7%AF%E4%BB%8B%E7%BB%8D">LED 电路介绍</h2>
+<h3 id="LED-%E7%81%AF%E5%8F%91%E5%85%89%E5%8E%9F%E7%90%86">LED 灯发光原理</h3>
+<p>LED（发光二极管）发光原理基于半导体特性。在半导体中，存在着两类载流子：电子（n型半导体）和空穴（p型半导体）。当n型与p型半导体材料接触时，会在交界处形成一个层结。当施加适当的电压时，层结中空穴和电子可重组并释放能量。这个能量以光子的形式释放出来，产生光。</p>
+<h3 id="LED-%E7%81%AF%E9%A9%B1%E5%8A%A8%E5%8E%9F%E7%90%86">LED 灯驱动原理</h3>
+<p>LED 驱动指的是通过稳定的电源为 LED 提供合适的电流和电压，使其正常工作点亮。LED 驱动方式主要有恒流和恒压两种。限定电流的恒流驱动是最常见的方式，因为 LED 灯对电流敏感，电流大于其额定值可能导致损坏。恒流驱动保证了稳定的电流，从而确保了 LED 安全。</p>
+<p>不过，在单片机上，想用GPIO控制LED的亮灭，也分有两种：灌入电流和输出电流。</p>
+<table>
+<thead>
+<tr>
+    <th><img src="../../static/images/docs/mcu/stm32f4/gpio/gpio-2025-07-06-03-14-31.png" width="800"></th>
+</tr>
+<tr>
+    <th><center>LED 接法示例</center></th>
+</tr>  
+</thead>
+</table>
+<ul>
+<li><p><code>灌入电流</code>指的是LED的供电电流是由外部提供电流，将电流灌入我们的MCU；风险是当外部电源出现变化时，会导致MCU的引脚烧坏。</p>
+</li>
+<li><p><code>输出电流</code>指的是由MCU提供电压电流，将电流输出给LED；如果使用 MCU 的 GPIO 直接驱动 LED，则驱动能力较弱，可能无法提供足够的电流驱动 LED。</p>
+</li>
+</ul>
+<p>需要注意的 是 LED 灯的颜色不同，对应的电压压降也不同。电流不可过大，通常需要接入220欧姆到10K欧姆左右的限流电阻，限流电阻的阻值越大，LED的亮度越暗。</p>
+<h3 id="%E6%9D%BF%E8%BD%BD-LED-%E7%94%B5%E8%B7%AF%E8%A7%A3%E6%9E%90">板载 LED 电路解析</h3>
+<p>在开发板上，有一个 LED灯 接到了开发板 F411 主控的 PC13 引脚，采用的接法是输出电流接法。</p>
+<table>
+<thead>
+<tr>
+    <th><img src="../../static/images/docs/mcu/stm32f4/gpio/gpio-2025-07-06-03-16-41.png" width="800"></th>
+</tr>
+<tr>
+    <th><center>开发板部分原理图</center></th>
+</tr>  
+</thead>
+</table>
+<p>其中，R22 为 LED 灯的限流电阻，限流电阻通常跟 LED 搭配，防止 LED 灯电路上的电流过大，导致 LED 灯烧毁。因为 LED 灯本质上就是一个二极管，而二极管导通时相当于是一根导线，如果一端接3V3一端接GND，根据简单的欧姆定律就可以知道电流会非常大，就短路了。</p>
+<p>限流电阻使用的是 2K 阻值，可以根据欧姆定律就可以计算出该 LED 灯电路需要的电流为：</p>
+<p><strong><center>I= U / R = 3.3 / 2000 = 0.00165 A = 1.65 mA</center></strong></p>
+<p>该输出电流对于我们单个 GPIO 最大输出电流 25mA 来说，绰绰有余。</p>
+<div style="
+  background-color: #f0f8ff;
+  border-radius: 12px;
+  padding: 20px;
+  margin: 15px 0;
+">
+  <span style="
+    font-weight: bold;
+    font-size: 1.2em;
+    display: block;
+    color: #2c3e50;
+    border-left: 4px solid #3498db; /* 左侧装饰线 */
+    padding-left: 10px;
+  ">
+    那么怎么点亮 LED？
+  </span>
+  <p style="color: #34495e; line-height: 1.6">
+    点亮 LED 就要让这个 LED 发光二极管导通，导通就需要正极高电平，负极低电平，符合这个条件时，LED 就有电流流过，而有了电流，LED 灯就会发光。而这里采用的是输出电流接法。</br>
+    那么如果要点亮 LED，则控制 PC13 引脚输出高电平；如果要熄灭 LED，则控制 PC13 引脚输出低电平；
+  </p>
+</div>
+<h2 id="%E6%A1%88%E4%BE%8B%E5%B7%A5%E7%A8%8B%E5%88%9B%E5%BB%BA">案例工程创建</h2>
+<blockquote>
+<p>目标：配置 PC13 引脚为推挽输出模式，控制该引脚以一定的时间间隔切换高电平和低电平状态，让 PC13 引脚上的 LED 灯实现闪烁效果。</p>
+</blockquote>
+<p>打开 CubeMX，创建一个名为 02_gpio 的工程。</p>
+<table>
+<thead>
+<tr>
+    <th><img src="../../static/images/docs/mcu/stm32f4/gpio/gpio-2025-07-06-03-43-05.png" width="800"></th>
+</tr>
+<tr>
+    <th><center>工程创建</center></th>
+</tr>  
+</thead>
+</table>
+<table>
+<thead>
+<tr>
+    <th><img src="../../static/images/docs/mcu/stm32f4/gpio/gpio-2025-07-06-03-44-06.png" width="800"></th>
+</tr>
+<tr>
+    <th><center>工程基本配置</center></th>
+</tr>  
+</thead>
+</table>
+<p>工程基本配置说明：</p>
+<ol>
+<li>选择 Project Manager 选项</li>
+<li>选择 Project 配置</li>
+<li>设置工程名称为 02_gpio</li>
+<li>设置开发环境为 MDK-ARM，以及目前的最小版本</li>
+</ol>
+<hr />
+<table>
+<thead>
+<tr>
+    <th><img src="../../static/images/docs/mcu/stm32f4/gpio/gpio-2025-07-06-03-45-28.png" width="800"></th>
+</tr>
+<tr>
+    <th><center>工程 GPIO 配置</center></th>
+</tr>  
+</thead>
+</table>
+<p>工程 GPIO 配置说明：</p>
+<ol>
+<li>选择 Pinout &amp; Configuration 选项</li>
+<li>选择 SyStem Core 配置</li>
+<li>在 SyStem Core 配置下，打开 GPIO 配置页</li>
+<li>在右侧芯片引脚分布图中找到或者搜索 PC13 引脚，左键配置为 GPIO_Output 模式</li>
+<li>选中我们刚才配置的 PC13 引脚</li>
+<li>配置 PC13 引脚为默认低电平输出、推挽输出模式、浮空状态、低速翻转速度、自定义名称为 LED_TEST2</li>
+</ol>
+<hr />
+<table>
+<thead>
+<tr>
+  <th>配置选项</th>
+  <th>选项说明</th>
+  <th>可选参数</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td>GPIO output level</td>
+  <td>配置 GPIO 的默认输出电平</td>
+  <td>低电平 Low </br> 高电平 High</td>
+</tr>
+<tr>
+  <td>GPIO mode</td>
+  <td>配置 GPIO 模式</td>
+  <td>推挽输出 Output Push Pull  </br> 开漏输出 Output Open Drain</td>
+</tr>
+<tr>
+  <td>GPIO Pull-up/Pull-down</td>
+  <td>配置上下拉电阻</td>
+  <td>浮空No pull-up and no pull-down </br> 上拉Pull-up</td>
+</tr>
+<tr>
+  <td>Maximum output speed</td>
+  <td>配置最大翻转速度</td>
+  <td>低速Low<code>[1]</code></td>
+</tr>
+<tr>
+  <td>User Label</td>
+  <td>用户给该引脚一个自定义的标签方便辨识</td>
+  <td>自定义</td>
+</tr>
+</tbody>
+</table>
+<div style="
+  background-color: #f0f8ff;
+  border-radius: 12px;
+  padding: 20px;
+  margin: 15px 0;
+">
+  <span style="
+    font-weight: bold;
+    font-size: 1.2em;
+    display: block;
+    color: #2c3e50;
+    border-left: 4px solid #3498db; /* 左侧装饰线 */
+    padding-left: 10px;
+  ">
+    [1]配置最大翻转速度说明
+  </span>
+  <p style="color: #34495e; line-height: 1.6">
+    有部分引脚支持高速，这里 PC13 只支持低速。
+  </p>
+</div>
+<p>开始生成工程代码。</p>
+<table>
+<thead>
+<tr>
+    <th><img src="../../static/images/docs/mcu/stm32f4/gpio/gpio-2025-07-06-04-06-53.png" width="800"></th>
+</tr>
+<tr>
+    <th><center>生成工程代码</center></th>
+</tr>  
+</thead>
+</table>
+<p>生成完毕后，直接打开工程。</p>
+<table>
+<thead>
+<tr>
+    <th><img src="../../static/images/docs/mcu/stm32f4/gpio/gpio-2025-07-06-04-07-38.png" width="400"></th>
+    <th><img src="../../static/images/docs/mcu/stm32f4/gpio/gpio-2025-07-06-04-11-13.png" width="400"></th>
+</tr>
+<tr>
+    <th><center>打开工程</center></th>
+    <th><center>keil 工程界面</center></th>
+</tr>  
+</thead>
+</table>
+<h2 id="%E5%B7%A5%E7%A8%8B%E4%BB%A3%E7%A0%81%E7%BC%96%E5%86%99">工程代码编写</h2>
+<h3 id="%E7%94%9F%E6%88%90%E4%BB%A3%E7%A0%81%E5%88%86%E6%9E%90">生成代码分析</h3>
+<p>在生成的工程代码中，我们可以在 main.c 找到关于 GPIO 的配置：</p>
+<p><img src="../../static/images/docs/mcu/stm32f4/gpio/gpio-2025-07-06-04-24-04.png" alt="图 20" /></p>
+<p>关于 GPIO 的配置流程总结如下：</p>
+<ol>
+<li><p>开启对应 GPIO 组的时钟</p>
+
+<pre class="language-c"><code class="language-c">__HAL_RCC_GPIOC_CLK_ENABLE();
+</code></pre>
+</li>
+<li><p>配置 GPIO 的基本信息：</p>
+
+<pre class="language-c"><code class="language-c"> /*Configure GPIO pin Output Level */
+ /* 设置标签为 LED_TEST2 的引脚，输出低电平 */
+ HAL_GPIO_WritePin(LED_TEST2_GPIO_Port, LED_TEST2_Pin, GPIO_PIN_RESET);
+
+ /*Configure GPIO pin : LED_TEST2_Pin */
+ GPIO_InitStruct.Pin = LED_TEST2_Pin;        // 配置 LED_TEST2 这个标签的引脚
+ GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP; // 配置为推挽输出模式
+ GPIO_InitStruct.Pull = GPIO_NOPULL;         // 配置浮空
+ GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;// 配置低速翻转速度
+ //将以上配置写入到 GPIO 寄存器中
+ HAL_GPIO_Init(LED_TEST2_GPIO_Port, &amp;GPIO_InitStruct);
+</code></pre>
+</li>
+</ol>
+<p>总结：</p>
+<ol>
+<li>如果没有 CubeMX 图形化工具，那么以上代码都要我们手撸，很麻烦。</li>
+<li>时钟对于外设来说就是生命，没有开启时钟，外设就无法启动。</li>
+</ol>
+<h3 id="%E5%B8%B8%E7%94%A8%E5%8A%9F%E8%83%BD%E5%87%BD%E6%95%B0%E6%80%BB%E7%BB%93">常用功能函数总结</h3>
+<p>我们现在通过 CubeMX 生成了一个 PC13 默认为低电平的输出模式，那么我们要怎么让 PC13 引脚一会高电平一会低电平呢？</p>
+<p>来认识一下下面这些常用API函数：</p>
+
+<pre class="language-c"><code class="language-c">/**
+  * @brief  根据 GPIO_Init 中的指定参数初始化 GPIOx 外设
+  * @param  GPIOx 其中 x 可以是 (A..K) 用于选择 STM32F429X 设备的 GPIO 外设，
+  *                      或 x 可以是 (A..I) 用于选择 STM32F40XX 和 STM32F427X 设备的 GPIO 外设。
+  * @param  GPIO_Init 指向 GPIO_InitTypeDef 结构体的指针，该结构体包含
+  *         指定 GPIO 外设的配置信息。
+  * @retval 无
+  */
+void HAL_GPIO_Init(GPIO_TypeDef  *GPIOx, GPIO_InitTypeDef *GPIO_Init)
+
+/**
+  * @brief  将 GPIOx 外设寄存器反初始化为默认复位值
+  * @param  GPIOx 其中 x 可以是 (A..K) 用于选择 STM32F429X 设备的 GPIO 外设，
+  *                      或 x 可以是 (A..I) 用于选择 STM32F40XX 和 STM32F427X 设备的 GPIO 外设。
+  * @param  GPIO_Pin 指定要操作的端口引脚
+  *          此参数可以是 GPIO_PIN_x，其中 x 范围为 (0..15)
+  * @retval 无
+  */
+void HAL_GPIO_DeInit(GPIO_TypeDef  *GPIOx, uint32_t GPIO_Pin)
+
+/**
+  * @brief  读取指定的输入端口引脚状态
+  * @param  GPIOx 其中 x 可以是 (A..K) 用于选择 STM32F429X 设备的 GPIO 外设，
+  *                      或 x 可以是 (A..I) 用于选择 STM32F40XX 和 STM32F427X 设备的 GPIO 外设。
+  * @param  GPIO_Pin 指定要读取的端口引脚
+  *         此参数可以是 GPIO_PIN_x，其中 x 范围为 (0..15)
+  * @retval 输入端口引脚的值
+  */
+GPIO_PinState HAL_GPIO_ReadPin(GPIO_TypeDef* GPIOx, uint16_t GPIO_Pin)
+
+/**
+  * @brief  设置或清除选定的数据端口位
+  *
+  * @note   此函数使用 GPIOx_BSRR 寄存器实现原子读/修改访问，
+  *         这种方式可确保在读取和修改访问之间不会发生 IRQ 中断风险
+  *
+  * @param  GPIOx 其中 x 可以是 (A..K) 用于选择 STM32F429X 设备的 GPIO 外设，
+  *                      或 x 可以是 (A..I) 用于选择 STM32F40XX 和 STM32F427X 设备的 GPIO 外设。
+  * @param  GPIO_Pin 指定要操作的端口引脚
+  *          此参数可以是 GPIO_PIN_x，其中 x 范围为 (0..15)
+  * @param  PinState 指定要写入选定位的值
+  *          此参数可以是 GPIO_PinState 枚举值之一：
+  *            @arg GPIO_PIN_RESET: 清除端口引脚
+  *            @arg GPIO_PIN_SET: 置位端口引脚
+  * @retval 无
+  */
+void HAL_GPIO_WritePin(GPIO_TypeDef* GPIOx, uint16_t GPIO_Pin, GPIO_PinState PinState)
+
+/**
+  * @brief  切换指定的 GPIO 引脚状态
+  * @param  GPIOx 其中 x 可以是 (A..K) 用于选择 STM32F429X 设备的 GPIO 外设，
+  *                      或 x 可以是 (A..I) 用于选择 STM32F40XX 和 STM32F427X 设备的 GPIO 外设。
+  * @param  GPIO_Pin 指定要切换的引脚
+  * @retval 无
+  */
+void HAL_GPIO_TogglePin(GPIO_TypeDef* GPIOx, uint16_t GPIO_Pin)
+</code></pre>
+<blockquote>
+<p>以上代码为工程中的 stm32f4xx_hal_gpio.c 文件中的内容经过中文翻译后的结果。</p>
+</blockquote>
+<p>我们来举一个例子，假设我要读取 PA0 的电平，如果是高电平则让 PC13 输出低电平，如果是低电平则让 PC13 输出高电平。</p>
+<p>根据以上的常用功能函数总结，可以这样写：</p>
+
+<pre class="language-c"><code class="language-c">/* 
+读取 PA0 的电平，如果是高电平则让 PC13 输出低电平，如果是低电平则让 PC13 输出高电平。
+*/
+//如果PA0为高电平
+if( HAL_GPIO_ReadPin( GPIOA, GPIO_PIN_0 ) == GPIO_PIN_SET )
+{
+    //PC13输出低电平
+    HAL_GPIO_WritePin( GPIOC, GPIO_PIN_13, GPIO_PIN_RESET );
+}
+//否则如果PA0为低电平
+else if( HAL_GPIO_ReadPin( GPIOA, GPIO_PIN_0 ) == GPIO_PIN_RESET )
+{
+    //PC13输出高电平
+    HAL_GPIO_WritePin( GPIOC, GPIO_PIN_13, GPIO_PIN_SET );
+}
+</code></pre>
+<h3 id="%E5%AE%9E%E7%8E%B0%E6%A1%88%E4%BE%8B%E8%A6%81%E6%B1%82">实现案例要求</h3>
+<p>我们之前的目标：配置 PC13 引脚为推挽输出模式，控制该引脚以一定的时间间隔切换高电平和低电平状态，让 PC13 引脚上的 LED 灯实现闪烁效果。</p>
+<p>现在配置 PC13 引脚我们已经完成了，然后设置高低电平输出的功能函数 <code>HAL_GPIO_WritePin</code> 我们也知道怎么用了，那怎么实现 <code>以一定的时间间隔切换引脚状态</code> 呢？</p>
+<p>可以通过工程自带的一个延时函数实现：<code>HAL_Delay(ms)</code></p>
+
+<pre class="language-c"><code class="language-c">/**
+  * @brief This function provides minimum delay (in milliseconds) based 
+  *        on variable incremented.
+  * @note In the default implementation , SysTick timer is the source of time base.
+  *       It is used to generate interrupts at regular time intervals where uwTick
+  *       is incremented.
+  * @note This function is declared as __weak to be overwritten in case of other
+  *       implementations in user file.
+  * @param Delay specifies the delay time length, in milliseconds.
+  * @retval None
+  */
+__weak void HAL_Delay(uint32_t Delay)
+{
+  uint32_t tickstart = HAL_GetTick();
+  uint32_t wait = Delay;
+
+  /* Add a freq to guarantee minimum wait */
+  if (wait &lt; HAL_MAX_DELAY)
+  {
+    wait += (uint32_t)(uwTickFreq);
+  }
+
+  while((HAL_GetTick() - tickstart) &lt; wait)
+  {
+  }
+}
+</code></pre>
+<p>HAL_Delay(ms) 的作用就是延时指定的 ms 时间，比如延时 500ms，则写为 <code>HAL_Delay(500);</code></p>
+<p>现在我们已经万事俱备，开始实现目标功能。</p>
+<p>在我们工程的 main.c 文件中的 while 里加入以下代码：</p>
+
+<pre class="language-c"><code class="language-c">HAL_Delay(500);
+HAL_GPIO_WritePin(LED_TEST2_GPIO_Port, LED_TEST2_Pin, GPIO_PIN_RESET);
+HAL_Delay(500);
+HAL_GPIO_WritePin(LED_TEST2_GPIO_Port, LED_TEST2_Pin, GPIO_PIN_SET);
+</code></pre>
+<p>对我们的工程进行编译，如果没有问题则是输出 <code>- 0 Error(s), 0 Warning(s).</code></p>
+<table>
+<thead>
+  <tr>
+      <th><img src="../../static/images/docs/mcu/stm32f4/gpio/gpio-2025-07-06-05-08-06.png" width="800"></th>
+  </tr>
+  <tr>
+      <th><center>工程编译</center></th>
+  </tr>  
+</thead>
+</table>
+<p>如果工程编译报错如下：</p>
+
+<pre class="language-txt"><code class="language-txt">*** Target '02_gpio' uses ARM-Compiler 'Default Compiler Version 5' which is not available.
+*** Please review the installed ARM Compiler Versions:
+    'Manage Project Items - Folders/Extensions' to manage ARM Compiler Versions.
+    'Options for Target - Target' to select an ARM Compiler Version for the target. 
+*** Build aborted.
+Build Time Elapsed:  00:00:00    
+</code></pre>
+<p>则需要设置 ARM 编译器使用 AC6 版本：</p>
+<table>
+<thead>
+  <tr>
+      <th><img src="../../static/images/docs/mcu/stm32f4/install/install-2025-07-05-23-59-27.png" width="800"></th>
+  </tr>
+  <tr>
+      <th><center>设置编译器版本</center></th>
+  </tr>  
+</thead>
+</table>
+<p>完成后重新编译。</p>
+<h2 id="%E4%B8%8B%E8%BD%BD%E9%AA%8C%E8%AF%81">下载验证</h2>
+<h3 id="%E7%A1%AC%E4%BB%B6%E8%BF%9E%E6%8E%A5">硬件连接</h3>
+<p>这里我使用的是 DAP-LINK，故在工程上配置为 CMSIS-DAP。</p>
+<blockquote>
+<p>理论上 ST-LINK、J-LINK、DAP-LINK都可以对该项目的主控进行下载。</p>
+</blockquote>
+<table>
+<thead>
+  <tr>
+      <th><img src="../../static/images/docs/mcu/stm32f4/install/install-2025-07-06-00-02-20.png" width="800"></th>
+  </tr>
+  <tr>
+      <th><center>编译器配置</center></th>
+  </tr>  
+</thead>
+</table>
+<details>
+<summary>我的下载器实物（点击展开）</summary>
+<div class="details-content"><p>下载线的购买链接：<a href="https://item.taobao.com/item.htm?id=743375010573"  target="_blank">SH1.0间距转杜邦2.54母头杜邦线</a></p>
+<p><img src="../../static/images/docs/mcu/stm32f4/install/install-2025-07-06-00-20-02.png" alt="图 96" /></p>
+<p>DAP-LINK的购买链接：<a href="https://item.taobao.com/item.htm?id=745548099223"  target="_blank">高速无线调试器DAPLink仿真器</a></p>
+<p><img src="../../static/images/docs/mcu/stm32f4/install/install-2025-07-06-00-19-03.png" alt="图 95" /></p>
+<p><img src="../../static/images/docs/mcu/stm32f4/install/install-2025-07-06-00-35-27.png" alt="图 97" /></p>
+</div>
+</details>
+<p>下载器与开发板的连接：</p>
+<div style="display: flex;">
+  <div style="width: 30%">
+<table>
+<thead>
+<tr>
+  <th>DAP-LNK</th>
+  <th>开发板</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td>GND</td>
+  <td>GND</td>
+</tr>
+<tr>
+  <td>3V3</td>
+  <td>3V3</td>
+</tr>
+<tr>
+  <td>SWDIO</td>
+  <td>SWDIO</td>
+</tr>
+<tr>
+  <td>SWCLK</td>
+  <td>SWCLK</td>
+</tr>
+</tbody>
+</table>
+  </div>
+  <div style="width: 70%">
+<center>
+<p><img src="../../static/images/docs/mcu/stm32f4/install/install-2025-07-06-00-13-01.png" alt="图 93" /></p>
+</center>
+  </div>
+</div>
+<hr />
+<p>打开工程的debug设置选项，确认能够识别到下载器和芯片。</p>
+<table>
+<thead>
+  <tr>
+      <th><img src="../../static/images/docs/mcu/stm32f4/install/install-2025-07-06-00-03-28.png" width="800"></th>
+  </tr>
+  <tr>
+      <th><center>查看下载器与芯片识别情况</center></th>
+  </tr>  
+</thead>
+</table>
+<p>设置下载完成后自动复位。</p>
+<table>
+<thead>
+  <tr>
+      <th><img src="../../static/images/docs/mcu/stm32f4/install/install-2025-07-06-00-03-39.png" width="800"></th>
+  </tr>
+  <tr>
+      <th><center>设置下载完成自动复位</center></th>
+  </tr>  
+</thead>
+</table>
+<p>下载。</p>
+<table>
+<thead>
+  <tr>
+      <th><img src="../../static/images/docs/mcu/stm32f4/gpio/gpio-2025-07-06-05-06-49.png" width="800"></th>
+  </tr>
+  <tr>
+      <th><center>工程下载</center></th>
+  </tr>  
+</thead>
+</table>
+<h3 id="%E6%95%88%E6%9E%9C%E9%AA%8C%E8%AF%81">效果验证</h3>
+<p>开发板右侧最上方 F411 的 LED 灯缓慢闪烁。</p>
+<table>
+<thead>
+  <tr>
+      <th><img src="../../static/images/docs/mcu/stm32f4/install/install-2025-07-06-04-55-51.gif" width="800"></th>
+  </tr>
+  <tr>
+      <th><center>验证效果</center></th>
+  </tr>  
+</thead>
+</table>
+<h3 id="%E6%9C%AC%E7%AB%A0%E4%BE%8B%E7%A8%8B%E4%B8%8B%E8%BD%BD">本章例程下载</h3>
+<p>通过网盘分享的文件：02_gpio.zip</p>
+<p>链接: <a href="https://pan.baidu.com/s/1CaTYreiV-Ih9NuyQGO7e0Q"  target="_blank">https://pan.baidu.com/s/1CaTYreiV-Ih9NuyQGO7e0Q</a></p>
+<p>提取码: LGGY</p>
+
+                        
+                    </div>
+                </div>
+                <div id="previous_next">
+                    <div id="previous">
+                        
+                        <a href="/mcu/stm32f4/install.html">
+                            <span class="icon"></span>
+                            <span class="label">环境搭建</span>
+                        </a>
+                        
+                    </div>
+                    <div id="next">
+                        
+                    </div>
+                </div>
+                <div id="comments-container"></div>
+            </div>
+            <div id="toc_wrapper">
+                <div id="toc">
+                    <div id="toc_content">
+                            
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <a id="to_top" href="#"></a>
+    <div id="doc_footer">
+        <div id="footer">
+            <div id="footer_top">
+                <ul>
+<li><a>链接</a><ul><li><a target="_blank" href="https://github.com/teedoc/teedoc">本网站使用 teedoc 构建</a></li>
+</ul>
+</li>
+<li><a>站长</a><ul><li><a target="_blank" href="https://laoguaige.github.io/">老怪鸽</a></li>
+<li><a>邮箱: liguoyi@hdochub.cn</a>
+</li>
+</ul>
+</li>
+<li><a>源码</a><ul><li><a target="_blank" href="https://github.com/LaoGuaiGe/laoguaige.github.io">本站源文件</a></li>
+</ul>
+</li>
+</ul>
+
+            </div>
+            <div id="footer_bottom">
+                <ul>
+<li><a target="_blank" href="https://laoguaige.github.io/">Copyright © 2024 Hdochub</a></li>
+</ul>
+
+            </div>
+        </div>
+    </div>
+    
+        <script src="/teedoc-plugin-markdown-parser/mermaid.min.js"></script>
+    
+        <script>mermaid.initialize({startOnLoad:true});</script>
+    
+        <script src="/static/js/theme_default/tocbot.min.js"></script>
+    
+        <script src="/static/js/theme_default/main.js"></script>
+    
+        <script src="/static/js/theme_default/viewer.min.js"></script>
+    
+        <script src="/static/css/theme_default/prism.min.js"></script>
+    
+        <link rel="stylesheet" href="/static/js/add_hint/style.css" type="text/css"/>
+    
+        <script src="/static/js/add_hint/main.js"></script>
+    
+        <script src="/static/js/gitalk/gitalk.min.js"></script>
+    
+        <script src="/static/js/gitalk/main.js"></script>
+    
+        <script src="/static/js/custom.js"></script>
+    
+        <script src="/static/js/search/search_main.js"></script>
+    
+</body>
+
+</html>
