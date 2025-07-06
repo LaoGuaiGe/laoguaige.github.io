@@ -12,6 +12,50 @@ draft: false
 # astraLauncher 开发板
 <img src="../../static/images/docs/mcu/stm32f4/README/README-2025-07-06-05-56-15.png" alt="实物大图" style="border-radius: 10px; width: auto; height: auto;">
 
+<div style="
+  background-color: #f0f8ff;
+  border-radius: 12px;
+  padding: 20px;
+  margin: 15px 0;
+">
+  <span style="
+    font-weight: bold;
+    font-size: 1.2em;
+    display: block;
+    color: #2c3e50;
+    border-left: 4px solid #3498db; /* 左侧装饰线 */
+    padding-left: 10px;
+  ">
+    一板双MCU
+  </span>
+  <p style="color: #34495e; line-height: 1.6">
+    <code>STM32F103C8T6</code> 搭载 <a href="https://github.com/AstraThreshold/oled-ui-astra-lite">oled-ui-astra-lite</a> 固件，精美 UI 监测开发板状态收发 F411 和外部串口信息</br>
+    <code>STM32F411CEU6</code> 用户自定义开发，通过扩展板引出IO，也可控制屏幕学习UI
+  </p>
+</div>
+
+<div style="
+  background-color: #f0f8ff;
+  border-radius: 12px;
+  padding: 20px;
+  margin: 15px 0;
+">
+  <span style="
+    font-weight: bold;
+    font-size: 1.2em;
+    display: block;
+    color: #2c3e50;
+    border-left: 4px solid #3498db; /* 左侧装饰线 */
+    padding-left: 10px;
+  ">
+    功耗自检测
+  </span>
+  <p style="color: #34495e; line-height: 1.6">
+    板载传感器，通过主控 F103 UI 显示监测整板电压 \ 电流 \ 功耗状况
+  </p>
+</div>
+
+
 ## 为什么用它作为案例？
 
 <img src="../../static/images/docs/mcu/stm32f4/README/README-2025-07-06-06-00-20.png" alt="特性描述" style="border-radius: 10px; width: auto; height: auto;">
@@ -48,5 +92,21 @@ draft: false
 ## 为什么扩展性强？
 ![图 5](../../static/images/docs/mcu/stm32f4/README/README-2025-07-06-06-08-58.png)  
 
-## 其他特性
-todo
+## 双 MCU 性能特性
+
+.. tabset::双 MCU 性能特性说明
+    :id: tabset1
+    
+    ## STM32F103C8T6
+
+    * Arm® 32-bit Cortex®-M3 CPU
+    * 最高达 72MHz 主频
+    * 64KB FLASH, 20KB SRAM
+    * 4 timer & 4*4 pwm-ch,  2 spi, 2 i2c,  3 usart, 1 usb, 1 can, 10 adc-ch
+
+    ## STM32F411CEU6
+
+    * Core: ARM® 32-bit Cortex®-M4 CPU
+    * 最高达 100MHz 主频
+    * 512KB FLASH, 128KB SRAM
+    * 8 timer & 8*4 pwm-ch, 5 spi/i2s, 3 i2c, 3 usart, 1 sdio, 1 usb, 10 adc-ch
