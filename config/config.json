@@ -44,10 +44,15 @@
     "footer":{
         "top":[
             {
-                "label": "链接",
+                "label": "相关链接",
                 "items": [
                     {
-                        "label": "本网站使用 teedoc 构建",
+                        "label": "个人博客",
+                        "url": "https://blog.hdochub.com",
+                        "target": "_blank"
+                    },
+                    {
+                        "label": "网站使用 teedoc 构建",
                         "url": "https://github.com/teedoc/teedoc",
                         "target": "_blank"
                     }
@@ -58,11 +63,10 @@
                 "items": [
                     {
                         "label": "老怪鸽",
-                        "url": "https://laoguaige.github.io/",
                         "target": "_blank"
                     },
                     {
-                        "label": "邮箱: liguoyi@hdochub.cn",
+                        "label": "QQ: 1602036736",
                         "target": "_blank"
                     }
                 ]
@@ -71,8 +75,18 @@
                 "label": "源码",
                 "items": [
                     {
-                        "label": "本站源文件",
+                        "label": "本站源码",
                         "url": "https://github.com/LaoGuaiGe/laoguaige.github.io",
+                        "target": "_blank"
+                    },
+                    {
+                        "label": "github 开源项目",
+                        "url": "https://github.com/LaoGuaiGe/",
+                        "target": "_blank"
+                    },
+                    {
+                        "label": "gitee 开源项目",
+                        "url": "https://gitee.com/LaoGuaiGe/",
                         "target": "_blank"
                     }
                 ]
@@ -80,8 +94,8 @@
         ],
         "bottom": [
             {
-                "label": "Copyright © 2024 Hdochub",
-                "url": "https://laoguaige.github.io/",
+                "label": "Copyright © 2025 Hdochub",
+                "url": "https://wiki.hdochub.com/",
                 "target": "_blank"
             }
         ]
