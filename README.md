@@ -3,7 +3,7 @@
 ## 介绍
 搭建的个人硬件文档记录中心网站，主要方向为: 嵌入式，MCU、linux、markdown、git、python、C/C++。
 
-域名：www.Hdochub.cn、laoguaige.github.io
+域名：[wiki.hdochub.com](wiki.hdochub.com)、[laoguaige.github.io](laoguaige.github.io)
 
 项目来源[teedoc](https://github.com/teedoc/teedoc):https://github.com/teedoc/teedoc
 
