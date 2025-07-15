@@ -1,8 +1,8 @@
 
 ---
 title: 老怪鸽文档中心
-keywords: hdochub, markdown, 文档生成,  网站生成, 静态网站, 多文档, 静态博客
-desc: teedoc，开源静态文档网站生成工具，将 markdown 或者 jupyter notbook 转换成 html 静态网页， 用于个人或企业建站，建博客，建资料库，wiki等
+keywords: hdochub, markdown, STM32,  C语言, DIY, 开源项目, 资料库, 嵌入式, 硬件设计
+desc: hdochub，个人知识分享站，旨在学广而闻多，则不求于人。总结并分享有趣的DIY项目和开发经验
 id: home_page
 ---
 
