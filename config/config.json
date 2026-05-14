@@ -34,6 +34,11 @@
                 "position": "left"
             },
             {
+                "url": "/tools/",
+                "label": "在线工具",
+                "position": "left"
+            },
+            {
                 "url": "https://github.com/LaoGuaiGe/laoguaige.github.io",
                 "label": "github",
                 "target": "_blank",

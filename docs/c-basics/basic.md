@@ -20,6 +20,24 @@ C语言使用预处理器来处理源代码中的预处理指令，如 `#include
 //使用printf时需要定义
 
 ```
+### 常见指令
+
+```c
+#define PI 3.14159
+#define SQUARE(x) ((x) * (x))
+#include "my_header.h"
+```
+
+### 头文件保护
+
+```c
+#ifndef MY_HEADER_H
+#define MY_HEADER_H
+
+int add(int a, int b);
+
+#endif
+```
 
 ## 语法规则
 
@@ -114,7 +132,7 @@ C语言中的数据类型用于指定**变量**存储的数据种类和大小。
 不知道大家有没有发现一个现象，使用`unsigned`修饰的数据类型都是正数，通常我们是叫中无符号型，表示没有负数的意思，例如：
 
 ```c
-unsigned char temp = 0; //表示该temp为无符号整型数据，数据范围是 0 到 4,294,967,295
+unsigned char temp = 0; //表示该temp为无符号字符型数据，数据范围是 0 到 255
 char value = 0;         //表示该value为有符号字符型数据，数据范围是 -128 到 127
 ```
 

@@ -192,7 +192,7 @@ int main() {
 
 **continue 语句**
 
-`continue` 语句用于跳过当前循环迭代中剩余的代码，并立即开始下一次循环迭代。与 `break` `不同，continue` 不会退出循环，而是继续执行下一次循环。
+`continue` 语句用于跳过当前循环迭代中剩余的代码，并立即开始下一次循环迭代。与 `break` 不同，`continue` 不会退出循环，而是继续执行下一次循环。
 
 以下是一个使用 `continue` 语句的例子：
 ```c
@@ -312,3 +312,51 @@ int main() {
         return 0;
     }
     ```
+
+## 综合示例：条件与循环
+
+```c
+#include <stdio.h>
+
+int main(void) {
+    int n;
+    printf("输入一个 1~3 的整数：");
+    if (scanf("%d", &n) != 1) {
+        return 0;
+    }
+
+    switch (n) {
+        case 1:
+            for (int i = 1; i <= 5; i++) {
+                if (i % 2 == 0) continue;
+                printf("%d ", i);
+            }
+            printf("\n");
+            break;
+        case 2:
+            {
+                int i = 5;
+                while (i--) {
+                    if (i == 2) break;
+                    printf("%d ", i);
+                }
+                printf("\n");
+            }
+            break;
+        case 3:
+            {
+                int i = 0;
+                do {
+                    printf("%d ", i);
+                    i++;
+                } while (i < 3);
+                printf("\n");
+            }
+            break;
+        default:
+            printf("超出范围\n");
+            break;
+    }
+    return 0;
+}
+```

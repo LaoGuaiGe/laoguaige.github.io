@@ -1,0 +1,173 @@
+---
+title: 在线工具
+keywords: 在线工具, OLED, 仿真器
+desc: 在线开发工具集合
+---
+
+<style>
+:root {
+  --wt-primary: #4caf7d;
+  --wt-primary-hover: #3d9e6b;
+  --wt-bg-card: #FFFFFF;
+  --wt-text-main: #333333;
+  --wt-text-sub: #666666;
+  --wt-border: #E0E0E0;
+  --wt-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  --wt-shadow-hover: 0 12px 24px rgba(0,0,0,0.15);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --wt-primary: #4caf7d;
+    --wt-primary-hover: #5cc98f;
+    --wt-bg-card: #2D2D2D;
+    --wt-text-main: #FFFFFF;
+    --wt-text-sub: #B0B0B0;
+    --wt-border: #444444;
+    --wt-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    --wt-shadow-hover: 0 12px 24px rgba(0,0,0,0.4);
+  }
+}
+
+.wt-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 24px;
+  padding: 20px 0;
+  margin: 0 auto;
+}
+
+.wt-card {
+  background-color: var(--wt-bg-card);
+  border-radius: 12px;
+  border: 1px solid var(--wt-border);
+  box-shadow: var(--wt-shadow);
+  overflow: hidden;
+  transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column;
+}
+
+.wt-card:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--wt-shadow-hover);
+}
+
+.wt-header {
+  padding: 16px;
+  text-align: center;
+  border-bottom: 1px solid rgba(0,0,0,0.03);
+}
+
+.wt-title {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: var(--wt-text-main);
+  margin: 0;
+}
+
+.wt-cover {
+  width: 100%;
+  height: 160px;
+  overflow: hidden;
+  background-color: #1a1a2e;
+  position: relative;
+}
+
+.wt-cover a {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.wt-cover img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s;
+  pointer-events: none;
+}
+
+.wt-card:hover .wt-cover img {
+  transform: scale(1.05);
+}
+
+.wt-body {
+  padding: 16px;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.wt-desc {
+  font-size: 0.9rem;
+  color: var(--wt-text-sub);
+  margin-bottom: 20px;
+  line-height: 1.5;
+  text-align: center;
+}
+
+.wt-actions {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  margin-top: auto;
+}
+
+.wt-btn {
+  flex: 1;
+  padding: 8px 0;
+  border-radius: 6px;
+  text-align: center;
+  font-size: 0.9rem;
+  font-weight: 500;
+  text-decoration: none !important;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.wt-btn-online {
+  background-color: var(--wt-primary);
+  color: #fff !important;
+  border: 1px solid var(--wt-primary);
+}
+
+.wt-btn-online:hover {
+  background-color: var(--wt-primary-hover);
+}
+
+.wt-btn-doc {
+  background-color: transparent;
+  color: var(--wt-text-main) !important;
+  border: 1px solid var(--wt-border);
+}
+
+.wt-btn-doc:hover {
+  background-color: rgba(0,0,0,0.05);
+  border-color: var(--wt-text-sub);
+}
+</style>
+
+浏览器端开发辅助工具集合，无需安装，打开即用。
+
+<div class="wt-container">
+
+  <div class="wt-card">
+    <div class="wt-header">
+      <div class="wt-title">OLED_UI 仿真器</div>
+    </div>
+    <div class="wt-cover">
+      <a href="/static/oled-ui-ide/index.html" target="_blank">
+        <img src="/static/images/docs/tool/oledui.gif" alt="OLED_UI 仿真器">
+      </a>
+    </div>
+    <div class="wt-body">
+      <div class="wt-desc">基于 OLED_UI 框架的可视化菜单编辑器，支持 128x64 OLED 屏幕实时仿真预览、5种菜单类型切换、菜单结构编辑和 C 代码一键导出。</div>
+      <div class="wt-actions">
+        <a href="/static/oled-ui-ide/index.html" target="_blank" class="wt-btn wt-btn-online">在线使用</a>
+        <a href="https://github.com/bdth-7777777/OLED_UI" target="_blank" class="wt-btn wt-btn-doc">项目主页</a>
+      </div>
+    </div>
+  </div>
+
+</div>

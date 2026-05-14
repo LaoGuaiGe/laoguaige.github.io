@@ -55,7 +55,9 @@
 
             "/diy/wiki-web/basic": "docs/diy/wiki-web/basic.html",
 
-            "/diy/tracking-cannon/basic": "docs/diy/tracking-cannon/basic.html"
+            "/diy/tracking-cannon/basic": "docs/diy/tracking-cannon/basic.html",
+
+            "/tools/": "docs/tools/"
 
         },
         "pages": {

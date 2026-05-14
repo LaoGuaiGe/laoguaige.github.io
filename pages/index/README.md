@@ -110,6 +110,27 @@ id: home_page
 				<p class="article-p-t">最新：2024-12-08</font>
 				</p>
 			</div>
+            <!-- 在线工具 -->
+            <div class="col-item">
+				<figure class="c4-izmir c4-border-corners-1 c4-image-zoom-out c4-gradient-bottom" tabindex="0"
+					style="--primary-color: #E0EAFC; --secondary-color: #CFDEF3; --text-color: #1f467b; --border-color: #1f467b; --image-opacity: .1;">
+					<img src="static/images/tool.png" alt="Sample Image" />
+					<a href="/tools/" class="article-a">
+						<figcaption class="c4-layout-top-left">
+							<div class="c4-reveal-down">
+								<div>
+									<h2 style="margin-bottom: 5px;"></h2>
+									<p>在线开发工具集合，包含 OLED_UI 可视化菜单编辑器，支持实时仿真与C代码导出</p>
+								</div>
+							</div>
+						</figcaption>
+				</figure>
+				<a href="/tools/" class="article-a">
+					<p class="article-p-h">在线工具</p>
+				</a>
+				<p class="article-p-t">最新：2025-05-14</font>
+				</p>
+			</div>
         </div>	
 	</div>		
 </div>

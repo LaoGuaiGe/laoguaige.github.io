@@ -153,9 +153,24 @@ printf("\n");
         }
         printf("\n");
 
-        // 打印数组元素的总和
-        printf("数组元素的总和：%d\n", sum);
+    // 打印数组元素的总和
+    printf("数组元素的总和：%d\n", sum);
 
-        return 0;
+    return 0;
     }
     ```
+## 常见陷阱与建议
+
+- 解引用空指针：在使用指针前先与 `NULL` 比较
+- 指针与数组大小：`sizeof(ptr)` 是指针大小，非数组长度
+- 常量与指针：
+
+```c
+const int *p1;
+int * const p2 = NULL;
+const int * const p3 = NULL;
+```
+
+- 指针运算：按所指类型大小移动
+- 字符串字面量不可修改：`char *s = "abc";` 不要写入
+- 统一初始化：未使用前置为 `NULL`
