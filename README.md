@@ -1,85 +1,79 @@
-# hardwareDocsHubWEB
+# HDocHub - 个人知识分享站
 
-## 介绍
-搭建的个人硬件文档记录中心网站，主要方向为: 嵌入式，MCU、linux、markdown、git、python、C/C++。
+学广而闻多，则不求于人。
 
-域名：[wiki.hdochub.com](wiki.hdochub.com)、[laoguaige.github.io](laoguaige.github.io)
+基于 [teedoc](https://github.com/teedoc/teedoc) 搭建的个人技术文档中心，主要方向：嵌入式、MCU、Linux、C/C++、Python、Markdown、Git。
 
-项目来源[teedoc](https://github.com/teedoc/teedoc):https://github.com/teedoc/teedoc
+## 在线访问
 
-网站搭建文档：https://teedoc.github.io/
+- 主站：https://wiki.hdochub.com
 
-## 快速搭建wiki
+## 内容导航
 
-### 一、安装 python3
+| 板块 | 说明 |
+|------|------|
+| C语言参考手册 | C语言基础入门，帮助新手快速上手 |
+| MarkDown语法手册 | 基于 teedoc 的 Markdown 语法总结 |
+| 单片机入门手册 | STM32、ESP32、MSPM0、GD32、RP2040 等外设例程 |
+| DIY项目合集 | 从软件到硬件，从系统到裸机 |
+| 在线工具 | 浏览器端开发辅助工具（OLED_UI 仿真器等） |
 
-需要先安装Python3 （仅支持 Python3）
+## 本地部署
 
-比如在Ubuntu上：
+### 环境要求
 
-```sh
-sudo apt install python3 python3-pip git
-```
-Windows 和 macOS请到[官网下载](https://www.python.org/downloads/)
+- Python 3.x
+- pip
 
-### 二、安装 teedoc
+### 安装步骤
 
-打开终端(Windows按Ctrl+R输入cmd)，输入：
+```bash
+# 安装 teedoc
+pip install teedoc
 
-```sh
-pip3 install teedoc
-```
+# 克隆项目
+git clone https://github.com/LaoGuaiGe/laoguaige.github.io.git
+cd laoguaige.github.io
 
-以后使用以下命令来更新软件：
-
-```sh
-pip3 install teedoc --upgrade
-```
-如果你的网络使用 pypi.org 速度很慢，可以选择其它源，比如清华 tuna 源： `pip3 install teedoc -i https://pypi.tuna.tsinghua.edu.cn/simple`
-
-现在你可以在终端使用 `teedoc` 命令了
-
-如果不能，请检查是不是`Python`可执行目录没有加入到环境变量 `PATH`,
-比如可能在 `~/.local/bin`
-
-### 三、新建工程
-
-新建一个空目录用来放文档工程
-
-```sh
-mkdir my_site
-cd my_site
-teedoc init
-```
-选择1，也就是minimal模板进行生成， 也可以直接`teedoc -d my_site --template=minimal init`进行生成
-
-这会在 `my_site` 目录下自动生成一些基础文件
-
-
-### 四、安装插件
-
-这会根据`site_config.json`中的`plugins`的插件设置安装插件
-
-```sh
-cd my_site
+# 安装插件
 teedoc install
-```
-插件也是以 `python` 包的形式发布的， 所以这会从 `pypi.org` 下载对应的插件，同样，也可以使用其它源，比如清华 tuna 源： `teedoc -i https://pypi.tuna.tsinghua.edu.cn/simple install`
 
-
-### 五、构建 `HTML` 页面并起一个`HTTP`服务
-
-```sh
+# 本地预览
 teedoc serve
 ```
-这个命令会先构建所有`HTML`页面以及拷贝资源文件，然后起一个`HTTP`服务
-如果只需要生成页面，使用
 
-```sh
+浏览器打开 http://127.0.0.1:2333 即可预览。
+
+如果 pypi 速度慢，可使用清华源：
+
+```bash
+pip install teedoc -i https://pypi.tuna.tsinghua.edu.cn/simple
+teedoc -i https://pypi.tuna.tsinghua.edu.cn/simple install
+```
+
+### 构建部署
+
+```bash
 teedoc build
 ```
-在显示 `Starting server at 0.0.0.0:2333 ....` 后，就可以了
 
-打开浏览器访问: `http://127.0.0.1:2333`
+构建产物在 `out/` 目录，将其内容部署到 Nginx/Apache 或任何静态托管服务即可。
 
-同时可以看到目录下多了一个`out`目录，里面就是生成的静态网站内容，直接拷贝到服务器使用`nginx`或者`apache`进行部署即可
+## 项目结构
+
+```
+├── site_config.json    全局配置（路由、插件）
+├── config/             导航栏、页脚、主题配置
+├── docs/               文档内容
+│   ├── c-basics/       C语言
+│   ├── markdown/       Markdown
+│   ├── mcu/            单片机
+│   ├── diy/            DIY项目
+│   └── tools/          在线工具
+├── pages/index/        首页
+└── static/             静态资源（CSS、JS、图片、在线工具）
+```
+
+## 致谢
+
+- [teedoc](https://github.com/teedoc/teedoc) - 静态文档网站生成器
