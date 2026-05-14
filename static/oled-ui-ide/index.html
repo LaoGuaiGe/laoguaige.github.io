@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OLED_UI Web IDE</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="app">
+    <!-- Toolbar -->
+    <div class="toolbar">
+        <span class="title">OLED_UI IDE</span>
+        <div class="sep"></div>
+        <button id="btn-new-page">+ 新建页面</button>
+        <button id="btn-add-item">+ 添加菜单项</button>
+        <div class="sep"></div>
+        <button id="btn-import-json">导入项目</button>
+        <button id="btn-export-json">导出项目</button>
+        <button id="btn-export-c">生成C代码</button>
+        <div class="sep"></div>
+        <button id="btn-clear-cache" onclick="if(confirm('确定清除缓存并恢复默认？')){localStorage.removeItem('oled_ui_project');location.reload();}">清除缓存</button>
+        <div class="sep"></div>
+        <button id="btn-lang" title="Switch Language">EN/中</button>
+    </div>
+
+    <!-- Left: Menu Tree -->
+    <div class="tree-panel">
+        <h3 id="tree-title">菜单结构</h3>
+        <div id="menu-tree"></div>
+    </div>
+
+    <!-- Center: OLED Preview -->
+    <div class="preview-panel">
+        <div class="canvas-wrapper">
+            <canvas id="oled-canvas" width="512" height="256"></canvas>
+        </div>
+        <div class="controls">
+            <button id="btn-up">&#9650;</button>
+            <button id="btn-enter">OK</button>
+            <button id="btn-down">&#9660;</button>
+            <button id="btn-back">&#9664;</button>
+            <span class="hint-text" id="hint-text">键盘: 方向键/回车/Esc | 滚轮: 编码器</span>
+        </div>
+    </div>
+
+    <!-- Right: Properties -->
+    <div class="props-panel" id="props-panel">
+        <p class="hint" id="props-hint">选择页面或菜单项进行编辑</p>
+    </div>
+</div>
+
+<!-- Code Output Panel -->
+<div class="code-panel" id="code-panel">
+    <div class="code-panel-header">
+        <span id="code-panel-title">生成的C代码</span>
+        <div>
+            <button id="btn-copy-code">复制</button>
+            <button id="btn-close-code">关闭</button>
+        </div>
+    </div>
+    <pre id="code-output"></pre>
+</div>
+
+<script src="js/i18n.js"></script>
+<script src="js/fonts.js"></script>
+<script src="js/oled.js"></script>
+<script src="js/animation.js"></script>
+<script src="js/ui-core.js"></script>
+<script src="js/ui-list.js"></script>
+<script src="js/ui-tiles.js"></script>
+<script src="js/ui-tiles-adv.js"></script>
+<script src="js/ui-main.js"></script>
+<script src="js/codegen.js"></script>
+<script src="js/editor.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>

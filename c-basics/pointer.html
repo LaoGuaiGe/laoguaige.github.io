@@ -79,6 +79,7 @@ MathJax = {"loader": {"load": ["output/svg"]}, "tex": {"inlineMath": [["$", "$"]
 <li class=""><a  href="/markdown/">MarkDown</a></li>
 <li class=""><a  href="/mcu/">单片机</a></li>
 <li class=""><a  href="/diy/">DIY项目</a></li>
+<li class=""><a  href="/tools/">在线工具</a></li>
 </ul>
 
             </div>
@@ -320,14 +321,30 @@ int main() {
     }
     printf(&quot;\n&quot;);
 
-    // 打印数组元素的总和
-    printf(&quot;数组元素的总和：%d\n&quot;, sum);
+// 打印数组元素的总和
+printf(&quot;数组元素的总和：%d\n&quot;, sum);
 
-    return 0;
+return 0;
 }
 </code></pre>
 </div>
 </details>
+<h2 id="%E5%B8%B8%E8%A7%81%E9%99%B7%E9%98%B1%E4%B8%8E%E5%BB%BA%E8%AE%AE">常见陷阱与建议</h2>
+<ul>
+<li>解引用空指针：在使用指针前先与 <code>NULL</code> 比较</li>
+<li>指针与数组大小：<code>sizeof(ptr)</code> 是指针大小，非数组长度</li>
+<li>常量与指针：</li>
+</ul>
+
+<pre class="language-c"><code class="language-c">const int *p1;
+int * const p2 = NULL;
+const int * const p3 = NULL;
+</code></pre>
+<ul>
+<li>指针运算：按所指类型大小移动</li>
+<li>字符串字面量不可修改：<code>char *s = &quot;abc&quot;;</code> 不要写入</li>
+<li>统一初始化：未使用前置为 <code>NULL</code></li>
+</ul>
 
                         
                     </div>

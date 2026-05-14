@@ -79,6 +79,7 @@ MathJax = {"loader": {"load": ["output/svg"]}, "tex": {"inlineMath": [["$", "$"]
 <li class=""><a  href="/markdown/">MarkDown</a></li>
 <li class=""><a  href="/mcu/">单片机</a></li>
 <li class=""><a  href="/diy/">DIY项目</a></li>
+<li class=""><a  href="/tools/">在线工具</a></li>
 </ul>
 
             </div>
@@ -203,6 +204,21 @@ MathJax = {"loader": {"load": ["output/svg"]}, "tex": {"inlineMath": [["$", "$"]
 #include &lt;stdio.h&gt; // 预处理器指令，用于包含标准输入输出库的头文件
 //使用printf时需要定义
 
+</code></pre>
+<h3 id="%E5%B8%B8%E8%A7%81%E6%8C%87%E4%BB%A4">常见指令</h3>
+
+<pre class="language-c"><code class="language-c">#define PI 3.14159
+#define SQUARE(x) ((x) * (x))
+#include &quot;my_header.h&quot;
+</code></pre>
+<h3 id="%E5%A4%B4%E6%96%87%E4%BB%B6%E4%BF%9D%E6%8A%A4">头文件保护</h3>
+
+<pre class="language-c"><code class="language-c">#ifndef MY_HEADER_H
+#define MY_HEADER_H
+
+int add(int a, int b);
+
+#endif
 </code></pre>
 <h2 id="%E8%AF%AD%E6%B3%95%E8%A7%84%E5%88%99">语法规则</h2>
 <p>C语言程序是按顺序执行的，这意味着程序中的语句是从上到下逐条执行的，除非有控制流语句（如循环、分支等）改变执行顺序。</p>
@@ -377,7 +393,7 @@ MathJax = {"loader": {"load": ["output/svg"]}, "tex": {"inlineMath": [["$", "$"]
 </blockquote>
 <p>不知道大家有没有发现一个现象，使用<code>unsigned</code>修饰的数据类型都是正数，通常我们是叫中无符号型，表示没有负数的意思，例如：</p>
 
-<pre class="language-c"><code class="language-c">unsigned char temp = 0; //表示该temp为无符号整型数据，数据范围是 0 到 4,294,967,295
+<pre class="language-c"><code class="language-c">unsigned char temp = 0; //表示该temp为无符号字符型数据，数据范围是 0 到 255
 char value = 0;         //表示该value为有符号字符型数据，数据范围是 -128 到 127
 </code></pre>
 <blockquote class="spoiler warning">
